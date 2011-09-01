@@ -1,5 +1,6 @@
 #include "modifyusern.h"
 
+
 modifyusern::modifyusern(const useraccount& acc, QWidget *parent) :
     QGroupBox(tr("Account Data"), parent), accToModify(const_cast<useraccount*>(&acc))
 {
@@ -27,9 +28,13 @@ modifyusern::modifyusern(const useraccount& acc, QWidget *parent) :
 }
 
 void modifyusern::modify(){
-
+    accToModify->setuser(usernLineEdit->text(), passwLineEdit->text());
+    emit modified(true);
 }
 
 void modifyusern::reset(){
-
+    username* userTemp= accToModify->user();
+    usernLineEdit->setText(userTemp->user());
+    passwLineEdit->setText(userTemp->pass());
+    update();
 }

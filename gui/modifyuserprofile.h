@@ -25,7 +25,7 @@ public:
 signals:
 
 public slots:
-
+    void modified(bool);
 };
 
 #endif // MODIFYUSERPROFILE_H
