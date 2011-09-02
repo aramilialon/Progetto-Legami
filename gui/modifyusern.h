@@ -16,8 +16,10 @@ class modifyusern : public QGroupBox
     useraccount* accToModify;
 
     QFormLayout* layout;
+
     QLineEdit* usernLineEdit;
     QLineEdit* passwLineEdit;
+
     QPushButton* okButton;
     QPushButton* cancelButton;
 
