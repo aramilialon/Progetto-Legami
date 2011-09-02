@@ -25,11 +25,13 @@ legamimainwindow::legamimainwindow(QWidget *parent) :
     setMinimumSize(640,480);
     setMaximumSize(1366, 768);
     FileBar=0;
-    setMenuBarUnregistered();
     MainWidget=0;
-    scroll=0;
+    scroll=new QScrollArea(this);
+    scroll->resize(this->sizeHint());
+    scroll->setWidget(MainWidget);
     show();
-    setCentralWidget(MainWidget);
+    setCentralWidget(scroll);
+    setMenuBarUnregistered();
     Boss= new legami("./database.xml");
     bool loaded=false;
     bool errorReported=false;
@@ -107,6 +109,11 @@ void legamimainwindow::setMenuBarUnregistered(){
         delete Admin;
         delete About;
     }
+    if(MainWidget){
+	delete MainWidget;
+	MainWidget=0;
+    }
+    scroll->resize(this->sizeHint());
     File= new QMenu(tr("File"), this);
     Register= new QAction(tr("New User?"), this);
     connect(Register, SIGNAL(triggered()), this, SLOT(registerNewUser()));
@@ -247,10 +254,6 @@ void legamimainwindow::closeAll(){
 void legamimainwindow::logout(){
     Boss->getloader()->writedb();
     setWindowTitle(QString("Legami"));
-    if(MainWidget) delete MainWidget;
-    MainWidget=0;
-    if(scroll) delete scroll;
-    scroll=0;
     QString name= Boss->accountlogged()->user()->user();
     Boss->logoutAccount();
     setMenuBarUnregistered();
@@ -263,7 +266,7 @@ void legamimainwindow::showuser(){
     else MainWidget= new showcompanyprofile(*(Boss->accountlogged()), Boss, this);
     if (!scroll) scroll= new QScrollArea(this);
     scroll->setWidget(MainWidget);
-    MainWidget->resize(this->frameSize());
+    MainWidget->resize(scroll->size());
     setCentralWidget(scroll);
 }
 
@@ -273,6 +276,8 @@ void legamimainwindow::modifyuser(){
         MainWidget= new modifyuserprofile(*(dynamic_cast<useraccount*>((Boss->accountlogged()))), this);
         if(!scroll) scroll= new QScrollArea(this);
         scroll->setWidget(MainWidget);
+	scroll->resize(this->sizeHint());
+	MainWidget->resize(scroll->size());
         setCentralWidget(scroll);
     }
     else MainWidget=0;
