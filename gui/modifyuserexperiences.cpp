@@ -25,4 +25,7 @@ modifyuserexperiences::modifyuserexperiences(const useraccount& acc, QWidget *pa
 
 void modifyuserexperiences::pushedForm(){
     experience* newForm= new experience(1);
+    modifyuserexperience* temp= new modifyuserexperience(newForm, this);
+
+    accToModify->addexperience(*newForm);
 }

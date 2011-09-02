@@ -1,0 +1,66 @@
+<<<<<<< HEAD
+#ifndef MODIFYUSERPROFILE_H
+#define MODIFYUSERPROFILE_H
+
+#include "../lib/useraccount.h"
+
+#include "modifyuserinfos.h"
+#include "modifyusern.h"
+
+#include <QVBoxLayout>
+#include <QWidget>
+
+class modifyuserprofile : public QWidget
+{
+    Q_OBJECT
+
+    useraccount* accToModify;
+
+    QVBoxLayout* layout;
+    modifyusern* usernModify;
+    modifyuserinfos* infosModify;
+
+
+public:
+    explicit modifyuserprofile(const useraccount &, QWidget *parent = 0);
+
+signals:
+
+public slots:
+    void modified(bool);
+};
+
+#endif // MODIFYUSERPROFILE_H
+=======
+#ifndef MODIFYUSERPROFILE_H
+#define MODIFYUSERPROFILE_H
+
+#include "../lib/useraccount.h"
+
+#include "modifyusern.h"
+
+#include <QVBoxLayout>
+#include <QWidget>
+
+class modifyuserprofile : public QWidget
+{
+    Q_OBJECT
+
+    useraccount* accToModify;
+
+    QVBoxLayout* layout;
+    modifyusern* usernModify;
+
+
+
+public:
+    explicit modifyuserprofile(const useraccount &, QWidget *parent = 0);
+
+signals:
+
+public slots:
+
+};
+
+#endif // MODIFYUSERPROFILE_H
+>>>>>>> 7abf8f0ba99df616b01b514df661d3c9c333c0aa

@@ -1,0 +1,42 @@
+<!DOCTYPE legami>
+<legami>
+ <users>
+  <user>
+   <userdata>
+    <username>root</username>
+    <password>there is no password</password>
+    <type>user</type>
+    <acctype>2</acctype>
+    <admin>1</admin>
+   </userdata>
+   <infos>
+    <name></name>
+    <surname></surname>
+    <daybirth>1</daybirth>
+    <monthbirth>1</monthbirth>
+    <yearbirth>-4713</yearbirth>
+    <telnum></telnum>
+    <email></email>
+   </infos>
+   <experiences/>
+  </user>
+  <user>
+   <userdata>
+    <username>asd</username>
+    <password>asd</password>
+    <type>company</type>
+    <acctype>0</acctype>
+   </userdata>
+   <userdata>
+    <name></name>
+    <address></address>
+    <cotype></cotype>
+   </userdata>
+  </user>
+ </users>
+ <connections/>
+ <groups/>
+ <messages/>
+ <photos/>
+ <payments/>
+</legami>
