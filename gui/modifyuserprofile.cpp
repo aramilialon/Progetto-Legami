@@ -1,5 +1,6 @@
 #include "modifyuserprofile.h"
 
+
 #include <QMessageBox>
 
 modifyuserprofile::modifyuserprofile(const useraccount & acc, QWidget *parent):
@@ -11,7 +12,13 @@ modifyuserprofile::modifyuserprofile(const useraccount & acc, QWidget *parent):
     layout->addWidget(usernModify);
     connect(usernModify, SIGNAL(modified(bool)), this, SLOT(modified(bool)));
 
+    infosModify= new modifyuserinfos(acc, this);
+    connect(infosModify, SIGNAL(modified(bool)), this, SLOT(modified(bool)));
+    layout->addWidget(infosModify);
+
     setLayout(layout);
+
+    parent->setWindowTitle(tr("Legami - Modify Profile Page"));
 }
 
 void modifyuserprofile::modified(bool mod){

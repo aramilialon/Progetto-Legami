@@ -14,6 +14,8 @@ modifyuserinfos::modifyuserinfos(const useraccount & acc, QWidget *parent) :
     layout->addRow(tr("Last Name:"), surnameLineEdit);
 
     dateDateEdit= new QDateEdit(infos->birthdate());
+    dateDateEdit->setDisplayFormat(QString("dd.MM.yyyy"));
+    dateDateEdit->clearMinimumDate();
     layout->addRow(tr("Birth Date:"), dateDateEdit);
 
     placeLineEdit= new QLineEdit(infos->birthplace());
@@ -38,5 +40,17 @@ modifyuserinfos::modifyuserinfos(const useraccount & acc, QWidget *parent) :
 }
 
 void modifyuserinfos::modify(){
-    accToModify->setinfo(nameLineEdit->text(), surnameLineEdit->text(), dateDateEdit->);
+    accToModify->setinfo(nameLineEdit->text(), surnameLineEdit->text(), dateDateEdit->date().year(), dateDateEdit->date().month(), dateDateEdit->date().day(), placeLineEdit->text(), telnumLineEdit->text(), emailLineEdit->text());
+    emit modified(true);
+}
+
+void modifyuserinfos::reset(){
+    userinfo* infoTemp= accToModify->information();
+
+    nameLineEdit->setText(infoTemp->name());
+    surnameLineEdit->setText(infoTemp->surname());
+    dateDateEdit->setDate(infoTemp->birthdate());
+    placeLineEdit->setText(infoTemp->birthplace());
+    telnumLineEdit->setText(infoTemp->telnum());
+    emailLineEdit->setText(infoTemp->email());
 }

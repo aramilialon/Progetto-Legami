@@ -13,18 +13,18 @@
 
 class experience
 {
-	int _type;
+    int _type;
     QString _espname;
     QDate _espdate;
     QString _descr;
 public:
     experience();
-	experience(int, QString, QDate, QString);
-	int type() const;
+    experience(int, QString=QString(""), QDate=QDate(), QString=QString(""));
+    int type() const;
     QString espname() const;
     QDate espdate() const;
     QString descr() const;
-	void set_type(int);
+    void set_type(int);
     void set_namesp(QString);
     void set_datesp(int, int, int);
     void set_descr(QString);

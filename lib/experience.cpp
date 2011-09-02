@@ -12,7 +12,7 @@
 
 experience::experience(){}
 
-experience::experience(int type, QString name, QDate date, QString descr){
+experience::experience(int type, QString name,QDate date, QString descr){
     _type=type;
     _espname=name;
     _espdate=date;

@@ -3,6 +3,7 @@
 
 #include "../lib/useraccount.h"
 
+#include "modifyuserinfos.h"
 #include "modifyusern.h"
 
 #include <QVBoxLayout>
@@ -16,7 +17,7 @@ class modifyuserprofile : public QWidget
 
     QVBoxLayout* layout;
     modifyusern* usernModify;
-
+    modifyuserinfos* infosModify;
 
 
 public:

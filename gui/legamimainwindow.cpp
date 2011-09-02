@@ -27,7 +27,7 @@ legamimainwindow::legamimainwindow(QWidget *parent) :
     FileBar=0;
     MainWidget=0;
     scroll=new QScrollArea(this);
-    scroll->resize(this->sizeHint());
+    scroll->resize(this->size());
     scroll->setWidget(MainWidget);
     show();
     setCentralWidget(scroll);
@@ -276,7 +276,6 @@ void legamimainwindow::modifyuser(){
         MainWidget= new modifyuserprofile(*(dynamic_cast<useraccount*>((Boss->accountlogged()))), this);
         if(!scroll) scroll= new QScrollArea(this);
         scroll->setWidget(MainWidget);
-	scroll->resize(this->sizeHint());
 	MainWidget->resize(scroll->size());
         setCentralWidget(scroll);
     }

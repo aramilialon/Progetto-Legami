@@ -24,7 +24,9 @@ HEADERS += lib/username.h \
     gui/showuserexperieces.h \
     gui/showuserexperience.h \
     gui/modifyusern.h \
-    gui/modifyuserinfos.h
+    gui/modifyuserinfos.h \
+    gui/modifyuserexperiences.h \
+    gui/modifyuserexperience.h
 
 SOURCES += lib/username.cpp \
     lib/experience.cpp \
@@ -52,12 +54,18 @@ SOURCES += lib/username.cpp \
     gui/showuserexperieces.cpp \
     gui/showuserexperience.cpp \
     gui/modifyusern.cpp \
-    gui/modifyuserinfos.cpp
+    gui/modifyuserinfos.cpp \
+    gui/modifyuserexperiences.cpp \
+    gui/modifyuserexperience.cpp
 
 QT += xml
 FORMS +=   
 TRANSLATIONS += translation/legami_ita.ts \
     translation/legami_eng.ts
+
+
+
+
 
 
 
