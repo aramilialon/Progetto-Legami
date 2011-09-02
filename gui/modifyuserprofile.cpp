@@ -16,6 +16,9 @@ modifyuserprofile::modifyuserprofile(const useraccount & acc, QWidget *parent):
     connect(infosModify, SIGNAL(modified(bool)), this, SLOT(modified(bool)));
     layout->addWidget(infosModify);
 
+    expsModify= new modifyuserexperiences(acc, this);
+    layout->addWidget(expsModify);
+
     setLayout(layout);
 
     parent->setWindowTitle(tr("Legami - Modify Profile Page"));

@@ -21,15 +21,17 @@ class modifyuserexperiences : public QGroupBox
     QPushButton* addFormativeExp;
     QPushButton* addWorkingExp;
 
+    void loadExpWidget();
+
 public:
     explicit modifyuserexperiences(const useraccount&, QWidget *parent = 0);
 
 signals:
-    void addFormExpSignal();
-    void addWorkExp();
+
 public slots:
     void pushedForm();
     void pushedWork();
+    void modifiedExp();
 };
 
 #endif // MODIFYUSEREXPERIENCES_H
