@@ -27,7 +27,7 @@ public:
     explicit modifyuserexperiences(const useraccount&, QWidget *parent = 0);
 
 signals:
-
+    void modified();
 public slots:
     void pushedForm();
     void pushedWork();

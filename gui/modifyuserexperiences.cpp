@@ -42,6 +42,7 @@ void modifyuserexperiences::pushedForm(){
     layout->addWidget(addWorkingExp);
 
     QGroupBox::setLayout(layout);
+    emit modified();
 }
 
 void modifyuserexperiences::pushedWork(){
@@ -56,8 +57,9 @@ void modifyuserexperiences::pushedWork(){
 
     QGroupBox::setLayout(layout);
     QGroupBox::resize(parentWidget()->size());
+    emit modified();
 }
 
 void modifyuserexperiences::modifiedExp(){
-
+    emit modified();
 }

@@ -17,6 +17,7 @@ modifyuserprofile::modifyuserprofile(const useraccount & acc, QWidget *parent):
     layout->addWidget(infosModify);
 
     expsModify= new modifyuserexperiences(acc, this);
+    connect(expsModify, SIGNAL(modified()), this, SLOT(modexp()));
     layout->addWidget(expsModify);
 
     setLayout(layout);
@@ -28,4 +29,13 @@ void modifyuserprofile::modified(bool mod){
     if(mod){
 	QMessageBox::information(this, tr("Data Modified!"), tr("The data has been modified successfully."), QMessageBox::Ok, QMessageBox::Ok);
     }
+}
+
+void modifyuserprofile::modexp(){
+    delete expsModify;
+    expsModify= new modifyuserexperiences(*accToModify, this);
+    connect(expsModify, SIGNAL(modified()), this, SLOT(modexp()));
+    layout->addWidget(expsModify);
+
+    setLayout(layout);
 }

@@ -29,6 +29,7 @@ signals:
 
 public slots:
     void modified(bool);
+    void modexp();
 };
 
 #endif // MODIFYUSERPROFILE_H
