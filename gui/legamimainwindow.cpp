@@ -256,8 +256,8 @@ void legamimainwindow::logout(){
     setWindowTitle(QString("Legami"));
     QString name= Boss->accountlogged()->user()->user();
     Boss->logoutAccount();
+    QMessageBox::information(this, tr("Successfully logged out!"), tr(" asdasdasd successfully logged out."), QMessageBox::Ok, QMessageBox::Ok);
     setMenuBarUnregistered();
-    QMessageBox::information(this, tr("Successfully logged out!"), name+tr(" successfully logged out."), QMessageBox::Ok, QMessageBox::Ok);
 }
 
 void legamimainwindow::showuser(){
