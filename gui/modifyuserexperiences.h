@@ -6,7 +6,7 @@
 #include "modifyuserexperience.h"
 
 #include <QGroupBox>
-#include <QVBoxLayout>
+#include <QGridLayout>
 #include <QPushButton>
 #include <QVector>
 
@@ -17,9 +17,11 @@ class modifyuserexperiences : public QGroupBox
     useraccount* accToModify;
     QVector<modifyuserexperience*> expWidget;
 
-    QVBoxLayout* layout;
+    QGridLayout* layout;
     QPushButton* addFormativeExp;
     QPushButton* addWorkingExp;
+
+    int rows;
 
     void loadExpWidget();
 
@@ -27,7 +29,9 @@ public:
     explicit modifyuserexperiences(const useraccount&, QWidget *parent = 0);
 
 signals:
+    void modifiedlist();
     void modified();
+
 public slots:
     void pushedForm();
     void pushedWork();

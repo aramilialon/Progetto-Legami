@@ -17,7 +17,7 @@ modifyuserprofile::modifyuserprofile(const useraccount & acc, QWidget *parent):
     layout->addWidget(infosModify);
 
     expsModify= new modifyuserexperiences(acc, this);
-    connect(expsModify, SIGNAL(modified()), this, SLOT(modexp()));
+    connect(expsModify, SIGNAL(modifiedlist()), this, SLOT(modexp()));
     layout->addWidget(expsModify);
 
     setLayout(layout);
@@ -32,10 +32,5 @@ void modifyuserprofile::modified(bool mod){
 }
 
 void modifyuserprofile::modexp(){
-    delete expsModify;
-    expsModify= new modifyuserexperiences(*accToModify, this);
-    connect(expsModify, SIGNAL(modified()), this, SLOT(modexp()));
-    layout->addWidget(expsModify);
-
-    setLayout(layout);
+    emit modifiedlist();
 }

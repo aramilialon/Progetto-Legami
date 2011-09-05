@@ -14,6 +14,7 @@
 #include "showcompanyprofile.h"
 #include "showuserprofile.h"
 
+#include <QCloseEvent>
 #include <QDialog>
 #include <QFileDialog>
 #include <QMessageBox>
@@ -246,8 +247,6 @@ void legamimainwindow::setMenuBarRegistered(){
 }
 
 void legamimainwindow::closeAll(){
-    Boss->getloader()->writedb();
-    delete Boss;
     close();
 }
 
@@ -264,9 +263,8 @@ void legamimainwindow::showuser(){
     delete MainWidget;
     if(dynamic_cast<useraccount*>(Boss->accountlogged())) MainWidget= new showuserprofile(*(Boss->accountlogged()), Boss, this);
     else MainWidget= new showcompanyprofile(*(Boss->accountlogged()), Boss, this);
-    if (!scroll) scroll= new QScrollArea(this);
     scroll->setWidget(MainWidget);
-    MainWidget->resize(scroll->size());
+    MainWidget->adjustSize();
     setCentralWidget(scroll);
 }
 
@@ -274,10 +272,30 @@ void legamimainwindow::modifyuser(){
     delete MainWidget;
     if(dynamic_cast<useraccount*>(Boss->accountlogged())){
         MainWidget= new modifyuserprofile(*(dynamic_cast<useraccount*>((Boss->accountlogged()))), this);
-        if(!scroll) scroll= new QScrollArea(this);
+	connect(MainWidget, SIGNAL(modifiedlist()), this, SLOT(usermodified()));
         scroll->setWidget(MainWidget);
-	MainWidget->resize(scroll->size());
+	MainWidget->adjustSize();
         setCentralWidget(scroll);
     }
     else MainWidget=0;
+}
+
+void legamimainwindow::closeEvent(QCloseEvent* event){
+    Boss->getloader()->writedb();
+    delete Boss;
+    event->accept();
+}
+
+void legamimainwindow::usermodified(){
+    delete MainWidget;
+    if(dynamic_cast<useraccount*>(Boss->accountlogged())){
+	MainWidget= new modifyuserprofile(*(dynamic_cast<useraccount*>((Boss->accountlogged()))), this);
+	connect(MainWidget, SIGNAL(modifiedlist()), this, SLOT(modifyuser()));
+	scroll->setWidget(MainWidget);
+	MainWidget->adjustSize();
+	setCentralWidget(scroll);
+    }
+    else{
+	MainWidget=0;
+    }
 }

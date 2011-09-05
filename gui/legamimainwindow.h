@@ -68,6 +68,8 @@ class legamimainwindow : public QMainWindow
 
 public:
     explicit legamimainwindow(QWidget *parent = 0);
+
+    void closeEvent(QCloseEvent *);
 signals:
 
 private slots:
@@ -81,6 +83,7 @@ private slots:
     void registered(bool);
     void showuser();
     void modifyuser();
+    void usermodified();
 
 };
 

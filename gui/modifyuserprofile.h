@@ -26,7 +26,8 @@ public:
     explicit modifyuserprofile(const useraccount &, QWidget *parent = 0);
 
 signals:
-
+    void modified();
+    void modifiedlist();
 public slots:
     void modified(bool);
     void modexp();
