@@ -3,7 +3,9 @@
 
 #include "../lib/companyaccount.h"
 #include "modifyusern.h"
+#include "modifycompanyinfos.h"
 
+#include <QVBoxLayout>
 #include <QWidget>
 
 class modifycompanyprofile : public QWidget
@@ -13,14 +15,19 @@ class modifycompanyprofile : public QWidget
     companyaccount* accToModify;
 
     modifyusern* usernModify;
+    modifycompanyinfos* infosModify;
+
+    QVBoxLayout* layout;
 
 
 public:
-    explicit modifycompanyprofile(QWidget *parent = 0);
+    explicit modifycompanyprofile(companyaccount*, QWidget *parent = 0);
 
 signals:
+    void modified();
 
 public slots:
+    void modified(bool);
 
 };
 

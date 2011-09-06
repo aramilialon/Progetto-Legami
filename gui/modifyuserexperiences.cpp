@@ -27,6 +27,7 @@ void modifyuserexperiences::loadExpWidget(){
     QVector<experience*>::const_iterator itExps=expsToModify.begin();
     for(;itExps!=expsToModify.end();++itExps, ++rows){
 	modifyuserexperience* temp= new modifyuserexperience(*itExps, accToModify, this);
+	connect(temp, SIGNAL(modifiedExp()), this, SLOT(modifiedExp()));
 	expWidget.push_back(temp);
 	layout->addWidget(temp, rows, 0);
     }
@@ -48,5 +49,6 @@ void modifyuserexperiences::pushedWork(){
 }
 
 void modifyuserexperiences::modifiedExp(){
-    emit modified();
+    emit modifiedlist();
 }
+

@@ -3,6 +3,7 @@
 
 #include "../lib/companyaccount.h"
 
+#include <QFormLayout>
 #include <QGroupBox>
 #include <QPushButton>
 #include <QLineEdit>
@@ -17,12 +18,20 @@ class modifycompanyinfos : public QGroupBox
     QLineEdit* addressLineEdit;
     QLineEdit* cotypeLineEdit;
 
+    QFormLayout* layout;
+
+    QPushButton* okButton;
+    QPushButton* cancelButton;
+
 public:
-    explicit modifycompanyinfos(QWidget *parent = 0);
+    explicit modifycompanyinfos(companyaccount *, QWidget *parent = 0);
 
 signals:
+    void modified(bool);
 
 public slots:
+    void modify();
+    void reset();
 
 };
 

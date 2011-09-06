@@ -9,6 +9,7 @@
 #include "../lib/useraccount.h"
 #include "legamilogin.h"
 #include "legamimainwindow.h"
+#include "modifycompanyprofile.h"
 #include "modifyuserprofile.h"
 #include "reguser.h"
 #include "showcompanyprofile.h"
@@ -277,7 +278,13 @@ void legamimainwindow::modifyuser(){
 	MainWidget->adjustSize();
         setCentralWidget(scroll);
     }
-    else MainWidget=0;
+    else if(dynamic_cast<companyaccount*>(Boss->accountlogged())){
+	MainWidget= new modifycompanyprofile(dynamic_cast<companyaccount*>(Boss->accountlogged()), this);
+	scroll->setWidget(MainWidget);
+	MainWidget->adjustSize();
+	setCentralWidget(scroll);
+    }
+    else QMessageBox::information(this, tr("Error!"), tr(" asdasdasd successfully logged out."), QMessageBox::Ok, QMessageBox::Ok);
 }
 
 void legamimainwindow::closeEvent(QCloseEvent* event){
@@ -295,7 +302,11 @@ void legamimainwindow::usermodified(){
 	MainWidget->adjustSize();
 	setCentralWidget(scroll);
     }
-    else{
-	MainWidget=0;
+    else if(dynamic_cast<companyaccount*>(Boss->accountlogged())){
+	MainWidget= new modifycompanyprofile(dynamic_cast<companyaccount*>(Boss->accountlogged()), this);
+	scroll->setWidget(MainWidget);
+	MainWidget->adjustSize();
+	setCentralWidget(scroll);
     }
+    else QMessageBox::information(this, tr("Error!"), tr(" asdasdasd successfully logged out."), QMessageBox::Ok, QMessageBox::Ok);
 }

@@ -37,6 +37,7 @@ public:
 
 signals:
     void modifiedExp();
+
 public slots:
     void modifyExp();
     void cancel();

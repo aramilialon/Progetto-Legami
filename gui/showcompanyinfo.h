@@ -5,10 +5,11 @@
 #include "../lib/companyaccount.h"
 
 #include <QFormLayout>
+#include <QGroupBox>
 #include <QLineEdit>
 #include <QWidget>
 
-class showcompanyinfo : public QWidget
+class showcompanyinfo : public QGroupBox
 {
     Q_OBJECT
 

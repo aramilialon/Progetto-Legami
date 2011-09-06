@@ -25,6 +25,9 @@ modifyuserexperience::modifyuserexperience(experience* exp, useraccount* acc, QW
     cancelButton= new QPushButton(tr("Cancel"), this);
     connect(cancelButton, SIGNAL(clicked()), this, SLOT(cancel()));
 
+    deleteButton= new QPushButton(tr("Delete"), this);
+    connect(deleteButton, SIGNAL(clicked()), this, SLOT(deleteExp()));
+
     layout->addWidget(nameLabel, 0, 0);
     layout->addWidget(nameLineEdit, 0, 1);
     layout->addWidget(dateLabel, 1, 0);
@@ -33,6 +36,7 @@ modifyuserexperience::modifyuserexperience(experience* exp, useraccount* acc, QW
     layout->addWidget(descrLineEdit, 2, 1);
     layout->addWidget(modifyButton, 3, 0);
     layout->addWidget(cancelButton, 3, 1);
+    layout->addWidget(deleteButton, 3, 2);
 
     QGroupBox::setLayout(layout);
 }
@@ -51,5 +55,8 @@ void modifyuserexperience::cancel(){
 }
 
 void modifyuserexperience::deleteExp(){
+    ouwner->removeexperience(*expToModify);
+
+    emit modifiedExp();
 
 }

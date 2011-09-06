@@ -1,8 +1,8 @@
 #include "modifyusern.h"
 
 
-modifyusern::modifyusern(const useraccount& acc, QWidget *parent) :
-    QGroupBox(tr("Account Data"), parent), accToModify(const_cast<useraccount*>(&acc))
+modifyusern::modifyusern(const account& acc, QWidget *parent) :
+    QGroupBox(tr("Account Data"), parent), accToModify(const_cast<account*>(&acc))
 {
     username* userTemp= accToModify->user();
 

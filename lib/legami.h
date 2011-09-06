@@ -16,6 +16,8 @@
 #include <QDate>
 #include <QVector>
 
+class group;
+
 class legami
 {
     friend class loader;
@@ -33,6 +35,7 @@ public:
     account* basicSearchCompany(QString) const;
     loader* getloader() const;
     QVector<account*> Search(QString) const;
+    QVector<group*> groupSearchbyUsern(QString);
     QVector<account*> userInfoSearch(QString, QString, QDate, QString, QString, QString) const;
     QVector<account*> companyInfoSearch(QString, QString, QString) const;
     QVector<account*> experienceSearch(int, QString, QDate, QString) const;

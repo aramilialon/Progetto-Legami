@@ -2,7 +2,7 @@
 #include "showcompanyinfo.h"
 
 showcompanyinfo::showcompanyinfo(const account& acc, QWidget *parent) :
-	QWidget(parent)
+	QGroupBox(tr("Company info"), parent)
 {
 
 	accToShow= dynamic_cast<companyaccount*>(const_cast<account*>(&acc));

@@ -249,3 +249,12 @@ QVector<account*> legami::experienceSearch(int type, QString name, QDate date, Q
 loader* legami::getloader() const{
     return _loader;
 }
+
+QVector<group*> legami::groupSearchbyUsern(QString usern){
+    QVector<group*> temp;
+    QVector<group*>::iterator it=_groupdb.begin();
+    for(;it!=_groupdb.end();++it){
+	if((*it)->getmember(usern)) temp.push_back(*it);
+    }
+    return temp;
+}

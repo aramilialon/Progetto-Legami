@@ -30,12 +30,13 @@ public:
 
 signals:
     void modifiedlist();
-    void modified();
+    void modified(bool);
 
 public slots:
     void pushedForm();
     void pushedWork();
     void modifiedExp();
+
 };
 
 #endif // MODIFYUSEREXPERIENCES_H
