@@ -29,11 +29,11 @@ modifyuserexperience::modifyuserexperience(experience* exp, useraccount* acc, QW
     connect(deleteButton, SIGNAL(clicked()), this, SLOT(deleteExp()));
 
     layout->addWidget(nameLabel, 0, 0);
-    layout->addWidget(nameLineEdit, 0, 1);
+    layout->addWidget(nameLineEdit, 0, 1, 1, 1);
     layout->addWidget(dateLabel, 1, 0);
-    layout->addWidget(dateDateEdit, 1, 1);
+    layout->addWidget(dateDateEdit, 1, 1, 1, 1);
     layout->addWidget(descrLabel, 2, 0);
-    layout->addWidget(descrLineEdit, 2, 1);
+    layout->addWidget(descrLineEdit, 2, 1, 1, 1);
     layout->addWidget(modifyButton, 3, 0);
     layout->addWidget(cancelButton, 3, 1);
     layout->addWidget(deleteButton, 3, 2);

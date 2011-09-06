@@ -9,8 +9,10 @@
 
 #include <QAction>
 #include <QListView>
+#include <QModelIndex>
 #include <QVector>
 #include <QGridLayout>
+#include <QScrollArea>
 #include <QWidget>
 
 class viewGroupIscrived : public QWidget
@@ -22,6 +24,8 @@ class viewGroupIscrived : public QWidget
     QGridLayout* layout;
     QVector<group*> groupList;
     QListView* groupsListView;
+    QScrollArea* scrollRightArea;
+
 
 public:
     explicit viewGroupIscrived(account*, legami*,  QWidget *parent = 0);
@@ -31,7 +35,7 @@ signals:
 public slots:
 
 private slots:
-    void showgroup();
+    void showGroup(const QModelIndex);
 
 };
 

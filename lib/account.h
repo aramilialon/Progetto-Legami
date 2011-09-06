@@ -38,26 +38,26 @@ public:
     ~account();
 
     virtual username* user() const =0;
-	void setuser(QString, QString);
+    void setuser(QString, QString);
 
     int type() const;
-	void setype(int);
+    void setype(int);
 
-	legami* boss() const;
+    legami* boss() const;
 
     QVector<payment*> payments() const;
-	payment* getpayment(const payment&) const;
-	virtual void addpayment(const payment&) throw(error);
+    payment* getpayment(const payment&) const;
+    virtual void addpayment(const payment&) throw(error);
 
-	virtual QVector<photo*> getphotos() const;
+    virtual QVector<photo*> getphotos() const;
     virtual QVector<photo*> getphotobytag(QString) const;
     virtual photo* getphotobyname(QString, QString) const;
-	virtual void addphoto(const photo&);
-	virtual void removephoto(const photo&);
+    virtual void addphoto(const photo&);
+    virtual void removephoto(const photo&);
 
     virtual QVector<account*> getconnections() const;
     virtual void addconnection(const account&);
-	virtual void removeconnection(const account&);
+    virtual void removeconnection(const account&);
 
     virtual void newmessage(const account&, const account&, QString, QString);
 

@@ -13,6 +13,7 @@
 #include "modifyuserprofile.h"
 #include "reguser.h"
 #include "showcompanyprofile.h"
+#include "viewgroupiscrived.h"
 #include "showuserprofile.h"
 
 #include <QCloseEvent>
@@ -205,6 +206,7 @@ void legamimainwindow::setMenuBarRegistered(){
 
     Groups= new QMenu(tr("Groups"), this);
     ViewGroupsIscrived= new QAction(tr("View Groups"), this);
+    connect(ViewGroupsIscrived, SIGNAL(triggered()), this, SLOT(showgroups()));
     ModifyGroupsIscrived= new QAction(tr("Modify groups "), this);
     Groups->addAction(ViewGroupsIscrived);
     Groups->addAction(ModifyGroupsIscrived);
@@ -309,4 +311,12 @@ void legamimainwindow::usermodified(){
 	setCentralWidget(scroll);
     }
     else QMessageBox::information(this, tr("Error!"), tr(" asdasdasd successfully logged out."), QMessageBox::Ok, QMessageBox::Ok);
+}
+
+void legamimainwindow::showgroups(){
+    delete MainWidget;
+    MainWidget= new viewGroupIscrived(Boss->accountlogged(), Boss, this);
+    scroll->setWidget(MainWidget);
+    MainWidget->adjustSize();
+    setCentralWidget(scroll);
 }

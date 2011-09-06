@@ -225,7 +225,7 @@ void loader::loadphotos(QDomNode photos){
 
 void loader::loadgroups(QDomNode groups){
     QDomNode temp=groups.firstChild();
-    if(!temp.isNull()){
+    if(!temp.isNull() && temp.nodeName()==QString("group")){
         while(!temp.isNull()){
             QString name=temp.firstChildElement(QString("name")).text(),
                     descr=temp.firstChildElement(QString("descr")).text();
@@ -233,13 +233,13 @@ void loader::loadgroups(QDomNode groups){
             QDomElement memberslistnode=temp.namedItem(QString("members")).firstChildElement(QString("member"));
             while(!memberslistnode.isNull()){
                 userlisttemp.push_back(memberslistnode.text());
-                memberslistnode.nextSiblingElement(QString("member"));
+		memberslistnode= memberslistnode.nextSiblingElement(QString("member"));
             }
             QVector<QString>adminlisttemp;
             QDomElement adminslistnode=temp.namedItem(QString("admins")).firstChildElement(QString("admin"));
             while(!adminslistnode.isNull()){
                 adminlisttemp.push_back(adminslistnode.text());
-                adminslistnode.nextSiblingElement(QString("admin"));
+		adminslistnode= adminslistnode.nextSiblingElement(QString("admin"));
             }
             QVector<account*> memberslist;
             QVector<account*> adminslist;
@@ -254,16 +254,17 @@ void loader::loadgroups(QDomNode groups){
                 if (temp) adminslist.push_back(temp);
             }
             group* newgroup= new group(name, descr);
-            QVector<account*>::const_iterator temp=memberslist.begin();
-            for(;temp!=memberslist.end();++temp){
-                newgroup->addmember((**temp));
+	    QVector<account*>::const_iterator temp1=memberslist.begin();
+	    for(;temp1!=memberslist.end();++temp1){
+		newgroup->addmember((**temp1));
             }
-            temp=adminslist.begin();
-            for(;temp!=adminslist.end();++temp){
-                newgroup->addadmin((**temp));
+	    temp1=adminslist.begin();
+	    for(;temp1!=adminslist.end();++temp1){
+		newgroup->addadmin((**temp1));
             }
             _boss->addGroup(*newgroup);
-        }
+	    temp=temp.nextSibling();
+	}
     }
 }
 

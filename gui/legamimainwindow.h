@@ -84,7 +84,7 @@ private slots:
     void showuser();
     void modifyuser();
     void usermodified();
-
+    void showgroups();
 };
 
 #endif // LEGAMIMAINWINDOW_H

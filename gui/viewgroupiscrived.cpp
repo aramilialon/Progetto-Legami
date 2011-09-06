@@ -1,5 +1,6 @@
 #include "viewgroupiscrived.h"
 
+#include <QModelIndex>
 #include <QStandardItem>
 #include <QStandardItemModel>
 
@@ -13,6 +14,9 @@ viewGroupIscrived::viewGroupIscrived(account* acc, legami* boss, QWidget *parent
     groupsListView= new QListView(this);
     layout->addWidget(groupsListView, 0, 0);
 
+    scrollRightArea= new QScrollArea(this);
+    layout->addWidget(scrollRightArea, 0, 1);
+
     QStandardItemModel* model= new QStandardItemModel(this);
     QStandardItem* parentItem= model->invisibleRootItem();
 
@@ -23,10 +27,15 @@ viewGroupIscrived::viewGroupIscrived(account* acc, legami* boss, QWidget *parent
     }
 
     groupsListView->setModel(model);
+    connect(groupsListView, SIGNAL(clicked(QModelIndex)), this, SLOT(showGroup(QModelIndex)));
 
     setLayout(layout);
 }
 
-void viewGroupIscrived::showgroup(){
+void viewGroupIscrived::showGroup(const QModelIndex ind)
+{
+    group* temp=groupList.at(ind.row());
+    showgroup* showTemp= new showgroup(temp, this);
+
 
 }
