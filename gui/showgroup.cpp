@@ -9,11 +9,11 @@
 #include <QVector>
 
 
-showgroup::showgroup(group* grp, QWidget *parent) :
-    QWidget(parent)
+showgroup::showgroup(account* acc, group* grp, legami* boss, QWidget *parent) :
+    QWidget(parent), Boss(boss)
 {
     groupToShow=grp;
-
+    accShown=acc;
 
     layout= new QGridLayout(this);
     setLayout(layout);
@@ -51,6 +51,8 @@ showgroup::showgroup(group* grp, QWidget *parent) :
     QStandardItemModel* adminModel= new QStandardItemModel(this);
     QStandardItem* adminParentItem= adminModel->invisibleRootItem();
 
+    bool admin=false;
+
     it= adminVector.begin();
     for(;it!=adminVector.end();++it){
 	account* admTemp= *it;
@@ -58,6 +60,7 @@ showgroup::showgroup(group* grp, QWidget *parent) :
 	    QStandardItem* adminItemTemp= new QStandardItem(admTemp->user()->user());
 	    adminParentItem->appendRow(adminItemTemp);
 	}
+	if(*it==accShown) admin=true;
 	else QMessageBox::information(this, tr(""), tr("manca tutto"), QMessageBox::Ok, QMessageBox::Ok);
     }
     adminList->setModel(adminModel);
@@ -69,4 +72,14 @@ showgroup::showgroup(group* grp, QWidget *parent) :
     layout->addWidget(usersList, 2, 0);
     layout->addWidget(adminList, 2, 1);
 
+    if(admin){
+	adminButton= new QPushButton(tr("Admin Group"), this);
+	connect(adminButton, SIGNAL(clicked()), this, SLOT(adminGroup()));
+	layout->addWidget(adminButton, 3, 0);
+    }
+
+}
+
+void showgroup::adminGroup(){
+    emit adminGr(groupToShow);
 }

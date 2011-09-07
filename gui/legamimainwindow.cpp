@@ -207,9 +207,9 @@ void legamimainwindow::setMenuBarRegistered(){
     Groups= new QMenu(tr("Groups"), this);
     ViewGroupsIscrived= new QAction(tr("View Groups"), this);
     connect(ViewGroupsIscrived, SIGNAL(triggered()), this, SLOT(showgroups()));
-    ModifyGroupsIscrived= new QAction(tr("Modify groups "), this);
-    Groups->addAction(ViewGroupsIscrived);
+    ModifyGroupsIscrived= new QAction(tr("Register new group"), this);
     Groups->addAction(ModifyGroupsIscrived);
+    Groups->addAction(ViewGroupsIscrived);
 
     Messages= new QMenu(tr("Messages"), this);
     Inbox= new QAction(tr("Inbox"), this);
@@ -338,4 +338,8 @@ void legamimainwindow::showgroups(){
 void legamimainwindow::resizewindow(){
     MainWidget->resize(this->size());
     setCentralWidget(MainWidget);
+}
+
+void legamimainwindow::iscrivenewGroup(){
+
 }

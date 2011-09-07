@@ -1,7 +1,9 @@
 #ifndef SHOWGROUP_H
 #define SHOWGROUP_H
 
+#include "../lib/account.h"
 #include "../lib/group.h"
+#include "../lib/legami.h"
 
 #include <QGridLayout>
 #include <QLineEdit>
@@ -14,7 +16,10 @@ class showgroup : public QWidget
 {
     Q_OBJECT
 
+    legami* Boss;
+
     group* groupToShow;
+    account* accShown;
 
     QLineEdit* nameLineEdit;
     QLineEdit* descrLineEdit;
@@ -30,12 +35,12 @@ class showgroup : public QWidget
     QListView* adminList;
 
 public:
-    explicit showgroup(group*, QWidget *parent = 0);
+    explicit showgroup(account*, group*, legami*,  QWidget *parent = 0);
 
 signals:
-
+    void adminGr(group*);
 public slots:
-
+    void adminGroup();
 };
 
 #endif // SHOWGROUP_H

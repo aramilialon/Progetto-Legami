@@ -1,3 +1,4 @@
+#include "modifygroup.h"
 #include "viewgroupiscrived.h"
 
 #include <QMessageBox>
@@ -36,7 +37,29 @@ viewGroupIscrived::viewGroupIscrived(account* acc, legami* boss, QWidget *parent
 
 void viewGroupIscrived::showGroup(const QModelIndex ind)
 {
-    showGr= new showgroup(groupList[ind.row()], this);
+    showGr= new showgroup(accToShow,groupList[ind.row()], Boss, this);
+
+    connect(showGr, SIGNAL(adminGr(group*)), this, SLOT(adminGroup(group*)));
+
+    scrollRightArea->ensureWidgetVisible(showGr);
+    scrollRightArea->setWidget(showGr);
+    showGr->adjustSize();
+    scrollRightArea->resize(showGr->sizeHint());
+    resize(scrollRightArea->size());
+    emit(resized());
+}
+
+void viewGroupIscrived::adminGroup(group * grp){
+    modifygroup* modgr= new modifygroup(grp, Boss, this);
+    connect(modgr, SIGNAL(modified(group*)), this, SLOT(groupModified(group*)));
+    modgr->show();
+}
+
+void viewGroupIscrived::groupModified(group* grp){
+    delete showGr;
+    showGr= new showgroup(accToShow, grp, Boss, this);
+
+    connect(showGr, SIGNAL(adminGr(group*)), this, SLOT(adminGroup(group*)));
 
     scrollRightArea->ensureWidgetVisible(showGr);
     scrollRightArea->setWidget(showGr);

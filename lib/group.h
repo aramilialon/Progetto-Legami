@@ -29,7 +29,7 @@ public:
     void setname(QString);
     void setdescr(QString);
     void addadmin(const account&);
-    void removemember(const account&);
+    void removemember(account*);
     void removeadmin(const account&);
 };
 

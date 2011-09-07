@@ -88,10 +88,10 @@ void group::addadmin(const account & newadmin){
     _admins.push_back(const_cast<account*>(&newadmin));
 }
 
-void group::removemember(const account & toberemoved){
-    QVector<account*>::iterator it=_members.begin();
+void group::removemember(account* toberemoved){
+    QVector<account*>::iterator it= _members.begin();
     for(;it!=_members.end();++it){
-        if((*it)==&toberemoved) _members.erase(it);
+	if((*it)==toberemoved) _members.erase(it);
     }
 }
 
