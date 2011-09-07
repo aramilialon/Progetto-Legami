@@ -276,7 +276,7 @@ void legamimainwindow::modifyuser(){
     if(dynamic_cast<useraccount*>(Boss->accountlogged())){
         MainWidget= new modifyuserprofile(*(dynamic_cast<useraccount*>((Boss->accountlogged()))), this);
 	connect(MainWidget, SIGNAL(modifiedlist()), this, SLOT(usermodified()));
-        scroll->setWidget(MainWidget);
+	scroll->setWidget(MainWidget);
 	MainWidget->adjustSize();
         setCentralWidget(scroll);
     }

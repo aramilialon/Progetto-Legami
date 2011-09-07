@@ -26,6 +26,8 @@ class viewGroupIscrived : public QWidget
     QListView* groupsListView;
     QScrollArea* scrollRightArea;
 
+    showgroup* showGr;
+
 
 public:
     explicit viewGroupIscrived(account*, legami*,  QWidget *parent = 0);
