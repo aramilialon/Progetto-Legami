@@ -33,9 +33,9 @@ public:
     explicit viewGroupIscrived(account*, legami*,  QWidget *parent = 0);
 
 signals:
+    void resized();
 
 public slots:
-
 private slots:
     void showGroup(const QModelIndex);
 

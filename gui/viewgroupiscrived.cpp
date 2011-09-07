@@ -36,11 +36,12 @@ viewGroupIscrived::viewGroupIscrived(account* acc, legami* boss, QWidget *parent
 
 void viewGroupIscrived::showGroup(const QModelIndex ind)
 {
-    group* temp=groupList[ind.row()];
-    showgroup* showTemp=0;
-    if(temp) showTemp= new showgroup(groupList[ind.row()], this);
-    else QMessageBox::information(this, tr("Error"), tr("Unknown error"), QMessageBox::Ok, QMessageBox::Ok);
-    scrollRightArea->setWidget(showTemp);
-    showTemp->adjustSize();
-    scrollRightArea->resize(showTemp->size());
+    showGr= new showgroup(groupList[ind.row()], this);
+
+    scrollRightArea->ensureWidgetVisible(showGr);
+    scrollRightArea->setWidget(showGr);
+    showGr->adjustSize();
+    scrollRightArea->resize(showGr->sizeHint());
+    resize(scrollRightArea->size());
+    emit(resized());
 }

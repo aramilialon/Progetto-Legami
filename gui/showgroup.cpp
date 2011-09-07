@@ -2,6 +2,7 @@
 #include "showgroup.h"
 
 #include <QFormLayout>
+#include <QLabel>
 #include <QMessageBox>
 #include <QStandardItem>
 #include <QStandardItemModel>
@@ -13,9 +14,11 @@ showgroup::showgroup(group* grp, QWidget *parent) :
 {
     groupToShow=grp;
 
-    QFormLayout* layoutData= new QFormLayout(this);
+
     layout= new QGridLayout(this);
     setLayout(layout);
+
+    QFormLayout* layoutData= new QFormLayout();
 
     userVector= groupToShow->members();
     adminVector= groupToShow->admins();
@@ -58,8 +61,12 @@ showgroup::showgroup(group* grp, QWidget *parent) :
 	else QMessageBox::information(this, tr(""), tr("manca tutto"), QMessageBox::Ok, QMessageBox::Ok);
     }
     adminList->setModel(adminModel);
+    QLabel* usernLabel= new QLabel(tr("Users:"), this);
+    QLabel* adminsLabel= new QLabel(tr("Admins:"), this);
 
-    layout->addWidget(usersList, 1, 0);
-    layout->addWidget(adminList, 1, 1);
+    layout->addWidget(usernLabel, 1, 0);
+    layout->addWidget(adminsLabel, 1, 1);
+    layout->addWidget(usersList, 2, 0);
+    layout->addWidget(adminList, 2, 1);
 
 }

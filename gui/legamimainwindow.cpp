@@ -264,6 +264,10 @@ void legamimainwindow::logout(){
 
 void legamimainwindow::showuser(){
     delete MainWidget;
+    if(!scroll){
+	scroll=new QScrollArea(this);
+	scroll->resize(this->size());
+    }
     if(dynamic_cast<useraccount*>(Boss->accountlogged())) MainWidget= new showuserprofile(*(Boss->accountlogged()), Boss, this);
     else MainWidget= new showcompanyprofile(*(Boss->accountlogged()), Boss, this);
     scroll->setWidget(MainWidget);
@@ -273,6 +277,10 @@ void legamimainwindow::showuser(){
 
 void legamimainwindow::modifyuser(){
     delete MainWidget;
+    if(!scroll){
+	scroll=new QScrollArea(this);
+	scroll->resize(this->size());
+    }
     if(dynamic_cast<useraccount*>(Boss->accountlogged())){
         MainWidget= new modifyuserprofile(*(dynamic_cast<useraccount*>((Boss->accountlogged()))), this);
 	connect(MainWidget, SIGNAL(modifiedlist()), this, SLOT(usermodified()));
@@ -297,6 +305,10 @@ void legamimainwindow::closeEvent(QCloseEvent* event){
 
 void legamimainwindow::usermodified(){
     delete MainWidget;
+    if(!scroll){
+	scroll=new QScrollArea(this);
+	scroll->resize(this->size());
+    }
     if(dynamic_cast<useraccount*>(Boss->accountlogged())){
 	MainWidget= new modifyuserprofile(*(dynamic_cast<useraccount*>((Boss->accountlogged()))), this);
 	connect(MainWidget, SIGNAL(modifiedlist()), this, SLOT(modifyuser()));
@@ -315,8 +327,15 @@ void legamimainwindow::usermodified(){
 
 void legamimainwindow::showgroups(){
     delete MainWidget;
+    delete scroll;
+    scroll=0;
     MainWidget= new viewGroupIscrived(Boss->accountlogged(), Boss, this);
-    scroll->setWidget(MainWidget);
+    connect(MainWidget, SIGNAL(resized()), this, SLOT(resizewindow()));
     MainWidget->adjustSize();
-    setCentralWidget(scroll);
+    setCentralWidget(MainWidget);
+}
+
+void legamimainwindow::resizewindow(){
+    MainWidget->resize(this->size());
+    setCentralWidget(MainWidget);
 }
