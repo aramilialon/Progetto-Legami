@@ -39,12 +39,8 @@ showgroup::showgroup(account* acc, group* grp, legami* boss, QWidget *parent) :
 
     QVector<account*>::iterator it= userVector.begin();
     for(;it!=userVector.end();++it){
-	account* accTemp= *it;
-	if(accTemp->user()){
-	    QStandardItem* userItemTemp= new QStandardItem(accTemp->user()->user());
-	    userParentItem->appendRow(userItemTemp);
-	}
-	else QMessageBox::information(this, tr(""), tr("manca tutto"), QMessageBox::Ok, QMessageBox::Ok);
+	QStandardItem* userItemTemp= new QStandardItem((*it)->user()->user());
+	userParentItem->appendRow(userItemTemp);
     }
     usersList->setModel(userModel);
 

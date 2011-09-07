@@ -10,9 +10,9 @@ modifygroup::modifygroup(group* grp, legami* boss, QWidget *parent) :
     userVector= groupToModify->members();
     adminVector= groupToModify->admins();
 
-    removeuserRow=-1;
-    removeadminRow=-1;
-    newadminRow=-1;
+    removeuserRow=QString();
+    removeadminRow=QString();
+    newadminRow=QString();
 
     layout= new QGridLayout();
 
@@ -30,24 +30,32 @@ modifygroup::modifygroup(group* grp, legami* boss, QWidget *parent) :
     adminremoveList= new QListView(this);
     newadminList= new QListView(this);
 
-    QStandardItemModel* userremoveModel= new QStandardItemModel(this);
+    userremoveModel= new QStandardItemModel(this);
     QStandardItem* userremoveParentItem= userremoveModel->invisibleRootItem();
 
-    QStandardItemModel* newadminModel= new QStandardItemModel(this);
+    newadminModel= new QStandardItemModel(this);
     QStandardItem* newadminParentItem= newadminModel->invisibleRootItem();
 
     QVector<account*>::iterator it= userVector.begin();
     for(;it!=userVector.end();++it){
 	QStandardItem* temp= new QStandardItem((*it)->user()->user());
 	userremoveParentItem->appendRow(temp);
-	newadminParentItem->appendRow(temp);
+
     }
     userremoveList->setModel(userremoveModel);
-    newadminList->setModel(newadminModel);
     connect(userremoveList, SIGNAL(clicked(QModelIndex)), this, SLOT(setRemoveUser(QModelIndex)));
+
+    it=userVector.begin();
+    for(;it!=userVector.end();++it){
+	if(!groupToModify->getadmin(**(it))){
+	    QStandardItem* temp= new QStandardItem((*it)->user()->user());
+	    newadminParentItem->appendRow(temp);
+	}
+    }
+    newadminList->setModel(newadminModel);
     connect(newadminList, SIGNAL(clicked(QModelIndex)), this, SLOT(setNewAdmin(QModelIndex)));
 
-    QStandardItemModel* adminremoveModel= new QStandardItemModel(this);
+    adminremoveModel= new QStandardItemModel(this);
     QStandardItem* adminremoveParentItem= adminremoveModel->invisibleRootItem();
 
     it= adminVector.begin();
@@ -82,27 +90,30 @@ void modifygroup::modify() throw(error){
 	if(temp) groupToModify->addmember(*temp);
 	else throw error(Username, QString("New user not found"));
     }
-    if(removeuserRow!=-1){
-	groupToModify->removemember(userVector[removeuserRow]);
+    if(!removeuserRow.isEmpty()){
+	groupToModify->removemember(Boss->basicSearch(removeuserRow));
     }
-    if(removeadminRow!=-1){
-	groupToModify->removeadmin(*(adminVector[removeadminRow]));
+    if(!removeadminRow.isEmpty()){
+	groupToModify->removeadmin(*(Boss->basicSearch(removeadminRow)));
     }
-    if(newadminRow!=-1){
-	groupToModify->addadmin(*(userVector[newadminRow]));
+    if(!newadminRow.isEmpty()){
+	groupToModify->addadmin(*(Boss->basicSearch(newadminRow)));
     }
     close();
     emit modified(groupToModify);
 }
 
 void modifygroup::setRemoveAdmin(const QModelIndex ind){
-    removeadminRow=ind.row();
+    QStandardItem* temp= adminremoveModel->item(ind.row());
+    removeadminRow=temp->text();
 }
 
 void modifygroup::setRemoveUser(const QModelIndex ind){
-    removeuserRow=ind.row();
+    QStandardItem* temp= userremoveModel->item(ind.row());
+    removeuserRow=temp->text();
 }
 
 void modifygroup::setNewAdmin(const QModelIndex ind){
-    newadminRow=ind.row();
+    QStandardItem* temp= newadminModel->item(ind.row());
+    newadminRow=temp->text();
 }

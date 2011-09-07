@@ -11,6 +11,8 @@
 #include <QLineEdit>
 #include <QListView>
 #include <QPushButton>
+#include <QStandardItem>
+#include <QStandardItemModel>
 #include <QVector>
 
 
@@ -20,9 +22,9 @@ class modifygroup : public QDialog
 
     legami* Boss;
 
-    int removeuserRow;
-    int removeadminRow;
-    int newadminRow;
+    QString removeuserRow;
+    QString removeadminRow;
+    QString newadminRow;
 
     group* groupToModify;
 
@@ -37,8 +39,13 @@ class modifygroup : public QDialog
     QListView* adminremoveList;
     QListView* newadminList;
 
+    QStandardItemModel* userremoveModel;
+    QStandardItemModel* newadminModel;
+    QStandardItemModel* adminremoveModel;
+
     QPushButton* okButton;
     QPushButton* cancelButton;
+
 
     QGridLayout* layout;
 

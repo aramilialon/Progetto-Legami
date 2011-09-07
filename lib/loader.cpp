@@ -17,9 +17,6 @@
 #include "userinfo.h"
 #include "username.h"
 
-
-#include <iostream>
-
 #include <QDate>
 #include <QFile>
 #include <QFileInfo>
@@ -28,8 +25,6 @@
 #include <QtXml/QDomNode>
 #include <QtXml/QDomText>
 #include <QVector>
-
-using std::cout;
 
 loader::loader(QString path, const legami& boss): _boss(const_cast<legami*>(&boss)), _db(path){}
 

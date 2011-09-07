@@ -91,7 +91,7 @@ void group::addadmin(const account & newadmin){
 void group::removemember(account* toberemoved){
     QVector<account*>::iterator it= _members.begin();
     for(;it!=_members.end();++it){
-	if((*it)==toberemoved) _members.erase(it);
+	if(*it==toberemoved) _members.erase(it);
     }
 }
 
