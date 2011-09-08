@@ -1,6 +1,7 @@
 #include "addnewgroup.h"
 
 #include <QFormLayout>
+#include <QMessageBox>
 
 addnewgroup::addnewgroup(account* acc, legami* boss, QWidget *parent) :
     QDialog(parent), Creator(acc), Boss(boss)
@@ -34,9 +35,16 @@ void addnewgroup::create(){
     temp->addmember(*Creator);
     temp->addadmin(Creator->user()->user());
 
-    Boss->addGroup(*temp);
+    bool asd=true;
 
-    emit created();
+    try{
+	Boss->addGroup(*temp);
+    }
+    catch(error er1){
+	QMessageBox::warning(this, tr("Error"), tr("A group with the same name already exists."), QMessageBox::Ok, QMessageBox::Ok);
+	asd=false;
+    }
+    if(asd) emit created();
 
     close();
 }

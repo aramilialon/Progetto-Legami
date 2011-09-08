@@ -51,7 +51,7 @@ public:
     void addAccount(const account&) throw(error);
     void removeUser(const account&);
 
-    void addGroup(const group&);
+    void addGroup(const group&) throw(error);
     void removeGroup(const group&);
 
 };

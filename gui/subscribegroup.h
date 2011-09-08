@@ -36,7 +36,7 @@ public:
     explicit subscribegroup(account*, legami*, QWidget *parent = 0);
 
 signals:
-
+    void subscrived();
 public slots:
     void subscribe();
     void setGroup(const QModelIndex);

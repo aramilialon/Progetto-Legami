@@ -78,7 +78,13 @@ void legami::addMessage(const message& a){
     _messagedb.push_back(temp);
 }
 
-void legami::addGroup(const group& newgroup){
+void legami::addGroup(const group& newgroup) throw(error){
+    QVector<group*>::iterator it=_groupdb.begin();
+    if(!_groupdb.isEmpty()){
+	for(;it!=_groupdb.end();++it){
+	    if((*it)->name()==newgroup.name()) throw error(Group, QString("Group with the same name already exists"));
+	}
+    }
     _groupdb.push_back(const_cast<group*>(&newgroup));
 }
 

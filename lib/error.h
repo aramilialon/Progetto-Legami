@@ -15,7 +15,8 @@ enum typeError{
     Permission,
     Photography,
 	Username,
-	Payment
+	Payment,
+    Group
 };
 
 class error{

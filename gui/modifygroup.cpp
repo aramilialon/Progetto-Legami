@@ -96,7 +96,6 @@ void modifygroup::modify() throw(error){
 	groupToModify->removemember(removeuserRow);
     }
     if(!removeadminRow.isEmpty()){
-	QMessageBox::information(this, tr("asd"), removeadminRow, QMessageBox::Ok, QMessageBox::Ok);
 	groupToModify->removeadmin(removeadminRow);
     }
     if(!newadminRow.isEmpty()){

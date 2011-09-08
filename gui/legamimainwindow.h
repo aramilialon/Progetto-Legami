@@ -43,7 +43,7 @@ class legamimainwindow : public QMainWindow
 
     QMenu* Groups;
     QAction* ViewGroupsIscrived;
-    QAction* SubscriveGroup;
+    QAction* SubscribeGroup;
     QAction* ModifyGroupsIscrived;
 
     QMenu* Messages;
@@ -89,6 +89,8 @@ private slots:
     void resizewindow();
     void iscrivenewGroup();
     void groupCreated();
+    void subscribeGroup();
+    void subscrived();
 };
 
 #endif // LEGAMIMAINWINDOW_H

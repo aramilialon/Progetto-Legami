@@ -17,6 +17,7 @@
 #include "showcompanyprofile.h"
 #include "viewgroupiscrived.h"
 #include "showuserprofile.h"
+#include "subscribegroup.h"
 
 #include <QCloseEvent>
 #include <QDialog>
@@ -214,8 +215,11 @@ void legamimainwindow::setMenuBarRegistered(){
     connect(ViewGroupsIscrived, SIGNAL(triggered()), this, SLOT(showgroups()));
     ModifyGroupsIscrived= new QAction(tr("Register new group"), this);
     connect(ModifyGroupsIscrived, SIGNAL(triggered()), this, SLOT(iscrivenewGroup()));
+    SubscribeGroup= new QAction(tr("Subscribe Group"), this);
+    connect(SubscribeGroup, SIGNAL(triggered()), this, SLOT(subscribeGroup()));
     Groups->addAction(ModifyGroupsIscrived);
     Groups->addAction(ViewGroupsIscrived);
+    Groups->addAction(SubscribeGroup);
 
     Messages= new QMenu(tr("Messages"), this);
     Inbox= new QAction(tr("Inbox"), this);
@@ -278,6 +282,8 @@ void legamimainwindow::showuser(){
     else MainWidget= new showcompanyprofile(*(Boss->accountlogged()), Boss, this);
     scroll->setWidget(MainWidget);
     MainWidget->adjustSize();
+    scroll->setAlignment(Qt::AlignHCenter);
+    MainWidget->setMinimumWidth(620);
     setCentralWidget(scroll);
 }
 
@@ -292,12 +298,16 @@ void legamimainwindow::modifyuser(){
 	connect(MainWidget, SIGNAL(modifiedlist()), this, SLOT(usermodified()));
 	scroll->setWidget(MainWidget);
 	MainWidget->adjustSize();
+	scroll->setAlignment(Qt::AlignHCenter);
+	MainWidget->setMinimumWidth(620);
 	setCentralWidget(scroll);
     }
     else if(dynamic_cast<companyaccount*>(Boss->accountlogged())){
 	MainWidget= new modifycompanyprofile(dynamic_cast<companyaccount*>(Boss->accountlogged()), this);
 	scroll->setWidget(MainWidget);
 	MainWidget->adjustSize();
+	scroll->setAlignment(Qt::AlignHCenter);
+	MainWidget->setMinimumWidth(620);
 	setCentralWidget(scroll);
     }
     else QMessageBox::information(this, tr("Error!"), tr(" asdasdasd successfully logged out."), QMessageBox::Ok, QMessageBox::Ok);
@@ -320,12 +330,16 @@ void legamimainwindow::usermodified(){
 	connect(MainWidget, SIGNAL(modifiedlist()), this, SLOT(modifyuser()));
 	scroll->setWidget(MainWidget);
 	MainWidget->adjustSize();
+	scroll->setAlignment(Qt::AlignHCenter);
+	MainWidget->setMinimumWidth(620);
 	setCentralWidget(scroll);
     }
     else if(dynamic_cast<companyaccount*>(Boss->accountlogged())){
 	MainWidget= new modifycompanyprofile(dynamic_cast<companyaccount*>(Boss->accountlogged()), this);
 	scroll->setWidget(MainWidget);
 	MainWidget->adjustSize();
+	scroll->setAlignment(Qt::AlignHCenter);
+	MainWidget->setMinimumWidth(620);
 	setCentralWidget(scroll);
     }
     else QMessageBox::information(this, tr("Error!"), tr(" asdasdasd successfully logged out."), QMessageBox::Ok, QMessageBox::Ok);
@@ -334,10 +348,13 @@ void legamimainwindow::usermodified(){
 void legamimainwindow::showgroups(){
     delete MainWidget;
     delete scroll;
-    scroll=0;
+    scroll=new QScrollArea(this);
     MainWidget= new viewGroupIscrived(Boss->accountlogged(), Boss, this);
+    scroll->setWidget(MainWidget);
     connect(MainWidget, SIGNAL(resized()), this, SLOT(resizewindow()));
     MainWidget->adjustSize();
+    scroll->setAlignment(Qt::AlignHCenter);
+    MainWidget->setMinimumWidth(620);
     setCentralWidget(MainWidget);
 }
 
@@ -355,4 +372,14 @@ void legamimainwindow::iscrivenewGroup(){
 
 void legamimainwindow::groupCreated(){
     QMessageBox::information(this, tr("Group Created"), tr("The group requested has been created. /n You are the admin."), QMessageBox::Ok, QMessageBox::Ok);
+}
+
+void legamimainwindow::subscribeGroup(){
+    subscribegroup* temp= new subscribegroup(Boss->accountlogged(), Boss, this);
+    connect(temp, SIGNAL(subscrived()), this, SLOT(subscrived()));
+    temp->show();
+}
+
+void legamimainwindow::subscrived(){
+    QMessageBox::information(this, tr("Group Subscrived"), tr("You have been added to the group requested."), QMessageBox::Ok, QMessageBox::Ok);
 }
