@@ -11,11 +11,11 @@ HEADERS += lib/username.h \
     lib/companyinfo.h \
     lib/group.h \
     lib/photo.h \
-	lib/payment.h \
+    lib/payment.h \
     gui/legamimainwindow.h \
     gui/legamilogin.h \
-	gui/reguser.h \
-	gui/showuserprofile.h \
+    gui/reguser.h \
+    gui/showuserprofile.h \
     gui/showuserinfo.h \
     gui/showusern.h \
     gui/showcompanyprofile.h \
@@ -32,7 +32,8 @@ HEADERS += lib/username.h \
     gui/viewgroupiscrived.h \
     gui/viewotheruser.h \
     gui/showgroup.h \
-    gui/modifygroup.h
+    gui/modifygroup.h \
+    gui/addnewgroup.h
 
 SOURCES += lib/username.cpp \
     lib/experience.cpp \
@@ -45,13 +46,13 @@ SOURCES += lib/username.cpp \
     lib/companyaccount.cpp \
     lib/companyinfo.cpp \
     lib/group.cpp \
-	lib/payment.cpp \
-	lib/photo.cpp \
+    lib/payment.cpp \
+    lib/photo.cpp \
     main.cpp \
     gui/legamimainwindow.cpp \
-	gui/legamilogin.cpp \
-	gui/reguser.cpp \
-	gui/showuserprofile.cpp \
+    gui/legamilogin.cpp \
+    gui/reguser.cpp \
+    gui/showuserprofile.cpp \
     gui/showuserinfo.cpp \
     gui/showusern.cpp \
     gui/showcompanyprofile.cpp \
@@ -68,12 +69,15 @@ SOURCES += lib/username.cpp \
     gui/viewgroupiscrived.cpp \
     gui/viewotheruser.cpp \
     gui/showgroup.cpp \
-    gui/modifygroup.cpp
+    gui/modifygroup.cpp \
+    gui/addnewgroup.cpp
 
 QT += xml
 FORMS +=   
 TRANSLATIONS += translation/legami_ita.ts \
     translation/legami_eng.ts
+
+
 
 
 

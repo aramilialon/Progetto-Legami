@@ -87,6 +87,7 @@ private slots:
     void showgroups();
     void resizewindow();
     void iscrivenewGroup();
+    void groupCreated();
 };
 
 #endif // LEGAMIMAINWINDOW_H
