@@ -1,6 +1,7 @@
 #include "modifygroup.h"
 
 #include <QFormLayout>
+#include <QMessageBox>
 #include <QStandardItem>
 #include <QStandardItemModel>
 
@@ -63,6 +64,7 @@ modifygroup::modifygroup(group* grp, legami* boss, QWidget *parent) :
 	QStandardItem* temp= new QStandardItem((*it)->user()->user());
 	adminremoveParentItem->appendRow(temp);
     }
+    connect(adminremoveList, SIGNAL(clicked(QModelIndex)), this, SLOT(setRemoveAdmin(QModelIndex)));
     adminremoveList->setModel(adminremoveModel);
 
     layoutLineEdit->addRow(tr("New admin:"), newadminList);
@@ -94,10 +96,11 @@ void modifygroup::modify() throw(error){
 	groupToModify->removemember(removeuserRow);
     }
     if(!removeadminRow.isEmpty()){
-	groupToModify->removeadmin(*(Boss->basicSearch(removeadminRow)));
+	QMessageBox::information(this, tr("asd"), removeadminRow, QMessageBox::Ok, QMessageBox::Ok);
+	groupToModify->removeadmin(removeadminRow);
     }
     if(!newadminRow.isEmpty()){
-	groupToModify->addadmin(*(Boss->basicSearch(newadminRow)));
+	groupToModify->addadmin(newadminRow);
     }
     close();
     emit modified(groupToModify);

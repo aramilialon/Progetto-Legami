@@ -28,9 +28,9 @@ public:
     void addmember(const account&);
     void setname(QString);
     void setdescr(QString);
-    void addadmin(const account&);
+    void addadmin(QString);
     void removemember(QString);
-    void removeadmin(const account&);
+    void removeadmin(QString);
 };
 
 #endif // GROUP_H

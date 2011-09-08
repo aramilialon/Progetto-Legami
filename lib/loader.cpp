@@ -255,7 +255,7 @@ void loader::loadgroups(QDomNode groups){
             }
 	    temp1=adminslist.begin();
 	    for(;temp1!=adminslist.end();++temp1){
-		newgroup->addadmin((**temp1));
+		newgroup->addadmin((*temp1)->user()->user());
             }
             _boss->addGroup(*newgroup);
 	    temp=temp.nextSibling();

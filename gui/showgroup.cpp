@@ -58,7 +58,6 @@ showgroup::showgroup(account* acc, group* grp, legami* boss, QWidget *parent) :
 		adminParentItem->appendRow(adminItemTemp);
 	    }
 	    if(*it==accShown) admin=true;
-	    else QMessageBox::information(this, tr(""), tr("manca tutto ")+n, QMessageBox::Ok, QMessageBox::Ok);
 	}
     }
     adminList->setModel(adminModel);
