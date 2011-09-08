@@ -43,6 +43,7 @@ class legamimainwindow : public QMainWindow
 
     QMenu* Groups;
     QAction* ViewGroupsIscrived;
+    QAction* SubscriveGroup;
     QAction* ModifyGroupsIscrived;
 
     QMenu* Messages;

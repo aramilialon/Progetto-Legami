@@ -40,14 +40,16 @@ public:
     QVector<account*> companyInfoSearch(QString, QString, QString) const;
     QVector<account*> experienceSearch(int, QString, QDate, QString) const;
 
+    QVector<group*> groupDb() const;
+
     bool logAccount(QString, QString);
-	void logoutAccount();
+    void logoutAccount();
 
     void addMessage(const message&);
-	void removeMessage(const message&);
+    void removeMessage(const message&);
 
     void addAccount(const account&) throw(error);
-	void removeUser(const account&);
+    void removeUser(const account&);
 
     void addGroup(const group&);
     void removeGroup(const group&);

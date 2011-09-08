@@ -38,14 +38,12 @@ class modifygroup : public QDialog
     QListView* userremoveList;
     QListView* adminremoveList;
     QListView* newadminList;
-
     QStandardItemModel* userremoveModel;
     QStandardItemModel* newadminModel;
     QStandardItemModel* adminremoveModel;
 
     QPushButton* okButton;
     QPushButton* cancelButton;
-
 
     QGridLayout* layout;
 

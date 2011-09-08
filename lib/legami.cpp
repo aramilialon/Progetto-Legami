@@ -262,3 +262,8 @@ QVector<group*> legami::groupSearchbyUsern(QString usern){
     }
     return temp;
 }
+
+
+QVector<group*> legami::groupDb() const{
+    return _groupdb;
+}

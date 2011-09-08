@@ -33,7 +33,8 @@ HEADERS += lib/username.h \
     gui/viewotheruser.h \
     gui/showgroup.h \
     gui/modifygroup.h \
-    gui/addnewgroup.h
+    gui/addnewgroup.h \
+    gui/subscribegroup.h
 
 SOURCES += lib/username.cpp \
     lib/experience.cpp \
@@ -70,12 +71,15 @@ SOURCES += lib/username.cpp \
     gui/viewotheruser.cpp \
     gui/showgroup.cpp \
     gui/modifygroup.cpp \
-    gui/addnewgroup.cpp
+    gui/addnewgroup.cpp \
+    gui/subscribegroup.cpp
 
 QT += xml
 FORMS +=   
 TRANSLATIONS += translation/legami_ita.ts \
     translation/legami_eng.ts
+
+
 
 
 

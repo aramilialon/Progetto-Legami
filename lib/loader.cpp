@@ -284,7 +284,7 @@ void loader::loadmessages(QDomNode mess){
 }
 
 void loader::writedb() throw(error){
-    QFile database(_db);
+    QFile database(QString("./database.xml"));
     QDomDocument* root=new QDomDocument(QString("legami"));
     QDomNode legami=root->createElement(QString("legami"));
     root->appendChild(legami);
