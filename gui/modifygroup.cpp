@@ -91,7 +91,7 @@ void modifygroup::modify() throw(error){
 	else throw error(Username, QString("New user not found"));
     }
     if(!removeuserRow.isEmpty()){
-	groupToModify->removemember(Boss->basicSearch(removeuserRow));
+	groupToModify->removemember(removeuserRow);
     }
     if(!removeadminRow.isEmpty()){
 	groupToModify->removeadmin(*(Boss->basicSearch(removeadminRow)));

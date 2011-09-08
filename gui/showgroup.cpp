@@ -49,19 +49,21 @@ showgroup::showgroup(account* acc, group* grp, legami* boss, QWidget *parent) :
 
     bool admin=false;
 
-    it= adminVector.begin();
-    for(;it!=adminVector.end();++it){
-	account* admTemp= *it;
-	if(admTemp->user()){
-	    QStandardItem* adminItemTemp= new QStandardItem(admTemp->user()->user());
-	    adminParentItem->appendRow(adminItemTemp);
+    if(!adminVector.isEmpty()){
+	it= adminVector.begin();
+	for(int n=0;it!=adminVector.end();++it, n++){
+	    account* admTemp= *it;
+	    if(admTemp->user()){
+		QStandardItem* adminItemTemp= new QStandardItem(admTemp->user()->user());
+		adminParentItem->appendRow(adminItemTemp);
+	    }
+	    if(*it==accShown) admin=true;
+	    else QMessageBox::information(this, tr(""), tr("manca tutto ")+n, QMessageBox::Ok, QMessageBox::Ok);
 	}
-	if(*it==accShown) admin=true;
-	else QMessageBox::information(this, tr(""), tr("manca tutto"), QMessageBox::Ok, QMessageBox::Ok);
     }
     adminList->setModel(adminModel);
-    QLabel* usernLabel= new QLabel(tr("Users:"), this);
     QLabel* adminsLabel= new QLabel(tr("Admins:"), this);
+    QLabel* usernLabel= new QLabel(tr("Users:"), this);
 
     layout->addWidget(usernLabel, 1, 0);
     layout->addWidget(adminsLabel, 1, 1);

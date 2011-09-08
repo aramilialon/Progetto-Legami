@@ -37,7 +37,8 @@ viewGroupIscrived::viewGroupIscrived(account* acc, legami* boss, QWidget *parent
 
 void viewGroupIscrived::showGroup(const QModelIndex ind)
 {
-    showGr= new showgroup(accToShow,groupList[ind.row()], Boss, this);
+    delete showGr;
+    showGr= new showgroup(accToShow, groupList[ind.row()], Boss, this);
 
     connect(showGr, SIGNAL(adminGr(group*)), this, SLOT(adminGroup(group*)));
 

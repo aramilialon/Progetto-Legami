@@ -120,7 +120,7 @@ void legami::removeUser(const account& acc){
     account* temp=const_cast<account*>(&acc);
     QVector<group*>::iterator grpIt= _groupdb.begin();
     for(;grpIt!=_groupdb.end();++grpIt){
-	if((*grpIt)->getmember(*temp)) (*grpIt)->removemember(temp);
+	if((*grpIt)->getmember(*temp)) (*grpIt)->removemember(temp->user()->user());
     }
     QVector<account*>::iterator it=_userdb.begin();
     for(;it!=_userdb.end();++it){

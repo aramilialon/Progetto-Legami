@@ -116,6 +116,7 @@ void legamimainwindow::setMenuBarUnregistered(){
 	delete MainWidget;
 	MainWidget=0;
     }
+    if(!scroll) scroll=new QScrollArea(this);
     scroll->resize(this->sizeHint());
     File= new QMenu(tr("File"), this);
     Register= new QAction(tr("New User?"), this);
