@@ -265,7 +265,7 @@ void loader::loadgroups(QDomNode groups){
 
 void loader::loadmessages(QDomNode mess){
     QDomNode temp=mess.firstChild();
-    if(!temp.isNull()){
+    if(!temp.isNull() && temp.nodeName()==QString("message")){
         while(!temp.isNull()){
             QString sender=temp.firstChildElement(QString("sender")).text(),
                     recever=temp.firstChildElement(QString("recever")).text(),

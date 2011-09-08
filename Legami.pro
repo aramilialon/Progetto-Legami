@@ -1,83 +1,96 @@
-HEADERS += lib/username.h \
-    lib/experience.h \
-    lib/message.h \
-    lib/account.h \
-    lib/legami.h \
-    lib/useraccount.h \
-    lib/userinfo.h \
-    lib/loader.h \
-    lib/error.h \
-    lib/companyaccount.h \
-    lib/companyinfo.h \
-    lib/group.h \
-    lib/photo.h \
-    lib/payment.h \
-    gui/legamimainwindow.h \
+HEADERS +=     gui/addnewgroup.h \
     gui/legamilogin.h \
-    gui/reguser.h \
-    gui/showuserprofile.h \
-    gui/showuserinfo.h \
-    gui/showusern.h \
-    gui/showcompanyprofile.h \
-    gui/showcompanyinfo.h \
+    gui/legamimainwindow.h \
+    gui/modifycompanyinfos.h \
+    gui/modifycompanyprofile.h \
+    gui/modifygroup.h \
+    gui/modifyuserexperience.h \
+    gui/modifyuserexperiences.h \
+    gui/modifyuserinfos.h \
+    gui/modifyusern.h \
     gui/modifyuserprofile.h \
+    gui/reguser.h \
+    gui/showcompanyinfo.h \
+    gui/showcompanyprofile.h \
+    gui/showgroup.h \
     gui/showuserexperieces.h \
     gui/showuserexperience.h \
-    gui/modifyusern.h \
-    gui/modifyuserinfos.h \
-    gui/modifyuserexperiences.h \
-    gui/modifyuserexperience.h \
-    gui/modifycompanyprofile.h \
-    gui/modifycompanyinfos.h \
+    gui/showuserinfo.h \
+    gui/showusern.h \
+    gui/showuserprofile.h \
+    gui/subscribegroup.h \
     gui/viewgroupiscrived.h \
     gui/viewotheruser.h \
-    gui/showgroup.h \
-    gui/modifygroup.h \
-    gui/addnewgroup.h \
-    gui/subscribegroup.h
+    lib/account.h \
+    lib/companyaccount.h \
+    lib/companyinfo.h \
+    lib/error.h \
+    lib/experience.h \
+    lib/group.h \
+    lib/legami.h \
+    lib/loader.h \
+    lib/message.h \
+    lib/payment.h \
+    lib/photo.h \
+    lib/useraccount.h \
+    lib/userinfo.h \
+lib/username.h \
+    gui/inboxmessages.h \
+    gui/showmessage.h \
+    gui/outboxmessages.h
 
-SOURCES += lib/username.cpp \
-    lib/experience.cpp \
-    lib/message.cpp \
-    lib/account.cpp \
-    lib/legami.cpp \
-    lib/useraccount.cpp \
-    lib/userinfo.cpp \
-    lib/loader.cpp \
-    lib/companyaccount.cpp \
-    lib/companyinfo.cpp \
-    lib/group.cpp \
-    lib/payment.cpp \
-    lib/photo.cpp \
-    main.cpp \
-    gui/legamimainwindow.cpp \
+SOURCES +=     gui/addnewgroup.cpp \
     gui/legamilogin.cpp \
-    gui/reguser.cpp \
-    gui/showuserprofile.cpp \
-    gui/showuserinfo.cpp \
-    gui/showusern.cpp \
-    gui/showcompanyprofile.cpp \
-    gui/showcompanyinfo.cpp \
+    gui/legamimainwindow.cpp \
+    gui/modifycompanyinfos.cpp \
+    gui/modifycompanyprofile.cpp \
+    gui/modifygroup.cpp \
+    gui/modifyuserexperience.cpp \
+    gui/modifyuserexperiences.cpp \
+    gui/modifyuserinfos.cpp \
+    gui/modifyusern.cpp \
     gui/modifyuserprofile.cpp \
+    gui/reguser.cpp \
+    gui/showcompanyinfo.cpp \
+    gui/showcompanyprofile.cpp \
+    gui/showgroup.cpp \
     gui/showuserexperieces.cpp \
     gui/showuserexperience.cpp \
-    gui/modifyusern.cpp \
-    gui/modifyuserinfos.cpp \
-    gui/modifyuserexperiences.cpp \
-    gui/modifyuserexperience.cpp \
-    gui/modifycompanyprofile.cpp \
-    gui/modifycompanyinfos.cpp \
+    gui/showuserinfo.cpp \
+    gui/showusern.cpp \
+    gui/showuserprofile.cpp \
+    gui/subscribegroup.cpp \
     gui/viewgroupiscrived.cpp \
     gui/viewotheruser.cpp \
-    gui/showgroup.cpp \
-    gui/modifygroup.cpp \
-    gui/addnewgroup.cpp \
-    gui/subscribegroup.cpp
+    lib/account.cpp \
+    lib/companyaccount.cpp \
+    lib/companyinfo.cpp \
+    lib/experience.cpp \
+    lib/group.cpp \
+    lib/legami.cpp \
+    lib/loader.cpp \
+    lib/message.cpp \
+    lib/payment.cpp \
+    lib/photo.cpp \
+    lib/useraccount.cpp \
+    lib/userinfo.cpp \
+lib/username.cpp \
+    main.cpp \
+    gui/inboxmessages.cpp \
+    gui/showmessage.cpp \
+    gui/outboxmessages.cpp
+
 
 QT += xml
 FORMS +=   
 TRANSLATIONS += translation/legami_ita.ts \
     translation/legami_eng.ts
+
+
+
+
+
+
 
 
 

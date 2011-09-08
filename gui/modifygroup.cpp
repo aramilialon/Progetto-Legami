@@ -90,7 +90,7 @@ void modifygroup::modify() throw(error){
     if(!newuserLineEdit->text().isEmpty()){
 	account* temp= Boss->basicSearch(newuserLineEdit->text());
 	if(temp) groupToModify->addmember(*temp);
-	else throw error(Username, QString("New user not found"));
+	else QMessageBox::warning(this, tr("Error"), tr("User not found"), QMessageBox::Ok, QMessageBox::Ok);
     }
     if(!removeuserRow.isEmpty()){
 	groupToModify->removemember(removeuserRow);

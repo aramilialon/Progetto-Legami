@@ -273,3 +273,31 @@ QVector<group*> legami::groupSearchbyUsern(QString usern){
 QVector<group*> legami::groupDb() const{
     return _groupdb;
 }
+
+QVector<message*> legami::messageReceved(QString usern){
+    QVector<message*> temp;
+    QVector<message*>::iterator it=_messagedb.begin();
+    for(;it<_messagedb.end();++it){
+	if((*it)->recever()->user()->user()==usern) temp.append(*it);
+    }
+    return temp;
+}
+
+QVector<message*> legami::messageSent(QString usern){
+    QVector<message*> temp;
+    QVector<message*>::iterator it=_messagedb.begin();
+    for(;it<_messagedb.end();++it){
+	if((*it)->sender()->user()->user()==usern) temp.append(*it);
+    }
+    return temp;
+}
+
+QVector<message*> legami::searchMessageAccount(QString searcher, QString searched){
+    QVector<message*> temp;
+    QVector<message*>::iterator it=_messagedb.begin();
+    for(;it<_messagedb.end();++it){
+	if((*it)->sender()->user()->user()==searcher && (*it)->recever()->user()->user()==searched) temp.append(*it);
+	else if((*it)->sender()->user()->user()==searched && (*it)->recever()->user()->user()==searcher) temp.append(*it);
+    }
+    return temp;
+}

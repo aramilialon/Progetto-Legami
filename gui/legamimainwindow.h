@@ -51,9 +51,14 @@ class legamimainwindow : public QMainWindow
     QAction* Outbox;
     QAction* NewMessage;
 
+    QMenu* Payment;
+    QAction* RequestPayment;
+    QAction* CheckPayment;
+
     QMenu* Admin;
     QAction* AdminUsers;
     QAction* AdminGroups;
+    QAction* AdminMessages;
     QAction* AdminPayments;
 
     QMenu* About;
@@ -91,6 +96,7 @@ private slots:
     void groupCreated();
     void subscribeGroup();
     void subscrived();
+    void inbox();
 };
 
 #endif // LEGAMIMAINWINDOW_H

@@ -17,6 +17,7 @@
 #include <QVector>
 
 class group;
+class message;
 
 class legami
 {
@@ -47,6 +48,9 @@ public:
 
     void addMessage(const message&);
     void removeMessage(const message&);
+    QVector<message*> messageReceved(QString);
+    QVector<message*> messageSent(QString);
+    QVector<message*> searchMessageAccount(QString, QString);
 
     void addAccount(const account&) throw(error);
     void removeUser(const account&);

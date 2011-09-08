@@ -11,6 +11,7 @@
 #include "addnewgroup.h"
 #include "legamilogin.h"
 #include "legamimainwindow.h"
+#include "inboxmessages.h"
 #include "modifycompanyprofile.h"
 #include "modifyuserprofile.h"
 #include "reguser.h"
@@ -121,8 +122,6 @@ void legamimainwindow::setMenuBarUnregistered(){
     }
     delete scroll;
     scroll=new QScrollArea(this);
-    scroll->setWidget(MainWidget);
-    scroll->resize(this->sizeHint());
     File= new QMenu(tr("File"), this);
     Register= new QAction(tr("New User?"), this);
     connect(Register, SIGNAL(triggered()), this, SLOT(registerNewUser()));
@@ -223,6 +222,7 @@ void legamimainwindow::setMenuBarRegistered(){
 
     Messages= new QMenu(tr("Messages"), this);
     Inbox= new QAction(tr("Inbox"), this);
+    connect(Inbox, SIGNAL(triggered()), this, SLOT(inbox()));
     Outbox= new QAction(tr("Outbox"), this);
     NewMessage= new QAction(tr("New Message"), this);
     Messages->addAction(Inbox);
@@ -268,8 +268,9 @@ void legamimainwindow::logout(){
     setWindowTitle(QString("Legami"));
     QString name= Boss->accountlogged()->user()->user();
     Boss->logoutAccount();
+    QMessageBox::information(this, tr("Successfully logged out!"), name+tr(" successfully logged out."), QMessageBox::Ok, QMessageBox::Ok);
     setMenuBarUnregistered();
-    QMessageBox::information(this, tr("Successfully logged out!"), tr(" asdasdasd successfully logged out."), QMessageBox::Ok, QMessageBox::Ok);
+
 }
 
 void legamimainwindow::showuser(){
@@ -355,12 +356,12 @@ void legamimainwindow::showgroups(){
     MainWidget->adjustSize();
     scroll->setAlignment(Qt::AlignHCenter);
     MainWidget->setMinimumWidth(620);
-    setCentralWidget(MainWidget);
+    setCentralWidget(scroll);
 }
 
 void legamimainwindow::resizewindow(){
     MainWidget->resize(this->size());
-    setCentralWidget(MainWidget);
+    setCentralWidget(scroll);
 }
 
 void legamimainwindow::iscrivenewGroup(){
@@ -382,4 +383,21 @@ void legamimainwindow::subscribeGroup(){
 
 void legamimainwindow::subscrived(){
     QMessageBox::information(this, tr("Group Subscrived"), tr("You have been added to the group requested."), QMessageBox::Ok, QMessageBox::Ok);
+}
+
+
+void legamimainwindow::inbox(){
+    delete MainWidget;
+    if(!scroll){
+	scroll=new QScrollArea(this);
+	scroll->resize(this->size());
+    }
+    MainWidget= new inboxMessages(Boss->accountlogged(), Boss, this);
+    scroll->setWidget(MainWidget);
+    MainWidget->adjustSize();
+    scroll->setAlignment(Qt::AlignHCenter);
+    MainWidget->setMaximumWidth(620);
+    MainWidget->setMaximumWidth(620);
+    MainWidget->resize(this->size());
+    setCentralWidget(scroll);
 }
