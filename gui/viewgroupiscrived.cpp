@@ -24,7 +24,7 @@ viewGroupIscrived::viewGroupIscrived(account* acc, legami* boss, QWidget *parent
     QStandardItem* parentItem= model->invisibleRootItem();
 
     QVector<group*>::iterator it=groupList.begin();
-    for(;it!=groupList.end();++it){
+    for(;it<groupList.end();++it){
 	QStandardItem* item= new QStandardItem((*it)->name());
 	parentItem->appendRow(item);
     }
@@ -53,7 +53,7 @@ void viewGroupIscrived::showGroup(const QModelIndex ind)
 void viewGroupIscrived::adminGroup(group * grp){
     modifygroup* modgr= new modifygroup(grp, Boss, this);
     connect(modgr, SIGNAL(modified(group*)), this, SLOT(groupModified(group*)));
-    connect(modgr, SIGNAL(deletethis(group*)), this, SLOT(groupDeleted(group*)));
+    connect(modgr, SIGNAL(deletethisgroup()), this, SLOT(groupDeleted()));
     modgr->show();
 }
 
@@ -71,18 +71,27 @@ void viewGroupIscrived::groupModified(group* grp){
     emit(resized());
 }
 
-void viewGroupIscrived::groupDeleted(group * grp){
-    QVector<group*>::iterator it=Boss->groupDb().begin();
-    bool erased=false;
+void viewGroupIscrived::groupDeleted(){
+    QMessageBox::information(this, tr("Done"), tr("Group deleted."), QMessageBox::Ok, QMessageBox::Ok);
+    delete showGr;
     showGr=0;
-    for(;!erased && it<Boss->groupDb().end();++it){
-	if((*it)==grp){
-	    erased=true;
-	    delete grp;
-	    Boss->groupDb().erase(it);
-	}
+
+    delete groupsListView;
+
+    groupList=Boss->groupSearchbyUsern(accToShow->user()->user());
+
+    groupsListView= new QListView(this);
+    layout->addWidget(groupsListView, 0, 0);
+
+    QStandardItemModel* model= new QStandardItemModel(this);
+    QStandardItem* parentItem= model->invisibleRootItem();
+
+    QVector<group*>::iterator it=groupList.begin();
+    for(;it<groupList.end();++it){
+	QStandardItem* item= new QStandardItem((*it)->name());
+	parentItem->appendRow(item);
     }
-    if(erased){
-	QMessageBox::information(this, tr("Done"), tr("Group deleted."), QMessageBox::Ok, QMessageBox::Ok);
-    }
+
+    groupsListView->setModel(model);
+    connect(groupsListView, SIGNAL(clicked(QModelIndex)), this, SLOT(showGroup(QModelIndex)));
 }

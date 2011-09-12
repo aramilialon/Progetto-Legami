@@ -124,6 +124,7 @@ void modifygroup::setNewAdmin(const QModelIndex ind){
 }
 
 void modifygroup::deletegroup(){
-    emit deletethis(groupToModify);
-    close();
+    Boss->removeGroup(*groupToModify);
+   emit deletethisgroup();
+   close();
 }

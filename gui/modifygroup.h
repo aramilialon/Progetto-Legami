@@ -53,7 +53,7 @@ public:
 
 signals:
     void modified(group*);
-    void deletethis(group*);
+    void deletethisgroup();
 public slots:
     void setRemoveUser(const QModelIndex);
     void setRemoveAdmin(const QModelIndex);

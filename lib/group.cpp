@@ -15,9 +15,7 @@
 group::group(QString name, QString descr=" "): _name(name), _descr(descr){}
 
 group::~group(){
-    for(QVector<account*>::iterator it=_admins.begin();it!=_admins.end();++it) delete *it;
     _admins.erase(_admins.begin(),_admins.end());
-    for(QVector<account*>::iterator it=_members.begin();it!=_members.end();++it) delete *it;
     _members.erase(_members.begin(), _members.end());
 }
 
