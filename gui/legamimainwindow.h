@@ -56,7 +56,7 @@ class legamimainwindow : public QMainWindow
     QAction* Outbox;
     QAction* NewMessage;
 
-    QMenu* Payment;
+    QMenu* Payments;
     QAction* RequestPayment;
     QAction* CheckPayment;
 

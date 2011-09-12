@@ -129,6 +129,7 @@ void legamimainwindow::setMenuBarUnregistered(){
 	MainWidget=0;
     }
 
+    setCentralWidget(scroll);
     File= new QMenu(tr("File"), this);
     Register= new QAction(tr("New User?"), this);
     connect(Register, SIGNAL(triggered()), this, SLOT(registerNewUser()));
@@ -250,6 +251,12 @@ void legamimainwindow::setMenuBarRegistered(){
     Messages->addAction(NewMessage);
     Messages->addAction(Outbox);
 
+    Payments= new QMenu(tr("Upgrades"), this);
+    RequestPayment= new QAction(tr("Request Payments"), this);
+    CheckPayment= new QAction(tr("Check Requests"), this);
+    Payments->addAction(RequestPayment);
+    Payments->addAction(CheckPayment);
+
     FileBar->clear();
 
     FileBar->addMenu(File);
@@ -275,6 +282,7 @@ void legamimainwindow::setMenuBarRegistered(){
 	AdminUsers=0;
 	AdminGroups=0;
 	AdminPayments=0;
+	FileBar->addMenu(Payments);
     }
 
     FileBar->addMenu(Config);
