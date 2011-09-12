@@ -107,6 +107,8 @@ private slots:
     void showcontactsself();
     void addnewcontactself();
     void removecontactself();
+    void requestnewpayment();
+    void shopaymentsself();
 };
 
 #endif // LEGAMIMAINWINDOW_H

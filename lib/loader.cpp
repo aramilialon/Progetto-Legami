@@ -176,20 +176,19 @@ void loader::loadconnections(QDomNode conns){
 
 void loader::loadpayments(QDomNode payments){
     QDomNode temp=payments.firstChild();
-    if(!temp.isNull()){
+    if(!temp.isNull() && temp.nodeName()==QString("payment")){
         while(!temp.isNull()){
-            QString requester= temp.firstChildElement(QString("requester")).text();
-            account* requestertemp=_boss->basicSearch(requester);
-            int typetemp= temp.firstChildElement(QString("typerequested")).text().toInt(),
+	    QString requester1= temp.firstChildElement(QString("applicant")).text();
+	    int typetemp= temp.firstChildElement(QString("typerequested")).text().toInt(),
                     daytemp= temp.firstChildElement(QString("dayrequest")).text().toInt(),
                     monthtemp= temp.firstChildElement(QString("monthrequest")).text().toInt(),
                     yeartemp= temp.firstChildElement(QString("yearrequest")).text().toInt(),
                     approvedtemp= temp.firstChildElement(QString("approved")).text().toInt();
-            if(requestertemp){
-                payment* paytemp= new payment(requestertemp, typetemp, QDate(yeartemp, monthtemp, daytemp), approvedtemp);
-                requestertemp->addpayment(*paytemp);
+	    account* retemp=_boss->basicSearch(requester1);
+	    if(retemp){
+		payment* paytemp= new payment(retemp, typetemp, QDate(yeartemp, monthtemp, daytemp), approvedtemp);
+		retemp->addpayment(*paytemp);
             }
-            temp=temp.nextSibling();
         }
     }
 }
@@ -563,12 +562,12 @@ void loader::writepayments(const account & acc, QDomNode & payments, QDomDocumen
         year.appendChild(yeartemp);
         approved.appendChild(approvedtemp);
 
-        payments.appendChild(requester);
-        payments.appendChild(requested);
-        payments.appendChild(day);
-        payments.appendChild(month);
-        payments.appendChild(year);
-        payments.appendChild(approved);
+	payment.appendChild(requester);
+	payment.appendChild(requested);
+	payment.appendChild(day);
+	payment.appendChild(month);
+	payment.appendChild(year);
+	payment.appendChild(approved);
     }
 
 }

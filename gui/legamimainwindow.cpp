@@ -10,6 +10,7 @@
 
 #include "addnewgroup.h"
 #include "addnewcontact.h"
+#include "addrequestpayment.h"
 #include "legamilogin.h"
 #include "legamimainwindow.h"
 #include "inboxmessages.h"
@@ -21,6 +22,7 @@
 #include "removecontact.h"
 #include "showcompanyprofile.h"
 #include "showcontacts.h"
+#include "showpayments.h"
 #include "viewgroupiscrived.h"
 #include "showuserprofile.h"
 #include "subscribegroup.h"
@@ -112,6 +114,7 @@ void legamimainwindow::setMenuBarUnregistered(){
 	Contacts->clear();
 	Groups->clear();
 	Messages->clear();
+	Payments->clear();
 	if(Admin) Admin->clear();
 	About->clear();
 	delete File;
@@ -119,6 +122,7 @@ void legamimainwindow::setMenuBarUnregistered(){
 	delete Account;
 	delete Contacts;
 	delete Groups;
+	delete Payments;
 	delete Messages;
 	delete Admin;
 	delete About;
@@ -253,7 +257,9 @@ void legamimainwindow::setMenuBarRegistered(){
 
     Payments= new QMenu(tr("Upgrades"), this);
     RequestPayment= new QAction(tr("Request Payments"), this);
+    connect(RequestPayment, SIGNAL(triggered()), this, SLOT(requestnewpayment()));
     CheckPayment= new QAction(tr("Check Requests"), this);
+    connect(CheckPayment, SIGNAL(triggered()), this, SLOT(shopaymentsself()));
     Payments->addAction(RequestPayment);
     Payments->addAction(CheckPayment);
 
@@ -480,5 +486,25 @@ void legamimainwindow::addnewcontactself(){
 
 void legamimainwindow::removecontactself(){
     removecontact* temp= new removecontact(Boss->accountlogged(), Boss, this);
+    temp->show();
+}
+
+void legamimainwindow::shopaymentsself(){
+    delete MainWidget;
+    if(!scroll){
+	scroll=new QScrollArea(this);
+	scroll->resize(this->size());
+    }
+    MainWidget= new showpayments(Boss->accountlogged(), this);
+    scroll->setWidget(MainWidget);
+    MainWidget->adjustSize();
+    scroll->setAlignment(Qt::AlignHCenter);
+    MainWidget->setFixedWidth(620);
+    MainWidget->resize(this->size());
+    setCentralWidget(scroll);
+}
+
+void legamimainwindow::requestnewpayment(){
+    addrequestpayment* temp= new addrequestpayment(Boss->accountlogged(), Boss, this);
     temp->show();
 }

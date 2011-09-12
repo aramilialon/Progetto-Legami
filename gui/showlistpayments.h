@@ -13,15 +13,20 @@ class showlistpayments : public QWidget
 
     account* accToShow;
 
+    QTableView* paymentsTable;
 
+    QStandardItemModel* paymentsModel;
+
+    int selected;
 
 public:
-    explicit showlistpayments(QWidget *parent = 0);
+    explicit showlistpayments(account*, QWidget *parent = 0);
 
+    int sel();
 signals:
 
 public slots:
-
+    void modSelected(QModelIndex);
 };
 
 #endif // SHOWLISTPAYMENTS_H

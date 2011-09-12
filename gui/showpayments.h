@@ -4,8 +4,9 @@
 #include "../lib/account.h"
 #include "../lib/payment.h"
 
-#include <QTableView>
-#include <QStandardItemModel>
+#include "showlistpayments.h"
+
+#include <QGridLayout>
 #include <QWidget>
 
 class showpayments : public QWidget
@@ -14,7 +15,10 @@ class showpayments : public QWidget
 
     account* accToShow;
 
-    QTa
+    showlistpayments* payList;
+
+    QGridLayout* layout;
+
 public:
     explicit showpayments(account*, QWidget *parent = 0);
 
