@@ -2,6 +2,7 @@
 #define MODIFYUSERINFOS_H
 
 #include "../lib/useraccount.h"
+#include "../lib/legami.h"
 
 #include <QDateEdit>
 #include <QFormLayout>
@@ -16,6 +17,7 @@ class modifyuserinfos : public QGroupBox
     QFormLayout* layout;
 
     useraccount* accToModify;
+    legami* Boss;
 
     QLineEdit* nameLineEdit;
     QLineEdit* surnameLineEdit;
@@ -28,7 +30,7 @@ class modifyuserinfos : public QGroupBox
     QPushButton* cancelButton;
 
 public:
-    explicit modifyuserinfos(const useraccount &, QWidget *parent = 0);
+    explicit modifyuserinfos(const useraccount &, legami*, QWidget *parent = 0);
 
 signals:
     void modified(bool);

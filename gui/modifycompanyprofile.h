@@ -2,6 +2,8 @@
 #define MODIFYCOMPANYPROFILE_H
 
 #include "../lib/companyaccount.h"
+#include "../lib/legami.h"
+
 #include "modifyusern.h"
 #include "modifycompanyinfos.h"
 
@@ -13,6 +15,7 @@ class modifycompanyprofile : public QWidget
     Q_OBJECT
 
     companyaccount* accToModify;
+    legami* Boss;
 
     modifyusern* usernModify;
     modifycompanyinfos* infosModify;
@@ -21,7 +24,7 @@ class modifycompanyprofile : public QWidget
 
 
 public:
-    explicit modifycompanyprofile(companyaccount*, QWidget *parent = 0);
+    explicit modifycompanyprofile(companyaccount*, legami*, QWidget *parent = 0);
 
 signals:
     void modified();

@@ -50,24 +50,22 @@ legamimainwindow::legamimainwindow(QWidget *parent) :
     bool loaded=false;
     bool errorReported=false;
     while(!loaded){
-	int returned=0;
 	try{
 	    Boss->getloader()->loaddb();
 	}
 	catch(error er){
-	    if(er.type()==IO){
-		errorReported=true;
-		QMessageBox msg;
-		msg.setIcon(QMessageBox::Warning);
-		msg.setText(tr("Database not loaded"));
-		msg.setInformativeText(tr("Would you like to try <i>another path</i> "
-					  "rather than the normal one or to load the <i>example data?</i>"));
-		msg.setDetailedText(er.comment());
-		msg.addButton(tr("Another path"), QMessageBox::YesRole);
-		msg.addButton(tr("Example data"), QMessageBox::NoRole);
-		msg.exec();
-		returned= msg.result();
-	    }
+	    int returned=0;
+	    errorReported=true;
+	    QMessageBox msg;
+	    msg.setIcon(QMessageBox::Warning);
+	    msg.setText(tr("Database not loaded"));
+	    msg.setInformativeText(tr("Would you like to try <i>another path</i> "
+				      "rather than the normal one or to load the <i>example data?</i>"));
+	    msg.setDetailedText(er.comment());
+	    msg.addButton(tr("Another path"), QMessageBox::YesRole);
+	    msg.addButton(tr("Example data"), QMessageBox::NoRole);
+	    msg.exec();
+	    returned= msg.result();
 	    if(returned==0){
 		QString newpath= QFileDialog::getOpenFileName(this, "Select database", "./", "Database File (*.xml)");
 		if(!newpath.isEmpty()) Boss->getloader()->setdb(newpath);
@@ -330,7 +328,7 @@ void legamimainwindow::modifyuser(){
 	scroll->resize(this->size());
     }
     if(dynamic_cast<useraccount*>(Boss->accountlogged())){
-	MainWidget= new modifyuserprofile(*(dynamic_cast<useraccount*>((Boss->accountlogged()))), this);
+	MainWidget= new modifyuserprofile(*(dynamic_cast<useraccount*>((Boss->accountlogged()))), Boss, this);
 	connect(MainWidget, SIGNAL(modifiedlist()), this, SLOT(usermodified()));
 	scroll->setWidget(MainWidget);
 	MainWidget->adjustSize();
@@ -339,7 +337,7 @@ void legamimainwindow::modifyuser(){
 	setCentralWidget(scroll);
     }
     else if(dynamic_cast<companyaccount*>(Boss->accountlogged())){
-	MainWidget= new modifycompanyprofile(dynamic_cast<companyaccount*>(Boss->accountlogged()), this);
+	MainWidget= new modifycompanyprofile(dynamic_cast<companyaccount*>(Boss->accountlogged()), Boss, this);
 	scroll->setWidget(MainWidget);
 	MainWidget->adjustSize();
 	scroll->setAlignment(Qt::AlignHCenter);
@@ -362,7 +360,7 @@ void legamimainwindow::usermodified(){
 	scroll->resize(this->size());
     }
     if(dynamic_cast<useraccount*>(Boss->accountlogged())){
-	MainWidget= new modifyuserprofile(*(dynamic_cast<useraccount*>((Boss->accountlogged()))), this);
+	MainWidget= new modifyuserprofile(*(dynamic_cast<useraccount*>((Boss->accountlogged()))), Boss, this);
 	connect(MainWidget, SIGNAL(modifiedlist()), this, SLOT(modifyuser()));
 	scroll->setWidget(MainWidget);
 	MainWidget->adjustSize();
@@ -371,7 +369,7 @@ void legamimainwindow::usermodified(){
 	setCentralWidget(scroll);
     }
     else if(dynamic_cast<companyaccount*>(Boss->accountlogged())){
-	MainWidget= new modifycompanyprofile(dynamic_cast<companyaccount*>(Boss->accountlogged()), this);
+	MainWidget= new modifycompanyprofile(dynamic_cast<companyaccount*>(Boss->accountlogged()), Boss, this);
 	scroll->setWidget(MainWidget);
 	MainWidget->adjustSize();
 	scroll->setAlignment(Qt::AlignHCenter);

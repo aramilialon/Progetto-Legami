@@ -6,7 +6,8 @@ showpayments::showpayments(account* acc, QWidget *parent) :
     layout= new QGridLayout(this);
 
     payList= new showlistpayments(accToShow, this);
-    layout->addWidget(payList);
+    payList->resize(parent->sizeHint());
 
+    layout->addWidget(payList);
     setLayout(layout);
 }

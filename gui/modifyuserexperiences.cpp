@@ -1,7 +1,7 @@
 #include "modifyuserexperiences.h"
 
-modifyuserexperiences::modifyuserexperiences(const useraccount& acc, QWidget *parent) :
-    QGroupBox(tr("Experiences"), parent)
+modifyuserexperiences::modifyuserexperiences(const useraccount& acc, legami* boss, QWidget *parent) :
+    QGroupBox(tr("Experiences"), parent), Boss(boss)
 {
     layout= new QGridLayout(this);
     accToModify= const_cast<useraccount*>(&acc);

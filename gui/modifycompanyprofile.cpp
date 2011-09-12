@@ -2,12 +2,12 @@
 
 #include <QMessageBox>
 
-modifycompanyprofile::modifycompanyprofile(companyaccount* acc, QWidget *parent) :
-    QWidget(parent), accToModify(acc)
+modifycompanyprofile::modifycompanyprofile(companyaccount* acc, legami* boss, QWidget *parent) :
+    QWidget(parent), accToModify(acc), Boss(boss)
 {
     layout= new QVBoxLayout(this);
 
-    usernModify= new modifyusern(*accToModify, this);
+    usernModify= new modifyusern(*accToModify, Boss, this);
     connect(usernModify, SIGNAL(modified(bool)), this, SLOT(modified(bool)));
     layout->addWidget(usernModify);
 

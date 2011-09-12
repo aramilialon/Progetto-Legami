@@ -2,6 +2,7 @@
 #define MODIFYUSEREXPERIENCES_H
 
 #include "../lib/experience.h"
+#include "../lib/legami.h"
 #include "../lib/useraccount.h"
 #include "modifyuserexperience.h"
 
@@ -15,6 +16,7 @@ class modifyuserexperiences : public QGroupBox
     Q_OBJECT
 
     useraccount* accToModify;
+    legami* Boss;
     QVector<modifyuserexperience*> expWidget;
 
     QGridLayout* layout;
@@ -26,7 +28,7 @@ class modifyuserexperiences : public QGroupBox
     void loadExpWidget();
 
 public:
-    explicit modifyuserexperiences(const useraccount&, QWidget *parent = 0);
+    explicit modifyuserexperiences(const useraccount&, legami*, QWidget *parent = 0);
 
 signals:
     void modifiedlist();

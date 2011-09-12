@@ -2,6 +2,7 @@
 #define MODIFYUSERN_H
 
 #include "../lib/account.h"
+#include "../lib/legami.h"
 #include "../lib/username.h"
 
 #include <QFormLayout>
@@ -14,6 +15,7 @@ class modifyusern : public QGroupBox
     Q_OBJECT
 
     account* accToModify;
+    legami* Boss;
 
     QFormLayout* layout;
 
@@ -24,7 +26,7 @@ class modifyusern : public QGroupBox
     QPushButton* cancelButton;
 
 public:
-    explicit modifyusern(const account &, QWidget *parent = 0);
+    explicit modifyusern(const account &, legami*, QWidget *parent = 0);
 
 signals:
     void modified(bool);

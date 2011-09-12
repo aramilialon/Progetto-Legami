@@ -49,8 +49,8 @@ addrequestpayment::addrequestpayment(account* acc, legami* boss, QWidget *parent
 }
 
 void addrequestpayment::createBusiness(){
-    payment* temp= new payment(Boss->accountlogged(), 1, QDate::currentDate(), 0);
     try{
+	payment* temp= new payment(Boss->accountlogged(), 1, QDate::currentDate(), 0);
 	Boss->accountlogged()->addpayment(*temp);
     }
     catch(error er1){
@@ -60,8 +60,8 @@ void addrequestpayment::createBusiness(){
 }
 
 void addrequestpayment::createExecutive(){
-    payment* temp= new payment(Boss->accountlogged(), 2, QDate::currentDate(), 0);
     try{
+	payment* temp= new payment(Boss->accountlogged(), 2, QDate::currentDate(), 0);
 	Boss->accountlogged()->addpayment(*temp);
     }
     catch(error er1){

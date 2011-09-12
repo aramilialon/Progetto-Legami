@@ -189,6 +189,7 @@ void loader::loadpayments(QDomNode payments){
 		payment* paytemp= new payment(retemp, typetemp, QDate(yeartemp, monthtemp, daytemp), approvedtemp);
 		retemp->addpayment(*paytemp);
             }
+	    temp=temp.nextSibling();
         }
     }
 }

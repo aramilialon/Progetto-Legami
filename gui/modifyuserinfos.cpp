@@ -1,30 +1,30 @@
 #include "../lib/userinfo.h"
+#include "../lib/useraccount.h"
+
 #include "modifyuserinfos.h"
 
-modifyuserinfos::modifyuserinfos(const useraccount & acc, QWidget *parent) :
-    QGroupBox(tr("User Info"), parent), accToModify(const_cast<useraccount*>(&acc))
+modifyuserinfos::modifyuserinfos(const useraccount & acc, legami* boss, QWidget *parent) :
+    QGroupBox(tr("User Info"), parent), accToModify(const_cast<useraccount*>(&acc)), Boss(boss)
 {
     layout= new QFormLayout(this);
     userinfo* infos= accToModify->information();
 
-    nameLineEdit= new QLineEdit(infos->name());
+    nameLineEdit= new QLineEdit(infos->name(), this);
     layout->addRow(tr("First Name:"), nameLineEdit);
 
-    surnameLineEdit= new QLineEdit(infos->surname());
+    surnameLineEdit= new QLineEdit(infos->surname(), this);
     layout->addRow(tr("Last Name:"), surnameLineEdit);
 
-    dateDateEdit= new QDateEdit(infos->birthdate());
-    dateDateEdit->setDisplayFormat(QString("dd.MM.yyyy"));
-    dateDateEdit->clearMinimumDate();
+    dateDateEdit= new QDateEdit(infos->birthdate(), this);
     layout->addRow(tr("Birth Date:"), dateDateEdit);
 
-    placeLineEdit= new QLineEdit(infos->birthplace());
+    placeLineEdit= new QLineEdit(infos->birthplace(), this);
     layout->addRow(tr("Birth Place:"), placeLineEdit);
 
-    telnumLineEdit= new QLineEdit(infos->telnum());
+    telnumLineEdit= new QLineEdit(infos->telnum(), this);
     layout->addRow(tr("Tel. Num.:"), telnumLineEdit);
 
-    emailLineEdit= new QLineEdit(infos->email());
+    emailLineEdit= new QLineEdit(infos->email(), this);
     layout->addRow(tr("Email:"), emailLineEdit);
 
     okButton= new QPushButton(tr("Modify"), this);
@@ -40,8 +40,11 @@ modifyuserinfos::modifyuserinfos(const useraccount & acc, QWidget *parent) :
 }
 
 void modifyuserinfos::modify(){
-    accToModify->setinfo(nameLineEdit->text(), surnameLineEdit->text(), dateDateEdit->date().year(), dateDateEdit->date().month(), dateDateEdit->date().day(), placeLineEdit->text(), telnumLineEdit->text(), emailLineEdit->text());
-    emit modified(true);
+    if(Boss->accountlogged()==accToModify || dynamic_cast<useraccount*>(accToModify)->getadmin()){
+	accToModify->setinfo(nameLineEdit->text(), surnameLineEdit->text(), dateDateEdit->date().year(), dateDateEdit->date().month(), dateDateEdit->date().day(), placeLineEdit->text(), telnumLineEdit->text(), emailLineEdit->text());
+	emit modified(true);
+    }
+    else emit modified(false);
 }
 
 void modifyuserinfos::reset(){

@@ -54,6 +54,7 @@ public:
 
     void addAccount(const account&) throw(error);
     void removeUser(const account&);
+    QVector<account*> userDb();
 
     void addGroup(const group&) throw(error);
     void removeGroup(const group&);

@@ -2,6 +2,7 @@
 #define MODIFYUSERPROFILE_H
 
 #include "../lib/useraccount.h"
+#include "../lib/legami.h"
 
 #include "modifyuserexperiences.h"
 #include "modifyuserinfos.h"
@@ -15,6 +16,7 @@ class modifyuserprofile : public QWidget
     Q_OBJECT
 
     useraccount* accToModify;
+    legami* Boss;
 
     QVBoxLayout* layout;
     modifyusern* usernModify;
@@ -23,7 +25,7 @@ class modifyuserprofile : public QWidget
 
 
 public:
-    explicit modifyuserprofile(const useraccount &, QWidget *parent = 0);
+    explicit modifyuserprofile(const useraccount &, legami*, QWidget *parent = 0);
 
 signals:
     void modified();

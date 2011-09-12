@@ -301,3 +301,7 @@ QVector<message*> legami::searchMessageAccount(QString searcher, QString searche
     }
     return temp;
 }
+
+QVector<account*> legami::userDb(){
+    return _userdb;
+}

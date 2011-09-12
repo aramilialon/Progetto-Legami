@@ -21,7 +21,8 @@ showlistpayments::showlistpayments(account* acc, QWidget *parent) :
     QVector<payment*>::iterator it=temp.begin();
     for(;it<temp.end();++it){
 	payment* payTemp=*it;
-	QStandardItem* dateTemp= new QStandardItem(QString(payTemp->date().day())+QString("/")+QString(payTemp->date().month())+QString("/")+QString(payTemp->date().year()));
+	QString day, month, year;
+	QStandardItem* dateTemp= new QStandardItem(day.setNum(payTemp->date().day())+QString("/")+month.setNum(payTemp->date().month())+QString("/")+year.setNum(payTemp->date().year()));
 
 	QStandardItem* requestTemp=0;
 	if(payTemp->request()==1) requestTemp= new QStandardItem(tr("Business"));
