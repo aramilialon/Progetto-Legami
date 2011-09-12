@@ -40,7 +40,8 @@ lib/username.h \
     gui/outboxmessages.h \
     gui/newmessage.h \
     gui/showcontacts.h \
-    gui/showcontactsmessage.h
+    gui/showcontactsmessage.h \
+    gui/addnewcontact.h
 
 SOURCES +=     gui/addnewgroup.cpp \
     gui/legamilogin.cpp \
@@ -84,13 +85,16 @@ lib/username.cpp \
     gui/outboxmessages.cpp \
     gui/newmessage.cpp \
     gui/showcontacts.cpp \
-    gui/showcontactsmessage.cpp
+    gui/showcontactsmessage.cpp \
+    gui/addnewcontact.cpp
 
 
 QT += xml
 FORMS +=   
 TRANSLATIONS += translation/legami_ita.ts \
     translation/legami_eng.ts
+
+
 
 
 

@@ -121,12 +121,11 @@ void legamimainwindow::setMenuBarUnregistered(){
 	delete Admin;
 	delete About;
     }
-    if(MainWidget){
-	delete MainWidget;
-	MainWidget=0;
-    }
+    delete MainWidget;
     delete scroll;
     scroll=new QScrollArea(this);
+    MainWidget=0;
+    scroll->setWidget(MainWidget);
     File= new QMenu(tr("File"), this);
     Register= new QAction(tr("New User?"), this);
     connect(Register, SIGNAL(triggered()), this, SLOT(registerNewUser()));
@@ -288,7 +287,6 @@ void legamimainwindow::logout(){
     Boss->logoutAccount();
     QMessageBox::information(this, tr("Successfully logged out!"), name+tr(" successfully logged out."), QMessageBox::Ok, QMessageBox::Ok);
     setMenuBarUnregistered();
-
 }
 
 void legamimainwindow::showuser(){
