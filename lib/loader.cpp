@@ -543,11 +543,12 @@ void loader::writemessages(QDomNode& mess, QDomDocument root){
         message.appendChild(object);
         message.appendChild(text);
         message.appendChild(read);
+	QString readed;
         QDomText usersender=root.createTextNode((*it)->sender()->user()->user()),
                 userrecever=root.createTextNode((*it)->recever()->user()->user()),
                 objecttemp=root.createTextNode((*it)->object()),
                 texttemp=root.createTextNode((*it)->text()),
-                readtemp=root.createTextNode(QString((*it)->read()));
+		readtemp=root.createTextNode(readed.setNum((*it)->read()));
         sender.appendChild(usersender);
         recever.appendChild(userrecever);
         object.appendChild(objecttemp);

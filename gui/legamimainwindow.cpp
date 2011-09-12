@@ -14,8 +14,11 @@
 #include "inboxmessages.h"
 #include "modifycompanyprofile.h"
 #include "modifyuserprofile.h"
+#include "newmessage.h"
+#include "outboxmessages.h"
 #include "reguser.h"
 #include "showcompanyprofile.h"
+#include "showcontacts.h"
 #include "viewgroupiscrived.h"
 #include "showuserprofile.h"
 #include "subscribegroup.h"
@@ -104,6 +107,7 @@ void legamimainwindow::setMenuBarUnregistered(){
 	File->clear();
 	Config->clear();
 	Account->clear();
+	Contacts->clear();
 	Groups->clear();
 	Messages->clear();
 	if(Admin) Admin->clear();
@@ -111,6 +115,7 @@ void legamimainwindow::setMenuBarUnregistered(){
 	delete File;
 	delete Config;
 	delete Account;
+	delete Contacts;
 	delete Groups;
 	delete Messages;
 	delete Admin;
@@ -209,6 +214,16 @@ void legamimainwindow::setMenuBarRegistered(){
     connect(ViewProfileSelf, SIGNAL(triggered()), this, SLOT(showuser()));
     connect(ModifyProfileSelf, SIGNAL(triggered()), this, SLOT(modifyuser()));
 
+    Contacts= new QMenu(tr("Contacts"), this);
+    ShowContacts= new QAction(tr("Show Contacts"), this);
+    connect(ShowContacts, SIGNAL(triggered()), this, SLOT(showcontactsself()));
+    AddContact= new QAction(tr("Add new contact"), this);
+    RemoveContact= new QAction(tr("Delete Contact"), this);
+    Contacts->addAction(ShowContacts);
+    Contacts->addAction(AddContact);
+    Contacts->addAction(RemoveContact);
+
+
     Groups= new QMenu(tr("Groups"), this);
     ViewGroupsIscrived= new QAction(tr("View Groups"), this);
     connect(ViewGroupsIscrived, SIGNAL(triggered()), this, SLOT(showgroups()));
@@ -224,7 +239,9 @@ void legamimainwindow::setMenuBarRegistered(){
     Inbox= new QAction(tr("Inbox"), this);
     connect(Inbox, SIGNAL(triggered()), this, SLOT(inbox()));
     Outbox= new QAction(tr("Outbox"), this);
+    connect(Outbox, SIGNAL(triggered()), this, SLOT(outbox()));
     NewMessage= new QAction(tr("New Message"), this);
+    connect(NewMessage, SIGNAL(triggered()), this, SLOT(messagenew()));
     Messages->addAction(Inbox);
     Messages->addAction(NewMessage);
     Messages->addAction(Outbox);
@@ -233,6 +250,7 @@ void legamimainwindow::setMenuBarRegistered(){
 
     FileBar->addMenu(File);
     FileBar->addMenu(Account);
+    FileBar->addMenu(Contacts);
     FileBar->addMenu(Groups);
     FileBar->addMenu(Messages);
 
@@ -393,6 +411,48 @@ void legamimainwindow::inbox(){
 	scroll->resize(this->size());
     }
     MainWidget= new inboxMessages(Boss->accountlogged(), Boss, this);
+    scroll->setWidget(MainWidget);
+    MainWidget->adjustSize();
+    scroll->setAlignment(Qt::AlignHCenter);
+    MainWidget->setMaximumWidth(620);
+    MainWidget->setMaximumWidth(620);
+    MainWidget->resize(this->size());
+    setCentralWidget(scroll);
+}
+
+void legamimainwindow::outbox(){
+    delete MainWidget;
+    if(!scroll){
+	scroll=new QScrollArea(this);
+	scroll->resize(this->size());
+    }
+    MainWidget= new outboxMessages(Boss->accountlogged(), Boss, this);
+    scroll->setWidget(MainWidget);
+    MainWidget->adjustSize();
+    scroll->setAlignment(Qt::AlignHCenter);
+    MainWidget->setMaximumWidth(620);
+    MainWidget->setMaximumWidth(620);
+    MainWidget->resize(this->size());
+    setCentralWidget(scroll);
+}
+
+void legamimainwindow::messagenew(){
+    try{
+	newmessage* newmess= new newmessage(Boss->accountlogged(), Boss, this);
+	newmess->show();
+    }
+    catch(error er1){
+	QMessageBox::warning(this, tr("Error"), er1.comment(), QMessageBox::Ok, QMessageBox::Ok);
+    }
+}
+
+void legamimainwindow::showcontactsself(){
+    delete MainWidget;
+    if(!scroll){
+	scroll=new QScrollArea(this);
+	scroll->resize(this->size());
+    }
+    MainWidget= new showcontacts(Boss->accountlogged(), this);
     scroll->setWidget(MainWidget);
     MainWidget->adjustSize();
     scroll->setAlignment(Qt::AlignHCenter);

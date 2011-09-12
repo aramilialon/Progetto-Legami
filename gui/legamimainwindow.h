@@ -41,6 +41,11 @@ class legamimainwindow : public QMainWindow
     QAction* ViewProfileSelf;
     QAction* ModifyProfileSelf;
 
+    QMenu* Contacts;
+    QAction* ShowContacts;
+    QAction* AddContact;
+    QAction* RemoveContact;
+
     QMenu* Groups;
     QAction* ViewGroupsIscrived;
     QAction* SubscribeGroup;
@@ -97,6 +102,9 @@ private slots:
     void subscribeGroup();
     void subscrived();
     void inbox();
+    void outbox();
+    void messagenew();
+    void showcontactsself();
 };
 
 #endif // LEGAMIMAINWINDOW_H

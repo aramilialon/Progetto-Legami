@@ -1,5 +1,6 @@
 #include "outboxmessages.h"
 
+#include <QStringList>
 #include <QStandardItem>
 
 outboxMessages::outboxMessages(account* acc, legami* boss, QWidget *parent) :
@@ -13,9 +14,11 @@ outboxMessages::outboxMessages(account* acc, legami* boss, QWidget *parent) :
 
     outboxList= new QTableView(this);
 
+    QStringList stringList;
+
+    stringList<<tr("Sender")<<tr("Object");
+
     outboxModel= new QStandardItemModel(this);
-    outboxModel->setHeaderData(0, Qt::Horizontal, tr("Recever"));
-    outboxModel->setHeaderData(1, Qt::Horizontal, tr("Object"));
 
     QStandardItem* outboxRoot= outboxModel->invisibleRootItem();
 

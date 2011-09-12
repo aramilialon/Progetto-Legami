@@ -37,7 +37,10 @@ HEADERS +=     gui/addnewgroup.h \
 lib/username.h \
     gui/inboxmessages.h \
     gui/showmessage.h \
-    gui/outboxmessages.h
+    gui/outboxmessages.h \
+    gui/newmessage.h \
+    gui/showcontacts.h \
+    gui/showcontactsmessage.h
 
 SOURCES +=     gui/addnewgroup.cpp \
     gui/legamilogin.cpp \
@@ -78,13 +81,22 @@ lib/username.cpp \
     main.cpp \
     gui/inboxmessages.cpp \
     gui/showmessage.cpp \
-    gui/outboxmessages.cpp
+    gui/outboxmessages.cpp \
+    gui/newmessage.cpp \
+    gui/showcontacts.cpp \
+    gui/showcontactsmessage.cpp
 
 
 QT += xml
 FORMS +=   
 TRANSLATIONS += translation/legami_ita.ts \
     translation/legami_eng.ts
+
+
+
+
+
+
 
 
 
