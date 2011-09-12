@@ -16,6 +16,7 @@ class showusern : public QGroupBox
 	username* usernToShow;
 	QLineEdit* usernLineEdit;
 	QLineEdit* passwLineEdit;
+	QLineEdit* typeLineEdit;
         QFormLayout* layout;
 
 	legami* boss;

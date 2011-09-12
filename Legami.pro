@@ -41,7 +41,8 @@ lib/username.h \
     gui/newmessage.h \
     gui/showcontacts.h \
     gui/showcontactsmessage.h \
-    gui/addnewcontact.h
+    gui/addnewcontact.h \
+    gui/removecontact.h
 
 SOURCES +=     gui/addnewgroup.cpp \
     gui/legamilogin.cpp \
@@ -86,13 +87,16 @@ lib/username.cpp \
     gui/newmessage.cpp \
     gui/showcontacts.cpp \
     gui/showcontactsmessage.cpp \
-    gui/addnewcontact.cpp
+    gui/addnewcontact.cpp \
+    gui/removecontact.cpp
 
 
 QT += xml
 FORMS +=   
 TRANSLATIONS += translation/legami_ita.ts \
     translation/legami_eng.ts
+
+
 
 
 

@@ -9,6 +9,7 @@
 #include "../lib/useraccount.h"
 
 #include "addnewgroup.h"
+#include "addnewcontact.h"
 #include "legamilogin.h"
 #include "legamimainwindow.h"
 #include "inboxmessages.h"
@@ -120,12 +121,13 @@ void legamimainwindow::setMenuBarUnregistered(){
 	delete Messages;
 	delete Admin;
 	delete About;
+
+	delete MainWidget;
+	delete scroll;
+	scroll=new QScrollArea(this);
+	MainWidget=0;
     }
-    delete MainWidget;
-    delete scroll;
-    scroll=new QScrollArea(this);
-    MainWidget=0;
-    scroll->setWidget(MainWidget);
+
     File= new QMenu(tr("File"), this);
     Register= new QAction(tr("New User?"), this);
     connect(Register, SIGNAL(triggered()), this, SLOT(registerNewUser()));
@@ -217,6 +219,7 @@ void legamimainwindow::setMenuBarRegistered(){
     ShowContacts= new QAction(tr("Show Contacts"), this);
     connect(ShowContacts, SIGNAL(triggered()), this, SLOT(showcontactsself()));
     AddContact= new QAction(tr("Add new contact"), this);
+    connect(AddContact, SIGNAL(triggered()), this, SLOT(addnewcontactself()));
     RemoveContact= new QAction(tr("Delete Contact"), this);
     Contacts->addAction(ShowContacts);
     Contacts->addAction(AddContact);
@@ -458,4 +461,9 @@ void legamimainwindow::showcontactsself(){
     MainWidget->setMaximumWidth(620);
     MainWidget->resize(this->size());
     setCentralWidget(scroll);
+}
+
+void legamimainwindow::addnewcontactself(){
+    addnewcontact* temp= new addnewcontact(Boss->accountlogged(), Boss, this);
+    temp->show();
 }

@@ -469,21 +469,21 @@ void loader::writeconnections(QDomNode& connections, QDomDocument root){
     QVector<account*> userlist=_boss->_userdb;
     QVector<account*>::const_iterator it=userlist.begin();
     if(!userlist.isEmpty()){
-        for(;it!=userlist.end();++it){
+	for(;it<userlist.end();++it){
             QString userapplicant=(*it)->user()->user();
             QVector<account*> connlist=(*it)->getconnections();
             QVector<account*>::const_iterator it1=connlist.begin();
-            for(;it1!=connlist.end();++it){
+	    for(;it1<connlist.end();++it1){
                 QDomNode connection=root.createElement(QString("connection"));
                 connections.appendChild(connection);
                 QDomNode applicant=root.createElement(QString("applicant"));
                 QDomText applicanttemp=root.createTextNode(userapplicant);
                 applicant.appendChild(applicanttemp);
                 connection.appendChild(applicant);
-                QDomText userapplied=root.createTextNode((*it)->user()->user());
+		QDomText userapplied=root.createTextNode((*it1)->user()->user());
                 QDomNode applied=root.createElement(QString("applied"));
                 applied.appendChild(userapplied);
-                connections.appendChild(applied);
+		connection.appendChild(applied);
             }
         }
     }
