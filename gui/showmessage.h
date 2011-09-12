@@ -7,6 +7,7 @@
 #include <QGroupBox>
 #include <QLineEdit>
 #include <QTextEdit>
+#include <QPushButton>
 
 class showMessage : public QGroupBox
 {
@@ -21,6 +22,7 @@ class showMessage : public QGroupBox
     QLineEdit* objLineEdit;
 
     QTextEdit* messageTextEdit;
+
 
 public:
     explicit showMessage(message*, QWidget *parent = 0);

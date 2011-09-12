@@ -11,7 +11,6 @@
 #include "account.h"
 #include "companyinfo.h"
 #include "error.h"
-#include "photo.h"
 
 #include <QString>
 #include <QVector>
@@ -28,10 +27,7 @@ public:
     QVector<account*> getconnections() const;
     void setInfo(QString, QString, QString);
     void setInfo(const companyinfo& );
-    virtual void addphoto(QString, QString, QString);
-    QVector<photo*> getphotos() const;
     void newmessage(const account &, const account &, QString, QString) throw(error);
-    void removephoto(const photo&);
 };
 
 #endif // COMPANYACCOUNT_H

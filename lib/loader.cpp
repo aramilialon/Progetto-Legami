@@ -12,7 +12,6 @@
 #include "legami.h"
 #include "loader.h"
 #include "payment.h"
-#include "photo.h"
 #include "useraccount.h"
 #include "userinfo.h"
 #include "username.h"
@@ -62,11 +61,6 @@ void loader::loaddb() throw(error){
         throw error(IO,QString("Messages node not found"));
     }
     else loadmessages(x);
-    x=x.nextSibling();
-    if(x.isNull()||x.nodeName()!=QString("photos")){
-        throw error(IO, QString("Photos node not found"));
-    }
-    else loadphotos(x);
     x=x.nextSibling();
     if(x.isNull()||x.nodeName()!=QString("payments")){
         throw error(IO, QString("Payments node not found"));
@@ -200,24 +194,6 @@ void loader::loadpayments(QDomNode payments){
     }
 }
 
-void loader::loadphotos(QDomNode photos){
-    QDomNode temp=photos.firstChild();
-    if(!temp.isNull()){
-        while(!temp.isNull()){
-            QString type=temp.firstChildElement(QString("type")).text(),
-                    name=temp.firstChildElement(QString("name")).text(),
-                    filepath=temp.firstChildElement(QString("filepath")).text(),
-                    descr=temp.firstChildElement(QString("descr")).text(),
-                    ouwner=temp.firstChildElement(QString("ouwner")).text();
-            account* acctemp=_boss->basicSearch(ouwner);
-            photo* phototemp= new photo(type, name, filepath, *acctemp);
-            acctemp->addphoto(*phototemp);
-            phototemp->setDescr(descr);
-            temp=temp.nextSibling();
-        }
-    }
-}
-
 void loader::loadgroups(QDomNode groups){
     QDomNode temp=groups.firstChild();
     if(!temp.isNull() && temp.nodeName()==QString("group")){
@@ -292,22 +268,19 @@ void loader::writedb() throw(error){
             connections=root->createElement(QString("connections")),
             groups=root->createElement(QString("groups")),
             messages=root->createElement(QString("messages")),
-            photos=root->createElement(QString("photos")),
-            payments=root->createElement(QString("payments"));
+	    payments= root->createElement(QString("payments"));
     writeusers(users, *root);
     writeconnections(connections, *root);
     writegroups(groups,*root);
     writemessages(messages, *root);
     QVector<account*>::const_iterator it=_boss->_userdb.begin();
     for(;it!=_boss->_userdb.end();++it){
-        writephotos((**it), photos, *root);
         writepayments((**it), payments, *root);
     }
     legami.appendChild(users);
     legami.appendChild(connections);
     legami.appendChild(groups);
     legami.appendChild(messages);
-    legami.appendChild(photos);
     legami.appendChild(payments);
     if(!database.open(QIODevice::WriteOnly)){
         throw error(IO,QString("Error opening the database file"));
@@ -554,30 +527,6 @@ void loader::writemessages(QDomNode& mess, QDomDocument root){
         object.appendChild(objecttemp);
         text.appendChild(texttemp);
         read.appendChild(readtemp);
-    }
-}
-
-void loader::writephotos(const account & acc, QDomNode & photos, QDomDocument root){
-    QVector<photo*>::const_iterator it=acc.getphotos().begin();
-    for(;it!=acc.getphotos().end();++it){
-        QDomNode photonode=root.createElement(QString("photo")),
-                type=root.createElement(QString("type")),
-                name=root.createElement(QString("name")),
-                filepath=root.createElement(QString("filepath")),
-                descr=root.createElement(QString("descr"));
-        QDomText typetemp=root.createTextNode((*it)->type()),
-                nametemp=root.createTextNode((*it)->name()),
-                filepathtemp=root.createTextNode(QFileInfo(*((*it)->filephoto())).filePath()),
-                descrtemp=root.createTextNode((*it)->descr());
-        type.appendChild(typetemp);
-        name.appendChild(nametemp);
-        filepath.appendChild(filepathtemp);
-        descr.appendChild(descrtemp);
-        photonode.appendChild(type);
-        photonode.appendChild(name);
-        photonode.appendChild(filepath);
-        photonode.appendChild(descr);
-        photos.appendChild(photonode);
     }
 }
 

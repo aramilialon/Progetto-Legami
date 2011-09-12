@@ -39,6 +39,7 @@ private slots:
     void showGroup(const QModelIndex);
     void adminGroup(group*);
     void groupModified(group*);
+    void groupDeleted(group*);
 
 };
 

@@ -53,6 +53,7 @@ void viewGroupIscrived::showGroup(const QModelIndex ind)
 void viewGroupIscrived::adminGroup(group * grp){
     modifygroup* modgr= new modifygroup(grp, Boss, this);
     connect(modgr, SIGNAL(modified(group*)), this, SLOT(groupModified(group*)));
+    connect(modgr, SIGNAL(deletethis(group*)), this, SLOT(groupDeleted(group*)));
     modgr->show();
 }
 
@@ -68,4 +69,20 @@ void viewGroupIscrived::groupModified(group* grp){
     scrollRightArea->resize(showGr->sizeHint());
     resize(scrollRightArea->size());
     emit(resized());
+}
+
+void viewGroupIscrived::groupDeleted(group * grp){
+    QVector<group*>::iterator it=Boss->groupDb().begin();
+    bool erased=false;
+    showGr=0;
+    for(;!erased && it<Boss->groupDb().end();++it){
+	if((*it)==grp){
+	    erased=true;
+	    delete grp;
+	    Boss->groupDb().erase(it);
+	}
+    }
+    if(erased){
+	QMessageBox::information(this, tr("Done"), tr("Group deleted."), QMessageBox::Ok, QMessageBox::Ok);
+    }
 }

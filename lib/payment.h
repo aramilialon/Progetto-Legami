@@ -12,16 +12,16 @@ class payment
     account* _requester;
     int _request;
     QDate _dateOfRequest;
-	int _approved;
+    int _approved;
 
 public:
-	payment(account*, int, QDate, int) throw(error);
+    payment(account*, int, QDate, int) throw(error);
     account* requester() const;
     int request() const;
     QDate date() const;
-	int approved() const;
-    void setApproved(account*);
-	void setRejected(account*);
+    int approved() const;
+    void setApproved(account*) throw(error);
+    void setRejected(account*);
 
 };
 

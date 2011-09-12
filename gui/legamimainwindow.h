@@ -106,6 +106,7 @@ private slots:
     void messagenew();
     void showcontactsself();
     void addnewcontactself();
+    void removecontactself();
 };
 
 #endif // LEGAMIMAINWINDOW_H

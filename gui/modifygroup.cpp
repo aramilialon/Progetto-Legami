@@ -73,12 +73,15 @@ modifygroup::modifygroup(group* grp, legami* boss, QWidget *parent) :
 
     okButton= new QPushButton(tr("Modify"), this);
     connect(okButton, SIGNAL(clicked()), this, SLOT(modify()));
+    deleteButton= new QPushButton(tr("Delete group"), this);
+    connect(deleteButton, SIGNAL(clicked()), this, SLOT(deletegroup()));
     cancelButton= new QPushButton(tr("Cancel"), this);
     connect(cancelButton, SIGNAL(clicked()), this, SLOT(close()));
 
     layout->addLayout(layoutLineEdit, 0, 0);
     layout->addWidget(okButton, 1, 0);
-    layout->addWidget(cancelButton, 1, 1);
+    layout->addWidget(deleteButton, 1, 1);
+    layout->addWidget(cancelButton, 1, 2);
 
     setLayout(layout);
 
@@ -118,4 +121,9 @@ void modifygroup::setRemoveUser(const QModelIndex ind){
 void modifygroup::setNewAdmin(const QModelIndex ind){
     QStandardItem* temp= newadminModel->item(ind.row());
     newadminRow=temp->text();
+}
+
+void modifygroup::deletegroup(){
+    emit deletethis(groupToModify);
+    close();
 }

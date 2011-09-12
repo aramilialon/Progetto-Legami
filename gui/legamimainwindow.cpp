@@ -18,6 +18,7 @@
 #include "newmessage.h"
 #include "outboxmessages.h"
 #include "reguser.h"
+#include "removecontact.h"
 #include "showcompanyprofile.h"
 #include "showcontacts.h"
 #include "viewgroupiscrived.h"
@@ -221,6 +222,7 @@ void legamimainwindow::setMenuBarRegistered(){
     AddContact= new QAction(tr("Add new contact"), this);
     connect(AddContact, SIGNAL(triggered()), this, SLOT(addnewcontactself()));
     RemoveContact= new QAction(tr("Delete Contact"), this);
+    connect(RemoveContact, SIGNAL(triggered()), this, SLOT(removecontactself()));
     Contacts->addAction(ShowContacts);
     Contacts->addAction(AddContact);
     Contacts->addAction(RemoveContact);
@@ -465,5 +467,10 @@ void legamimainwindow::showcontactsself(){
 
 void legamimainwindow::addnewcontactself(){
     addnewcontact* temp= new addnewcontact(Boss->accountlogged(), Boss, this);
+    temp->show();
+}
+
+void legamimainwindow::removecontactself(){
+    removecontact* temp= new removecontact(Boss->accountlogged(), Boss, this);
     temp->show();
 }

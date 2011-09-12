@@ -31,7 +31,6 @@ HEADERS +=     gui/addnewgroup.h \
     lib/loader.h \
     lib/message.h \
     lib/payment.h \
-    lib/photo.h \
     lib/useraccount.h \
     lib/userinfo.h \
 lib/username.h \
@@ -76,7 +75,6 @@ SOURCES +=     gui/addnewgroup.cpp \
     lib/loader.cpp \
     lib/message.cpp \
     lib/payment.cpp \
-    lib/photo.cpp \
     lib/useraccount.cpp \
     lib/userinfo.cpp \
 lib/username.cpp \
@@ -95,6 +93,8 @@ QT += xml
 FORMS +=   
 TRANSLATIONS += translation/legami_ita.ts \
     translation/legami_eng.ts
+
+
 
 
 

@@ -13,7 +13,6 @@
 enum typeError{
     IO=0,
     Permission,
-    Photography,
 	Username,
 	Payment,
     Group

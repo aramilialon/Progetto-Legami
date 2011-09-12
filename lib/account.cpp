@@ -11,7 +11,6 @@
 #include "legami.h"
 #include "message.h"
 #include "payment.h"
-#include "photo.h"
 #include "username.h"
 
 #include <QString>
@@ -22,7 +21,6 @@ account::account(QString a, QString b, int c,  const legami& d): _type(c),  _bos
 account::~account() {
     delete _user;
     _connection.erase(_connection.begin(), _connection.end());
-    _photos.erase(_photos.begin(), _photos.end());
 }
 
 username* account::user() const{
@@ -70,41 +68,6 @@ void account::removeconnection(const account& a){
 void account::newmessage(const account& sender, const account& rec, QString obj, QString text) {
     message* mess=new message(sender, rec, obj, text);
     _boss->addMessage(*mess);
-}
-
-void account::addphoto(const photo& newphoto){
-    if(_type!=0)
-    _photos.push_back(const_cast<photo*>(&newphoto));
-}
-
-void account::removephoto(const photo & oldphoto){
-    bool erased=false;
-    for(QVector<photo*>::iterator it=_photos.begin();it!=_photos.end();++it){
-        if(*it==&oldphoto){
-            delete *it;
-            _photos.erase(it);
-            erased=true;
-        }
-    }
-}
-
-QVector<photo*> account::getphotos() const{
-    return _photos;
-}
-
-QVector<photo*> account::getphotobytag(QString tag) const{
-    QVector<photo*> temp;
-    for(QVector<photo*>::const_iterator it=_photos.begin(); it!=_photos.end();++it){
-        if((*it)->type()==tag) temp.push_back(*it);;
-    }
-    return temp;
-}
-
-photo* account::getphotobyname(QString tag, QString name) const{
-    for(QVector<photo*>::const_iterator it=_photos.begin(); it!=_photos.end();++it){
-        if((*it)->type()==tag && (*it)->name()==name) return *it;
-    }
-    return 0;
 }
 
 QVector<payment*> account::payments() const{

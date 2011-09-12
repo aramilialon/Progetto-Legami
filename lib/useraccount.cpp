@@ -135,18 +135,6 @@ int useraccount::getadmin() const{
 void useraccount::removeconnection(const account& acc){
     account::removeconnection(acc);
 }
-
-void useraccount::addphoto(QString type, QString name, QString photopath) throw(error){
-    if(account::type()!=0){
-        account::addphoto(photo(type,name,photopath,*this));
-    }
-    else throw error(Photography, "Basic account cannot upload any image");
-}
-
-void useraccount::removephoto(const photo & oldphoto){
-    account::removephoto(oldphoto);
-}
-
 void useraccount::removeexperience(const experience & olexp){
     for(QVector<experience*>::iterator it=_experiences.begin();it!=_experiences.end();++it){
         if(*it==&olexp){
@@ -155,17 +143,4 @@ void useraccount::removeexperience(const experience & olexp){
             return;
         }
     }
-}
-
-QVector<photo*> useraccount::getphotos() const{
-    return account::getphotos();
-}
-
-QVector<photo*> useraccount::getphoto(QString tag, QString name=QString("")) const{
-    if(!name.isEmpty()){
-        QVector<photo*> temp;
-        temp.push_back(account::getphotobyname(tag,name));
-        return temp;
-    }
-    return account::getphotobytag(tag);
 }

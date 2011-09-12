@@ -43,6 +43,7 @@ class modifygroup : public QDialog
     QStandardItemModel* adminremoveModel;
 
     QPushButton* okButton;
+    QPushButton* deleteButton;
     QPushButton* cancelButton;
 
     QGridLayout* layout;
@@ -52,11 +53,13 @@ public:
 
 signals:
     void modified(group*);
+    void deletethis(group*);
 public slots:
     void setRemoveUser(const QModelIndex);
     void setRemoveAdmin(const QModelIndex);
     void setNewAdmin(const QModelIndex);
     void modify() throw(error);
+    void deletegroup();
 };
 
 #endif // MODIFYGROUP_H

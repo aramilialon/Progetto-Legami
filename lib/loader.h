@@ -37,9 +37,6 @@ class loader
 	void loadpayments(QDomNode);
 	void writepayments(const account&, QDomNode&, QDomDocument);
 
-	void loadphotos(QDomNode);
-	void writephotos(const account&, QDomNode&, QDomDocument);
-
 	void loaduser(QDomNode);
 	void loaduserexperiences(QDomNode, account*);
 	void writeuserexp(const account&, QDomNode&, QDomDocument);

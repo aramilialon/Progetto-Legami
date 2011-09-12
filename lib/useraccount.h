@@ -11,7 +11,6 @@
 #include "account.h"
 #include "experience.h"
 #include "legami.h"
-#include "photo.h"
 #include "userinfo.h"
 #include "username.h"
 
@@ -31,17 +30,13 @@ public:
     QVector<experience*> getexperiences() const;
     experience* getexperience(int, QString) const;
     QVector<account*> getconnections() const;
-    QVector<photo*> getphotos() const;
-    QVector<photo*> getphoto(QString, QString) const;
     int getadmin() const;
     void setinfo(QString, QString, int, int, int, QString, QString, QString);
     void setadmin(int);
     virtual void addexperience(const experience&);
     void addconnection(const account&);
-    void addphoto(QString, QString, QString) throw(error);
     void removeconnection(const account&);
     void removeexperience(const experience&);
-    void removephoto(const photo&);
     void setinfo(const userinfo&);
     QVector<account*> search(QString, userinfo*, experience*) const;
 };

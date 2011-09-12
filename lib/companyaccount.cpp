@@ -9,7 +9,6 @@
 #include "companyaccount.h"
 #include "companyinfo.h"
 #include "legami.h"
-#include "photo.h"
 
 #include <QString>
 #include <QVector>
@@ -61,18 +60,6 @@ void companyaccount::setInfo(QString name, QString address, QString cotype){
 void companyaccount::newmessage(const account & sender, const account & recever, QString object, QString text) throw(error){
     if(account::type()!=0) account::newmessage(sender, recever, object, text);
     else throw error(Permission, QString("Basic account cannot send any message"));
-}
-
-void companyaccount::addphoto(QString type, QString name, QString photopath){
-    account::addphoto(photo(type, name, photopath, *this));
-}
-
-void companyaccount::removephoto(const photo & oldphoto){
-    account::removephoto(oldphoto);
-}
-
-QVector<photo*> companyaccount::getphotos() const{
-    return account::getphotos();
 }
 
 void companyaccount::setInfo(const companyinfo & x){
