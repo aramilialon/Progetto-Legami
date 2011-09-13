@@ -1,6 +1,5 @@
 #include "modifyuserprofile.h"
 
-
 #include <QMessageBox>
 
 modifyuserprofile::modifyuserprofile(const useraccount & acc, legami* boss, QWidget *parent):
@@ -27,7 +26,7 @@ modifyuserprofile::modifyuserprofile(const useraccount & acc, legami* boss, QWid
 
 void modifyuserprofile::modified(bool mod){
     if(mod){
-	QMessageBox::information(this, tr("Data Modified!"), tr("The data has been modified successfully."), QMessageBox::Ok, QMessageBox::Ok);
+        QMessageBox::information(this, tr("Data Modified!"), tr("The data has been modified successfully."), QMessageBox::Ok, QMessageBox::Ok);
     }
     else{
 	QMessageBox::warning(this, tr("Error"), tr("Are you sure you are enabled to modify those data?"), QMessageBox::Ok, QMessageBox::Ok);

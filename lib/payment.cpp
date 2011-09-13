@@ -11,8 +11,9 @@
 
 payment::payment(account* requester, int requested, QDate date= QDate::currentDate(), int approved=0) throw(error)
 {
-    QVector<payment*>::const_iterator it=requester->payments().begin();
-    for(;it<requester->payments().end();++it){
+    QVector<payment*> temp=requester->payments();
+    QVector<payment*>::const_iterator it=temp.begin();
+    for(;it<temp.end();++it){
 	if((*it)->approved()==0)
 	    throw error(Payment, QString("There already is a request not accepted yet.\n Please wait until your request is accepted or rejected."));
     }
