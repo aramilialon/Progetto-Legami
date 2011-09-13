@@ -6,6 +6,7 @@
 
 #include <QDialog>
 #include <QPushButton>
+#include <QScrollArea>
 #include <QVBoxLayout>
 #include <QWidget>
 
@@ -20,6 +21,8 @@ class viewotheruser : public QDialog
     QVBoxLayout* layout;
 
     QWidget* MainWidget;
+
+    QScrollArea* scrollArea;
 
     QPushButton* okButton;
 

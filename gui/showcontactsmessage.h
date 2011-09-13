@@ -2,6 +2,7 @@
 #define SHOWCONTACTSMESSAGE_H
 
 #include "../lib/account.h"
+#include "../lib/legami.h"
 #include "showcontacts.h"
 
 #include <QDialog>
@@ -13,6 +14,7 @@ class showcontactsmessage : public QDialog
     Q_OBJECT
 
     account* accToShow;
+    legami* Boss;
 
     QGridLayout* layout;
 
@@ -22,7 +24,7 @@ class showcontactsmessage : public QDialog
     QPushButton* cancelButton;
 
 public:
-    explicit showcontactsmessage(account*, QWidget *parent = 0);
+    explicit showcontactsmessage(account*, legami*, QWidget *parent = 0);
 
 signals:
     void selected(QString);

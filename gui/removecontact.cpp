@@ -10,7 +10,7 @@ removecontact::removecontact(account* acc, legami* boss, QWidget *parent) :
     textLabel= new QLabel(tr("Select the account to remove from your connection list."), this);
     layout->addWidget(textLabel, 0, 0);
 
-    showList= new showcontacts(accToModify, this);
+    showList= new showcontacts(accToModify, Boss, this);
     layout->addWidget(showList, 1, 0);
 
     okButton= new QPushButton(tr("Remove"), this);

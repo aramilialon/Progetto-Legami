@@ -1,10 +1,11 @@
 #include "showcontacts.h"
+#include "viewotheruser.h"
 
 #include <QStandardItem>
 #include <QVector>
 
-showcontacts::showcontacts(account* acc, QWidget *parent) :
-    QWidget(parent), accToShow(acc)
+showcontacts::showcontacts(account* acc, legami* boss, QWidget *parent) :
+    QWidget(parent), accToShow(acc), Boss(boss)
 {
     layout= new QGridLayout(this);
 
@@ -27,6 +28,11 @@ showcontacts::showcontacts(account* acc, QWidget *parent) :
 
     layout->addWidget(contactsView, 1, 0);
 
+    showButton= new QPushButton(tr("Show profile"), this);
+    connect(showButton, SIGNAL(clicked()), this, SLOT(showuser()));
+
+    layout->addWidget(showButton, 2, 0);
+
     setLayout(layout);
 
 }
@@ -34,6 +40,14 @@ showcontacts::showcontacts(account* acc, QWidget *parent) :
 void showcontacts::select(QModelIndex ind){
     QStandardItem* temp= contactsModel->item(ind.row());
     selection= temp->text();
+}
+
+void showcontacts::showuser(){
+    account* usertemp= Boss->basicSearch(selection);
+    if(usertemp){
+	viewotheruser* temp= new viewotheruser(usertemp, Boss, this);
+	temp->show();
+    }
 }
 
 QString showcontacts::sel(){

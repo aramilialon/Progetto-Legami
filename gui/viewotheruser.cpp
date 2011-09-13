@@ -8,10 +8,12 @@
 viewotheruser::viewotheruser(account* acc, legami* boss, QWidget *parent) :
     QDialog(parent), accToShow(acc), Boss(boss)
 {
+    scrollArea= new QScrollArea(this);
     layout= new QVBoxLayout(this);
     if(dynamic_cast<useraccount*>(accToShow)) MainWidget= new showuserprofile(*accToShow, Boss, this);
     else MainWidget= new showcompanyprofile(*accToShow, Boss, this);
-    layout->addWidget(MainWidget);
+    scrollArea->setWidget(MainWidget);
+    layout->addWidget(scrollArea);
 
     okButton= new QPushButton(tr("Close"), this);
     connect(okButton, SIGNAL(clicked()), this, SLOT(ok()));

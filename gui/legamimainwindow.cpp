@@ -12,6 +12,7 @@
 #include "addnewcontact.h"
 #include "addrequestpayment.h"
 #include "adminusers.h"
+#include "admingroups.h"
 #include "legamilogin.h"
 #include "legamimainwindow.h"
 #include "inboxmessages.h"
@@ -276,6 +277,7 @@ void legamimainwindow::setMenuBarRegistered(){
 	AdminUsers= new QAction(tr("Admin Users"), this);
 	connect(AdminUsers, SIGNAL(triggered()), this, SLOT(adminusersad()));
 	AdminGroups= new QAction(tr("Admin Groups"), this);
+	connect(AdminGroups, SIGNAL(triggered()), this, SLOT(admingroupsad()));
 	AdminPayments= new QAction(tr("Admin Payments Requested"), this);
 
 	Admin->addAction(AdminUsers);
@@ -469,7 +471,7 @@ void legamimainwindow::showcontactsself(){
 	scroll=new QScrollArea(this);
 	scroll->resize(this->size());
     }
-    MainWidget= new showcontacts(Boss->accountlogged(), this);
+    MainWidget= new showcontacts(Boss->accountlogged(), Boss, this);
     scroll->setWidget(MainWidget);
     MainWidget->adjustSize();
     scroll->setAlignment(Qt::AlignHCenter);
@@ -514,6 +516,18 @@ void legamimainwindow::adminusersad(){
     delete scroll;
     scroll=new QScrollArea(this);
     MainWidget= new adminusers(Boss, this);
+    scroll->setWidget(MainWidget);
+    MainWidget->adjustSize();
+    scroll->setAlignment(Qt::AlignHCenter);
+    MainWidget->setMinimumWidth(620);
+    setCentralWidget(scroll);
+}
+
+void legamimainwindow::admingroupsad(){
+    delete MainWidget;
+    delete scroll;
+    scroll=new QScrollArea(this);
+    MainWidget= new admingroups(Boss, this);
     scroll->setWidget(MainWidget);
     MainWidget->adjustSize();
     scroll->setAlignment(Qt::AlignHCenter);

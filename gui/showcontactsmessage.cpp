@@ -1,11 +1,11 @@
 #include "showcontactsmessage.h"
 
-showcontactsmessage::showcontactsmessage(account* acc, QWidget *parent) :
-    QDialog(parent), accToShow(acc)
+showcontactsmessage::showcontactsmessage(account* acc, legami* boss, QWidget *parent) :
+    QDialog(parent), accToShow(acc), Boss(boss)
 {
     layout= new QGridLayout(this);
 
-    contactsShown= new showcontacts(accToShow, this);
+    contactsShown= new showcontacts(accToShow, Boss, this);
     layout->addWidget(contactsShown, 0, 0);
 
     okButton= new QPushButton(tr("Select"), this);

@@ -92,7 +92,7 @@ void newmessage::send(){
 }
 
 void newmessage::changeReceverPressed(){
-    showcontactsmessage* temp= new showcontactsmessage(sender, this);
+    showcontactsmessage* temp= new showcontactsmessage(sender, Boss, this);
     connect(temp, SIGNAL(selected(QString)), this, SLOT(changeAddressee(QString)));
     temp->show();
 }
