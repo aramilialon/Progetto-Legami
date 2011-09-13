@@ -7,8 +7,9 @@
 
 #include <QFormLayout>
 #include <QGroupBox>
-#include <QPushButton>
 #include <QLineEdit>
+#include <QPushButton>
+#include <QRadioButton>
 
 class modifyusern : public QGroupBox
 {
@@ -21,6 +22,8 @@ class modifyusern : public QGroupBox
 
     QLineEdit* usernLineEdit;
     QLineEdit* passwLineEdit;
+    QRadioButton* yesadminRadio;
+    QRadioButton* noadminRadio;
 
     QPushButton* okButton;
     QPushButton* cancelButton;

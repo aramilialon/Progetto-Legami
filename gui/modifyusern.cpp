@@ -16,6 +16,15 @@ modifyusern::modifyusern(const account& acc, legami* boss, QWidget *parent) :
     passwLineEdit->setEchoMode(QLineEdit::Password);
     layout->addRow(tr("Password:"), passwLineEdit);
 
+    if(dynamic_cast<useraccount*>(accToModify) && dynamic_cast<useraccount*>(Boss->accountlogged())->getadmin()==1 && accToModify!=Boss->accountlogged()){
+	yesadminRadio= new QRadioButton(tr("Yes"), this);
+	noadminRadio= new QRadioButton(tr("No"), this);
+	layout->addRow(tr("Admin"), yesadminRadio);
+	layout->addRow(noadminRadio);
+	if(dynamic_cast<useraccount*>(accToModify)->getadmin()==1) yesadminRadio->setChecked(true);
+	else noadminRadio->setChecked(true);
+    }
+
     okButton= new QPushButton(tr("Modify"), this);
     layout->addWidget(okButton);
 
@@ -30,6 +39,18 @@ modifyusern::modifyusern(const account& acc, legami* boss, QWidget *parent) :
 
 void modifyusern::modify(){
     accToModify->setuser(usernLineEdit->text(), passwLineEdit->text());
+    if(dynamic_cast<useraccount*>(accToModify) && dynamic_cast<useraccount*>(Boss->accountlogged())->getadmin()==1){
+	if(yesadminRadio->isChecked()){
+	    dynamic_cast<useraccount*>(accToModify)->setadmin(1);
+	    dynamic_cast<useraccount*>(accToModify)->setype(2);
+	}
+	else{
+	    dynamic_cast<useraccount*>(accToModify)->setadmin(0);
+	    payment* temp= dynamic_cast<useraccount*>(accToModify)->getlastpaymentapproved();
+	    if(temp) dynamic_cast<useraccount*>(accToModify)->setype(temp->request());
+	    else dynamic_cast<useraccount*>(accToModify)->setype(0);
+	}
+    }
     emit modified(true);
 }
 

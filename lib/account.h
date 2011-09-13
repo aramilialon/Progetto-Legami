@@ -47,6 +47,7 @@ public:
     QVector<payment*> payments();
     payment* getpayment(const payment&) const;
     virtual void addpayment(const payment&) throw(error);
+    payment* getlastpaymentapproved();
 
     virtual QVector<account*> getconnections() const;
     virtual void addconnection(const account&) throw(error);

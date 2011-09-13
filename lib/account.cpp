@@ -102,3 +102,17 @@ account* account::getconnection(QString usern){
     }
     return 0;
 }
+
+payment* account::getlastpaymentapproved(){
+    QVector<payment*>::iterator it=_payments.begin();
+    QDate* temp=new QDate();
+    payment* payTemp=0;
+    for(;it<_payments.end();++it){
+	if((*it)->date()>(*temp) && (*it)->approved()==1){
+	    payTemp=*it;
+	    delete temp;
+	    temp->setDate((*it)->date().year(), (*it)->date().month(), (*it)->date().day());
+	}
+    }
+    return payTemp;
+}
