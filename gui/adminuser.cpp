@@ -10,7 +10,9 @@ adminuser::adminuser(account* acc, legami* boss, QWidget *parent) :
 {
     layout= new QGridLayout(this);
 
-    if(dynamic_cast<useraccount*>(accToModify)) modifyWidget= new modifyuserprofile(*(dynamic_cast<useraccount*>(accToModify)), Boss, this);
+    if(dynamic_cast<useraccount*>(accToModify)){ modifyWidget= new modifyuserprofile(*(dynamic_cast<useraccount*>(accToModify)), Boss, this);
+	connect(modifyWidget, SIGNAL(modifiedlist()), this, SLOT(modifiedlist()));
+    }
     else modifyWidget= new modifycompanyprofile(dynamic_cast<companyaccount*>(accToModify), Boss, this);
 
     mainWidget= new QScrollArea(this);
@@ -21,4 +23,11 @@ adminuser::adminuser(account* acc, legami* boss, QWidget *parent) :
     connect(finishButton, SIGNAL(clicked()), this, SLOT(close()));
     layout->addWidget(finishButton);
 
+}
+
+void adminuser::modifiedlist(){
+    delete modifyWidget;
+    modifyWidget= new modifyuserprofile(*(dynamic_cast<useraccount*>(accToModify)), Boss, this);
+    connect(modifyWidget, SIGNAL(modifiedlist()), this, SLOT(modifiedlist()));
+    mainWidget->setWidget(modifyWidget);
 }

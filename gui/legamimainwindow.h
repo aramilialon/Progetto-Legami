@@ -109,6 +109,7 @@ private slots:
     void removecontactself();
     void requestnewpayment();
     void shopaymentsself();
+    void adminusersad();
 };
 
 #endif // LEGAMIMAINWINDOW_H

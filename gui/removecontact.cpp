@@ -27,7 +27,7 @@ removecontact::removecontact(account* acc, legami* boss, QWidget *parent) :
 void removecontact::modify(){
     account* temp=Boss->basicSearch(showList->sel());
     if(!temp){
-	QMessageBox::warning(this, tr("Error"), tr("Account not found"), QMessageBox::Ok, QMessageBox::Ok);
+	QMessageBox::information(this, tr("Error"), tr("Account not found"), QMessageBox::Ok, QMessageBox::Ok);
     }
     else{
 	accToModify->removeconnection(*temp);

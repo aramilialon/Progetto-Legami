@@ -30,7 +30,7 @@ public:
 signals:
 
 public slots:
-
+    void modifiedlist();
 };
 
 #endif // ADMINUSER_H

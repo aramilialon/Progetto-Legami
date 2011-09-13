@@ -29,11 +29,8 @@ modifyusern::modifyusern(const account& acc, legami* boss, QWidget *parent) :
 }
 
 void modifyusern::modify(){
-    if(Boss->accountlogged()==accToModify || dynamic_cast<useraccount*>(accToModify)->getadmin()){
     accToModify->setuser(usernLineEdit->text(), passwLineEdit->text());
     emit modified(true);
-    }
-    else emit modified(false);
 }
 
 void modifyusern::reset(){

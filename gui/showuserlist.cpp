@@ -1,9 +1,13 @@
 #include "../lib/account.h"
+
 #include "showuserlist.h"
+
+#include <QGridLayout>
 
 showuserlist::showuserlist(legami* boss, QWidget *parent) :
     QWidget(parent), Boss(boss)
 {
+    QGridLayout* layout= new QGridLayout(this);
     usersListView= new QListView(this);
 
     usersModel= new QStandardItemModel(this);
@@ -17,6 +21,10 @@ showuserlist::showuserlist(legami* boss, QWidget *parent) :
     }
     usersListView->setModel(usersModel);
     connect(usersListView, SIGNAL(clicked(QModelIndex)), this, SLOT(modifySelected(QModelIndex)));
+
+    layout->addWidget(usersListView, 0, 0);
+
+    setLayout(layout);
 }
 
 QString showuserlist::selected(){

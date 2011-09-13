@@ -40,11 +40,8 @@ modifyuserinfos::modifyuserinfos(const useraccount & acc, legami* boss, QWidget 
 }
 
 void modifyuserinfos::modify(){
-    if(Boss->accountlogged()==accToModify || dynamic_cast<useraccount*>(accToModify)->getadmin()){
 	accToModify->setinfo(nameLineEdit->text(), surnameLineEdit->text(), dateDateEdit->date().year(), dateDateEdit->date().month(), dateDateEdit->date().day(), placeLineEdit->text(), telnumLineEdit->text(), emailLineEdit->text());
 	emit modified(true);
-    }
-    else emit modified(false);
 }
 
 void modifyuserinfos::reset(){
