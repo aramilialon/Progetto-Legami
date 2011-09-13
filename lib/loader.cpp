@@ -531,8 +531,8 @@ void loader::writemessages(QDomNode& mess, QDomDocument root){
 }
 
 void loader::writepayments(const account & acc, QDomNode & payments, QDomDocument root){
-    QVector<payment*> paytemp= acc.payments();
-    for(QVector<payment*>::const_iterator it=paytemp.begin(); it!=paytemp.end();++it){
+    QVector<payment*> paytemp= const_cast<account*>(&acc)->payments();
+    for(QVector<payment*>::iterator it=paytemp.begin(); it!=paytemp.end();++it){
         QDomNode payment= root.createElement(QString("payment"));
         payments.appendChild(payment);
 

@@ -30,13 +30,18 @@ addrequestpayment::addrequestpayment(account* acc, legami* boss, QWidget *parent
     if(accToModify->type()==0){
 	businessButton= new QPushButton(tr("Request Business Upgrade"), this);
 	connect(businessButton, SIGNAL(clicked()), this, SLOT(createBusiness()));
+	executiveButton= new QPushButton(tr("Request Executive Upgrade"), this);
+	connect(executiveButton, SIGNAL(clicked()), this, SLOT(createExecutive()));
     }
     else if(accToModify->type()==1){
 	businessButton= 0;
+	executiveButton= new QPushButton(tr("Request Executive Upgrade"), this);
+	connect(executiveButton, SIGNAL(clicked()), this, SLOT(createExecutive()));
     }
-
-    executiveButton= new QPushButton(tr("Request Executive Upgrade"), this);
-    connect(executiveButton, SIGNAL(clicked()), this, SLOT(createExecutive()));
+    else{
+	businessButton=0;
+	executiveButton=0;
+    }
 
     layout->addWidget(businessLabel, 1, 0);
     layout->addWidget(businessdescrLabel, 1, 1);

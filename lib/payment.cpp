@@ -20,7 +20,7 @@ payment::payment(account* requester, int requested, QDate date= QDate::currentDa
     _request=requested;
     _dateOfRequest=date;
     _approved=approved;
-    if(_approved) _requester->setype(_request);
+    if(_approved==1) _requester->setype(_request);
 }
 
 account* payment::requester() const{

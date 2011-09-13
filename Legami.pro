@@ -49,7 +49,8 @@ lib/username.h \
     gui/addrequestpayment.h \
     gui/adminlistuser.h \
     gui/showuserlist.h \
-    gui/admingroups.h
+    gui/admingroups.h \
+    gui/adminpayments.h
 
 SOURCES +=     gui/addnewgroup.cpp \
     gui/legamilogin.cpp \
@@ -102,13 +103,16 @@ lib/username.cpp \
     gui/addrequestpayment.cpp \
     gui/adminlistuser.cpp \
     gui/showuserlist.cpp \
-    gui/admingroups.cpp
+    gui/admingroups.cpp \
+    gui/adminpayments.cpp
 
 
 QT += xml
 FORMS +=   
 TRANSLATIONS += translation/legami_ita.ts \
     translation/legami_eng.ts
+
+
 
 
 

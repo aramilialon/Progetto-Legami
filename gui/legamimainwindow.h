@@ -111,6 +111,7 @@ private slots:
     void shopaymentsself();
     void adminusersad();
     void admingroupsad();
+    void adminpaymentsleft();
 };
 
 #endif // LEGAMIMAINWINDOW_H

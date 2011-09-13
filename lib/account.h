@@ -44,7 +44,7 @@ public:
 
     legami* boss() const;
 
-    QVector<payment*> payments() const;
+    QVector<payment*> payments();
     payment* getpayment(const payment&) const;
     virtual void addpayment(const payment&) throw(error);
 

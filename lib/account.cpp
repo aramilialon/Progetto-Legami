@@ -74,7 +74,7 @@ void account::newmessage(const account& sender, const account& rec, QString obj,
     _boss->addMessage(*mess);
 }
 
-QVector<payment*> account::payments() const{
+QVector<payment*> account::payments(){
     return _payments;
 }
 

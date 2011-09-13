@@ -29,7 +29,8 @@ showlistpayments::showlistpayments(account* acc, QWidget *parent) :
 	else requestTemp= new QStandardItem(tr("Executive"));
 
 	QStandardItem* apprTemp=0;
-	if(payTemp->approved()) apprTemp= new QStandardItem(tr("Approved)"));
+	if(payTemp->approved()==1) apprTemp= new QStandardItem(tr("Approved"));
+	else if(payTemp->approved()==-1) apprTemp= new QStandardItem(tr("Rejected"));
 	else apprTemp= new QStandardItem(tr("Not Approved"));
 
 	dateList.push_back(dateTemp);
