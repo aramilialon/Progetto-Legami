@@ -48,9 +48,13 @@ QVector<account*> account::getconnections() const{
     return _connection;
 }
 
-void account::addconnection (const account& a){
+void account::addconnection (const account& a) throw(error){
     account* temp=const_cast<account*>(&a);
-    _connection.push_back(temp);
+    if(!getconnection(temp->user()->user())){
+	_connection.push_back(temp);
+    }
+    else throw error(Connection, QString("You are already connected with this user"));
+
 }
 
 void account::removeconnection(const account& a){
@@ -58,10 +62,10 @@ void account::removeconnection(const account& a){
     QVector<account*>::iterator it=_connection.begin();
     bool finish=false;
     for(;it!=_connection.end()&&!finish;++it){
-        if(*it==temp){
-            _connection.erase(it);
-            finish=true;
-        }
+	if(*it==temp){
+	    _connection.erase(it);
+	    finish=true;
+	}
     }
 }
 
@@ -71,21 +75,30 @@ void account::newmessage(const account& sender, const account& rec, QString obj,
 }
 
 QVector<payment*> account::payments() const{
-	return _payments;
+    return _payments;
 }
 
 payment* account::getpayment(const payment & paytemp) const{
-	for(QVector<payment*>::const_iterator it=_payments.begin(); it!=_payments.end();++it){
-		if((*it)->request()==paytemp.request() && (*it)->date()==paytemp.date() && (*it)->approved()==paytemp.approved()) return *it;
-	}
-	return 0;
+    for(QVector<payment*>::const_iterator it=_payments.begin(); it!=_payments.end();++it){
+	if((*it)->request()==paytemp.request() && (*it)->date()==paytemp.date() && (*it)->approved()==paytemp.approved()) return *it;
+    }
+    return 0;
 }
 
 void account::addpayment(const payment & newpay) throw(error){
-	for(QVector<payment*>::const_iterator it=_payments.begin(); it!=_payments.end();++it){
-		if((*it)->request()==newpay.request() && (*it)->approved()==0){
-			throw error(Payment, QString("Another payment of the same type has been already requested"));
-		}
+    for(QVector<payment*>::const_iterator it=_payments.begin(); it!=_payments.end();++it){
+	if((*it)->request()==newpay.request() && (*it)->approved()==0){
+	    throw error(Payment, QString("Another payment of the same type has been already requested"));
 	}
-	_payments.push_back(const_cast<payment*>(&newpay));
+    }
+    _payments.push_back(const_cast<payment*>(&newpay));
+}
+
+account* account::getconnection(QString usern){
+    QVector<account*>::iterator it=_connection.begin();
+    account* temp=_boss->basicSearch(usern);
+    for(;it<_connection.end();++it){
+	if((*it)==temp) return (*it);
+    }
+    return 0;
 }

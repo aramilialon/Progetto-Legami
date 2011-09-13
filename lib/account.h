@@ -29,6 +29,7 @@ class account
     QVector<account*> _connection;
     QVector<payment*> _payments;
 
+    account* getconnection(QString);
 protected:
     username* _user;
 public:
@@ -48,7 +49,7 @@ public:
     virtual void addpayment(const payment&) throw(error);
 
     virtual QVector<account*> getconnections() const;
-    virtual void addconnection(const account&);
+    virtual void addconnection(const account&) throw(error);
     virtual void removeconnection(const account&);
 
     virtual void newmessage(const account&, const account&, QString, QString);

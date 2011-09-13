@@ -25,8 +25,13 @@ useraccount::~useraccount(){
     _experiences.erase(_experiences.begin(), _experiences.end());
 }
 
-void useraccount::addconnection(const account& a) {
-    account::addconnection(a);
+void useraccount::addconnection(const account& a) throw(error) {
+    try{
+	account::addconnection(a);
+    }
+    catch(error er1){
+	throw error(er1.type(), er1.comment());
+    }
 }
 
 void useraccount::setinfo(QString a, QString b, int c, int d, int e, QString f, QString g, QString h){

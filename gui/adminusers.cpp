@@ -1,6 +1,9 @@
 #include "adminusers.h"
 
-adminusers::adminusers(QWidget *parent) :
-    QWidget(parent)
+adminusers::adminusers(legami* boss, QWidget *parent) :
+    QWidget(parent), Boss(boss)
 {
+
 }
+
+void adminusers::modify(){}

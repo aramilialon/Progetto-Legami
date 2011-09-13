@@ -376,7 +376,7 @@ void legamimainwindow::usermodified(){
 	MainWidget->setMinimumWidth(620);
 	setCentralWidget(scroll);
     }
-    else QMessageBox::information(this, tr("Error!"), tr(" asdasdasd successfully logged out."), QMessageBox::Ok, QMessageBox::Ok);
+    else QMessageBox::information(this, tr("Error!"), tr(" There has been a error and the program could not recognize the type of the account."), QMessageBox::Ok, QMessageBox::Ok);
 }
 
 void legamimainwindow::showgroups(){

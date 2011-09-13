@@ -1,3 +1,5 @@
+#include "../lib/error.h"
+
 #include "addnewcontact.h"
 
 #include <QMessageBox>
@@ -27,8 +29,13 @@ void addnewcontact::addContact(){
 	QMessageBox::warning(this, tr("Error"), tr("User not found"), QMessageBox::Ok, QMessageBox::Ok);
     }
     else{
-	accToModify->addconnection(*temp);
-	QMessageBox::information(this, tr("Ok!"), tr("User succefully added to your contact list."), QMessageBox::Ok, QMessageBox::Ok);
+	try{
+	    accToModify->addconnection(*temp);
+	    QMessageBox::information(this, tr("Ok!"), tr("User succefully added to your contact list."), QMessageBox::Ok, QMessageBox::Ok);
+	}
+	catch(error er1){
+	    QMessageBox::warning(this, tr("Error"), er1.comment(), QMessageBox::Ok, QMessageBox::Ok);
+	}
     }
 
     close();

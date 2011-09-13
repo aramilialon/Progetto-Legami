@@ -34,7 +34,7 @@ public:
     void setinfo(QString, QString, int, int, int, QString, QString, QString);
     void setadmin(int);
     virtual void addexperience(const experience&);
-    void addconnection(const account&);
+    void addconnection(const account&) throw(error);
     void removeconnection(const account&);
     void removeexperience(const experience&);
     void setinfo(const userinfo&);
