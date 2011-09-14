@@ -110,7 +110,7 @@ void legamimainwindow::setMenuBarUnregistered(){
     if(!FileBar) FileBar= new QMenuBar(this);
     else{
 	File->clear();
-	Config->clear();
+        Language->clear();
 	Account->clear();
 	Contacts->clear();
 	Groups->clear();
@@ -119,7 +119,7 @@ void legamimainwindow::setMenuBarUnregistered(){
 	if(Admin) Admin->clear();
 	About->clear();
 	delete File;
-	delete Config;
+        delete Language;
 	delete Account;
 	delete Contacts;
 	delete Groups;
@@ -210,9 +210,11 @@ void legamimainwindow::setMenuBarRegistered(){
     File->addAction(Logout);
     File->addAction(Exit);
 
-    Config= new QMenu(tr("Config"), this);
-    ConfigLegami= new QAction(tr("Preferences"), this);
-    Config->addAction(ConfigLegami);
+    Language= new QMenu(tr("Language"), this);
+    Italian= new QAction(tr("Italian"), this);
+    English= new QAction(tr("English"), this);
+    Language->addAction(Italian);
+    Language->addAction(English);
 
     Account= new QMenu(tr("Account"), this);
     ViewProfileSelf= new QAction(tr("View Profile"), this);
@@ -256,6 +258,9 @@ void legamimainwindow::setMenuBarRegistered(){
     Messages->addAction(NewMessage);
     Messages->addAction(Outbox);
 
+    Search= new QAction(tr("Search"), this);
+    connect(Search, SIGNAL(triggered()), this, SLOT(search()));
+
     Payments= new QMenu(tr("Upgrades"), this);
     RequestPayment= new QAction(tr("Request Payments"), this);
     connect(RequestPayment, SIGNAL(triggered()), this, SLOT(requestnewpayment()));
@@ -271,6 +276,7 @@ void legamimainwindow::setMenuBarRegistered(){
     FileBar->addMenu(Contacts);
     FileBar->addMenu(Groups);
     FileBar->addMenu(Messages);
+    FileBar->addAction(Search);
 
     useraccount* temp= dynamic_cast<useraccount*>(Boss->accountlogged());
     if(temp && temp->getadmin()==1){
@@ -295,7 +301,7 @@ void legamimainwindow::setMenuBarRegistered(){
 	FileBar->addMenu(Payments);
     }
 
-    FileBar->addMenu(Config);
+    FileBar->addMenu(Language);
     FileBar->addMenu(About);
 }
 
@@ -548,3 +554,5 @@ void legamimainwindow::adminpaymentsleft(){
     MainWidget->setMinimumWidth(620);
     setCentralWidget(scroll);
 }
+
+void legamimainwindow::search(){}

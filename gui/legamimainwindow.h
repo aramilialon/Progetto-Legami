@@ -34,8 +34,9 @@ class legamimainwindow : public QMainWindow
     QAction* Logout;
     QAction* Exit;
 
-    QMenu* Config;
-    QAction* ConfigLegami;
+    QMenu* Language;
+    QAction* Italian;
+    QAction* English;
 
     QMenu* Account;
     QAction* ViewProfileSelf;
@@ -55,6 +56,8 @@ class legamimainwindow : public QMainWindow
     QAction* Inbox;
     QAction* Outbox;
     QAction* NewMessage;
+
+    QAction* Search;
 
     QMenu* Payments;
     QAction* RequestPayment;
@@ -112,6 +115,7 @@ private slots:
     void adminusersad();
     void admingroupsad();
     void adminpaymentsleft();
+    void search();
 };
 
 #endif // LEGAMIMAINWINDOW_H

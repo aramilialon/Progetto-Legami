@@ -50,8 +50,9 @@ adminpayments::adminpayments(legami* boss, QWidget *parent) :
 	else requestTemp= new QStandardItem(tr("Executive"));
 
 	QStandardItem* apprTemp=0;
-	if(payTemp->approved()) apprTemp= new QStandardItem(tr("Approved)"));
-	else apprTemp= new QStandardItem(tr("Not Approved"));
+        if(payTemp->approved()==1) apprTemp= new QStandardItem(tr("Approved"));
+        else if(payTemp->approved()==0) apprTemp= new QStandardItem(tr("Not Approved"));
+        else apprTemp= new QStandardItem(tr("Rejected"));
 
 	dateList.push_back(dateTemp);
 	userList.push_back(requesterTemp);

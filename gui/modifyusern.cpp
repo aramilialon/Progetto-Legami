@@ -2,8 +2,6 @@
 
 #include "modifyusern.h"
 
-#include <QMessageBox>
-
 modifyusern::modifyusern(const account& acc, legami* boss, QWidget *parent) :
     QGroupBox(tr("Account Data"), parent), accToModify(const_cast<account*>(&acc)), Boss(boss)
 {
@@ -49,7 +47,6 @@ void modifyusern::modify(){
         else{
             dynamic_cast<useraccount*>(accToModify)->setadmin(0);
             payment* temp= dynamic_cast<useraccount*>(accToModify)->getlastpaymentapproved();
-            QMessageBox::information(this, QString(), QString(), QMessageBox::Ok, QMessageBox::Ok);
             if(temp) dynamic_cast<useraccount*>(accToModify)->setype(temp->request());
             else dynamic_cast<useraccount*>(accToModify)->setype(0);
         }
