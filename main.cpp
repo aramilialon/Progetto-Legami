@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
     QApplication app(argc,argv);
 
 	QTranslator* translator= new QTranslator();
-        translator->load("legami_ita");
+        translator->load("./translation/legami_ita");
 	app.installTranslator(translator);
 
     legamimainwindow legmainwin;
