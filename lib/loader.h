@@ -22,31 +22,31 @@ class loader
     legami* _boss;
     QString _db;
 
-	void loadcompanyinfo(QDomNode, account*);
-	void writecompanyinfo(const account&, QDomNode&, QDomDocument);
+    void loadcompanyinfo(QDomNode, account*);
+    void writecompanyinfo(const account&, QDomNode&, QDomDocument);
 
-	void loadconnections(QDomNode);
-	void writeconnections(QDomNode&, QDomDocument);
+    void loadconnections(QDomNode);
+    void writeconnections(QDomNode&, QDomDocument);
 
-	void loadgroups(QDomNode);
-	void writegroups(QDomNode&, QDomDocument);
+    void loadgroups(QDomNode);
+    void writegroups(QDomNode&, QDomDocument);
 
-	void loadmessages(QDomNode);
-	void writemessages(QDomNode&, QDomDocument);
+    void loadmessages(QDomNode);
+    void writemessages(QDomNode&, QDomDocument);
 
-	void loadpayments(QDomNode);
-	void writepayments(const account&, QDomNode&, QDomDocument);
+    void loadpayments(QDomNode);
+    void writepayments(const account&, QDomNode&, QDomDocument);
 
-	void loaduser(QDomNode);
-	void loaduserexperiences(QDomNode, account*);
-	void writeuserexp(const account&, QDomNode&, QDomDocument);
+    void loaduser(QDomNode);
+    void loaduserexperiences(QDomNode, account*);
+    void writeuserexp(const account&, QDomNode&, QDomDocument);
 
-	void loaduserinfo(QDomNode, account*);
-	void writeusers(QDomNode&, QDomDocument);
+    void loaduserinfo(QDomNode, account*);
+    void writeusers(QDomNode&, QDomDocument);
 
-	void writeuserinfo(const account&, QDomNode&, QDomDocument);
+    void writeuserinfo(const account&, QDomNode&, QDomDocument);
 
-	void writeaccdata(const account&, QString, QDomNode&, QDomDocument);
+    void writeaccdata(const account&, QString, QDomNode&, QDomDocument);
 
 public:
     loader(QString, const legami&);

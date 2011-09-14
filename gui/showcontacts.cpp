@@ -20,8 +20,8 @@ showcontacts::showcontacts(account* acc, legami* boss, QWidget *parent) :
     QStandardItem* contactsParentItem= contactsModel->invisibleRootItem();
 
     for(QVector<account*>::iterator it=listTemp.begin();it<listTemp.end();++it){
-	QStandardItem* temp= new QStandardItem((*it)->user()->user());
-	contactsParentItem->appendRow(temp);
+        QStandardItem* temp= new QStandardItem((*it)->user()->user());
+        contactsParentItem->appendRow(temp);
     }
     contactsView->setModel(contactsModel);
     connect(contactsView, SIGNAL(clicked(QModelIndex)), this, SLOT(select(QModelIndex)));
@@ -45,8 +45,8 @@ void showcontacts::select(QModelIndex ind){
 void showcontacts::showuser(){
     account* usertemp= Boss->basicSearch(selection);
     if(usertemp){
-	viewotheruser* temp= new viewotheruser(usertemp, Boss, this);
-	temp->show();
+        viewotheruser* temp= new viewotheruser(usertemp, Boss, this);
+        temp->show();
     }
 }
 

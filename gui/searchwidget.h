@@ -1,3 +1,10 @@
+/*
+  File: searchwidget.h
+  di Maggiolo Giorgio (610338)
+  Email: gimaggio@studenti.math.unipd.it
+  Progetto: Legami, un progetto per Prog. Ogg.
+*/
+
 #ifndef SEARCHWIDGET_H
 #define SEARCHWIDGET_H
 
@@ -17,10 +24,9 @@
 class searchwidget : public QWidget
 {
     Q_OBJECT
+
     legami* Boss;
     account* Searcher;
-
-    QGridLayout* layout;
 
     QGroupBox* usernsearchBox;
     QLineEdit* usernLineEdit;
@@ -37,7 +43,10 @@ class searchwidget : public QWidget
     QListView* usersListView;
     QStandardItemModel* usersModel;
 
+
     QString userSelected;
+
+    QGridLayout* layout;
 
 public:
     explicit searchwidget(account*, legami*, QWidget *parent = 0);
@@ -48,6 +57,7 @@ public slots:
     void search();
     void modifySelected(QModelIndex);
     void showSelected();
+
 };
 
 #endif // SEARCHWIDGET_H

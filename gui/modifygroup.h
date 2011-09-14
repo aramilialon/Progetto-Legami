@@ -1,3 +1,10 @@
+/*
+  File: modifygroup.h
+  di Maggiolo Giorgio (610338)
+  Email: gimaggio@studenti.math.unipd.it
+  Progetto: Legami, un progetto per Prog. Ogg.
+*/
+
 #ifndef MODIFYGROUP_H
 #define MODIFYGROUP_H
 
@@ -36,10 +43,12 @@ class modifygroup : public QDialog
     QLineEdit* descrLineEdit;
 
     QListView* userremoveList;
-    QListView* adminremoveList;
-    QListView* newadminList;
     QStandardItemModel* userremoveModel;
+
+    QListView* adminremoveList;
     QStandardItemModel* newadminModel;
+
+    QListView* newadminList;
     QStandardItemModel* adminremoveModel;
 
     QPushButton* okButton;
@@ -54,6 +63,7 @@ public:
 signals:
     void modified(group*);
     void deletethisgroup();
+
 public slots:
     void setRemoveUser(const QModelIndex);
     void setRemoveAdmin(const QModelIndex);

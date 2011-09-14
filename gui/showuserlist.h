@@ -1,3 +1,10 @@
+/*
+  File: showuserlist.h
+  di Maggiolo Giorgio (610338)
+  Email: gimaggio@studenti.math.unipd.it
+  Progetto: Legami, un progetto per Prog. Ogg.
+*/
+
 #ifndef SHOWUSERLIST_H
 #define SHOWUSERLIST_H
 
@@ -18,6 +25,7 @@ class showuserlist : public QWidget
     QStandardItemModel* usersModel;
 
     QString userSelected;
+
 public:
     explicit showuserlist(legami*, QWidget *parent = 0);
 
@@ -26,6 +34,7 @@ signals:
 
 public slots:
     void modifySelected(QModelIndex);
+
 };
 
 #endif // SHOWUSERLIST_H

@@ -178,18 +178,18 @@ void loader::loadpayments(QDomNode payments){
     QDomNode temp=payments.firstChild();
     if(!temp.isNull() && temp.nodeName()==QString("payment")){
         while(!temp.isNull()){
-	    QString requester1= temp.firstChildElement(QString("applicant")).text();
-	    int typetemp= temp.firstChildElement(QString("typerequested")).text().toInt(),
+            QString requester1= temp.firstChildElement(QString("applicant")).text();
+            int typetemp= temp.firstChildElement(QString("typerequested")).text().toInt(),
                     daytemp= temp.firstChildElement(QString("dayrequest")).text().toInt(),
                     monthtemp= temp.firstChildElement(QString("monthrequest")).text().toInt(),
                     yeartemp= temp.firstChildElement(QString("yearrequest")).text().toInt(),
                     approvedtemp= temp.firstChildElement(QString("approved")).text().toInt();
-	    account* retemp=_boss->basicSearch(requester1);
-	    if(retemp){
-		payment* paytemp= new payment(retemp, typetemp, QDate(yeartemp, monthtemp, daytemp), approvedtemp);
-		retemp->addpayment(*paytemp);
+            account* retemp=_boss->basicSearch(requester1);
+            if(retemp){
+                payment* paytemp= new payment(retemp, typetemp, QDate(yeartemp, monthtemp, daytemp), approvedtemp);
+                retemp->addpayment(*paytemp);
             }
-	    temp=temp.nextSibling();
+            temp=temp.nextSibling();
         }
     }
 }
@@ -204,13 +204,13 @@ void loader::loadgroups(QDomNode groups){
             QDomElement memberslistnode=temp.namedItem(QString("members")).firstChildElement(QString("member"));
             while(!memberslistnode.isNull()){
                 userlisttemp.push_back(memberslistnode.text());
-		memberslistnode= memberslistnode.nextSiblingElement(QString("member"));
+                memberslistnode= memberslistnode.nextSiblingElement(QString("member"));
             }
             QVector<QString>adminlisttemp;
             QDomElement adminslistnode=temp.namedItem(QString("admins")).firstChildElement(QString("admin"));
             while(!adminslistnode.isNull()){
                 adminlisttemp.push_back(adminslistnode.text());
-		adminslistnode= adminslistnode.nextSiblingElement(QString("admin"));
+                adminslistnode= adminslistnode.nextSiblingElement(QString("admin"));
             }
             QVector<account*> memberslist;
             QVector<account*> adminslist;
@@ -225,17 +225,17 @@ void loader::loadgroups(QDomNode groups){
                 if (temp) adminslist.push_back(temp);
             }
             group* newgroup= new group(name, descr);
-	    QVector<account*>::const_iterator temp1=memberslist.begin();
-	    for(;temp1!=memberslist.end();++temp1){
-		newgroup->addmember((**temp1));
+            QVector<account*>::const_iterator temp1=memberslist.begin();
+            for(;temp1!=memberslist.end();++temp1){
+                newgroup->addmember((**temp1));
             }
-	    temp1=adminslist.begin();
-	    for(;temp1!=adminslist.end();++temp1){
-		newgroup->addadmin((*temp1)->user()->user());
+            temp1=adminslist.begin();
+            for(;temp1!=adminslist.end();++temp1){
+                newgroup->addadmin((*temp1)->user()->user());
             }
             _boss->addGroup(*newgroup);
-	    temp=temp.nextSibling();
-	}
+            temp=temp.nextSibling();
+        }
     }
 }
 
@@ -268,7 +268,7 @@ void loader::writedb() throw(error){
             connections=root->createElement(QString("connections")),
             groups=root->createElement(QString("groups")),
             messages=root->createElement(QString("messages")),
-	    payments= root->createElement(QString("payments"));
+            payments= root->createElement(QString("payments"));
     writeusers(users, *root);
     writeconnections(connections, *root);
     writegroups(groups,*root);
@@ -442,21 +442,21 @@ void loader::writeconnections(QDomNode& connections, QDomDocument root){
     QVector<account*> userlist=_boss->_userdb;
     QVector<account*>::const_iterator it=userlist.begin();
     if(!userlist.isEmpty()){
-	for(;it<userlist.end();++it){
+        for(;it<userlist.end();++it){
             QString userapplicant=(*it)->user()->user();
             QVector<account*> connlist=(*it)->getconnections();
             QVector<account*>::const_iterator it1=connlist.begin();
-	    for(;it1<connlist.end();++it1){
+            for(;it1<connlist.end();++it1){
                 QDomNode connection=root.createElement(QString("connection"));
                 connections.appendChild(connection);
                 QDomNode applicant=root.createElement(QString("applicant"));
                 QDomText applicanttemp=root.createTextNode(userapplicant);
                 applicant.appendChild(applicanttemp);
                 connection.appendChild(applicant);
-		QDomText userapplied=root.createTextNode((*it1)->user()->user());
+                QDomText userapplied=root.createTextNode((*it1)->user()->user());
                 QDomNode applied=root.createElement(QString("applied"));
                 applied.appendChild(userapplied);
-		connection.appendChild(applied);
+                connection.appendChild(applied);
             }
         }
     }
@@ -516,12 +516,12 @@ void loader::writemessages(QDomNode& mess, QDomDocument root){
         message.appendChild(object);
         message.appendChild(text);
         message.appendChild(read);
-	QString readed;
+        QString readed;
         QDomText usersender=root.createTextNode((*it)->sender()->user()->user()),
                 userrecever=root.createTextNode((*it)->recever()->user()->user()),
                 objecttemp=root.createTextNode((*it)->object()),
                 texttemp=root.createTextNode((*it)->text()),
-		readtemp=root.createTextNode(readed.setNum((*it)->read()));
+                readtemp=root.createTextNode(readed.setNum((*it)->read()));
         sender.appendChild(usersender);
         recever.appendChild(userrecever);
         object.appendChild(objecttemp);
@@ -563,12 +563,12 @@ void loader::writepayments(const account & acc, QDomNode & payments, QDomDocumen
         year.appendChild(yeartemp);
         approved.appendChild(approvedtemp);
 
-	payment.appendChild(requester);
-	payment.appendChild(requested);
-	payment.appendChild(day);
-	payment.appendChild(month);
-	payment.appendChild(year);
-	payment.appendChild(approved);
+        payment.appendChild(requester);
+        payment.appendChild(requested);
+        payment.appendChild(day);
+        payment.appendChild(month);
+        payment.appendChild(year);
+        payment.appendChild(approved);
     }
 
 }

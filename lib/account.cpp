@@ -51,7 +51,7 @@ QVector<account*> account::getconnections() const{
 void account::addconnection (const account& a) throw(error){
     account* temp=const_cast<account*>(&a);
     if(!getconnection(temp->user()->user())){
-	_connection.push_back(temp);
+        _connection.push_back(temp);
     }
     else throw error(Connection, QString("You are already connected with this user"));
 
@@ -62,10 +62,10 @@ void account::removeconnection(const account& a){
     QVector<account*>::iterator it=_connection.begin();
     bool finish=false;
     for(;it!=_connection.end()&&!finish;++it){
-	if(*it==temp){
-	    _connection.erase(it);
-	    finish=true;
-	}
+        if(*it==temp){
+            _connection.erase(it);
+            finish=true;
+        }
     }
 }
 
@@ -80,16 +80,16 @@ QVector<payment*> account::payments(){
 
 payment* account::getpayment(const payment & paytemp) const{
     for(QVector<payment*>::const_iterator it=_payments.begin(); it!=_payments.end();++it){
-	if((*it)->request()==paytemp.request() && (*it)->date()==paytemp.date() && (*it)->approved()==paytemp.approved()) return *it;
+        if((*it)->request()==paytemp.request() && (*it)->date()==paytemp.date() && (*it)->approved()==paytemp.approved()) return *it;
     }
     return 0;
 }
 
 void account::addpayment(const payment & newpay) throw(error){
     for(QVector<payment*>::const_iterator it=_payments.begin(); it!=_payments.end();++it){
-	if((*it)->request()==newpay.request() && (*it)->approved()==0){
-	    throw error(Payment, QString("Another payment of the same type has been already requested"));
-	}
+        if((*it)->request()==newpay.request() && (*it)->approved()==0){
+            throw error(Payment, QString("Another payment of the same type has been already requested"));
+        }
     }
     _payments.push_back(const_cast<payment*>(&newpay));
 }
@@ -98,7 +98,7 @@ account* account::getconnection(QString usern){
     QVector<account*>::iterator it=_connection.begin();
     account* temp=_boss->basicSearch(usern);
     for(;it<_connection.end();++it){
-	if((*it)==temp) return (*it);
+        if((*it)==temp) return (*it);
     }
     return 0;
 }
@@ -109,9 +109,9 @@ payment* account::getlastpaymentapproved(){
     payment* payTemp=0;
     for(;it<_payments.end();++it){
         if(((*it)->date())>temp && (*it)->approved()==1){
-	    payTemp=*it;
+            payTemp=*it;
             temp=(*it)->date();
-	}
+        }
     }
     return payTemp;
 }

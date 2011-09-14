@@ -1,3 +1,10 @@
+/*
+  File: viewotheruser.h
+  di Maggiolo Giorgio (610338)
+  Email: gimaggio@studenti.math.unipd.it
+  Progetto: Legami, un progetto per Prog. Ogg.
+*/
+
 #ifndef VIEWOTHERUSER_H
 #define VIEWOTHERUSER_H
 
@@ -15,16 +22,13 @@ class viewotheruser : public QDialog
     Q_OBJECT
 
     account* accToShow;
-
     legami* Boss;
 
-    QVBoxLayout* layout;
-
     QWidget* MainWidget;
-
     QScrollArea* scrollArea;
-
     QPushButton* okButton;
+
+    QVBoxLayout* layout;
 
 public:
     explicit viewotheruser(account*, legami*, QWidget *parent = 0);

@@ -20,6 +20,6 @@ modifycompanyprofile::modifycompanyprofile(companyaccount* acc, legami* boss, QW
 
 void modifycompanyprofile::modified(bool mod){
     if(mod){
-	QMessageBox::information(this, tr("Data Modified!"), tr("The data has been modified successfully."), QMessageBox::Ok, QMessageBox::Ok);
+        QMessageBox::information(this, tr("Data Modified!"), tr("The data has been modified successfully."), QMessageBox::Ok, QMessageBox::Ok);
     }
 }

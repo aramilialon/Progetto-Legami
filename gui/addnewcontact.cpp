@@ -26,16 +26,16 @@ addnewcontact::addnewcontact(account* acc, legami* boss, QWidget *parent) :
 void addnewcontact::addContact(){
     account* temp= Boss->basicSearch(newuserLineEdit->text());
     if(!temp){
-	QMessageBox::warning(this, tr("Error"), tr("User not found"), QMessageBox::Ok, QMessageBox::Ok);
+        QMessageBox::warning(this, tr("Error"), tr("User not found"), QMessageBox::Ok, QMessageBox::Ok);
     }
     else{
-	try{
-	    accToModify->addconnection(*temp);
-	    QMessageBox::information(this, tr("Ok!"), tr("User succefully added to your contact list."), QMessageBox::Ok, QMessageBox::Ok);
-	}
-	catch(error er1){
-	    QMessageBox::warning(this, tr("Error"), er1.comment(), QMessageBox::Ok, QMessageBox::Ok);
-	}
+        try{
+            accToModify->addconnection(*temp);
+            QMessageBox::information(this, tr("Ok!"), tr("User succefully added to your contact list."), QMessageBox::Ok, QMessageBox::Ok);
+        }
+        catch(error er1){
+            QMessageBox::warning(this, tr("Error"), er1.comment(), QMessageBox::Ok, QMessageBox::Ok);
+        }
     }
 
     close();

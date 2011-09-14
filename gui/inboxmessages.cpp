@@ -27,18 +27,18 @@ inboxMessages::inboxMessages(account* acc, legami* boss, QWidget *parent) :
 
     QVector<message*>::iterator it=messVector.begin();
     for(;it<messVector.end();++it){
-	QStandardItem* senderItem= new QStandardItem((*it)->sender()->user()->user());
-	QStandardItem* objItem= new QStandardItem((*it)->object());
-	QStandardItem* readItem=0;
+        QStandardItem* senderItem= new QStandardItem((*it)->sender()->user()->user());
+        QStandardItem* objItem= new QStandardItem((*it)->object());
+        QStandardItem* readItem=0;
 
-	if((*it)->read()) readItem= new QStandardItem(tr("Read"));
-	else readItem= new QStandardItem(tr("Not Read"));
+        if((*it)->read()) readItem= new QStandardItem(tr("Read"));
+        else readItem= new QStandardItem(tr("Not Read"));
 
-	senderItem->setEnabled(false);
+        senderItem->setEnabled(false);
 
-	senderList.push_back(senderItem);
-	objList.push_back(objItem);
-	readList.push_back(readItem);
+        senderList.push_back(senderItem);
+        objList.push_back(objItem);
+        readList.push_back(readItem);
     }
 
     inboxRoot->appendColumn(senderList);

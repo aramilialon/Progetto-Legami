@@ -27,10 +27,11 @@ class legamimainwindow : public QMainWindow
 
     legami* Boss;
 
-    QMenuBar* FileBar;
-
+    /*Questi puntatori a QTranslator servono per poter modificare il file di traduzione e conseguentemente la lingua di Legami*/
     QTranslator* itaTransl;
     QTranslator* engTransl;
+
+    QMenuBar* FileBar;
 
     QMenu* File;
     QAction* Register;
@@ -84,47 +85,50 @@ class legamimainwindow : public QMainWindow
     void setMenuBarRegistered();
     bool loginUser(QString, QString);
 
+    /*Funzioni che permettono di riscrivere i testi dei vari pulsanti in modo tale da "rispecchiare" la lingua scelta*/
     void writeNameActionsUnregistered();
     void writeNameActionsRegistered();
 
 public:
-    explicit legamimainwindow(QWidget *parent = 0);
     void changeEvent(QEvent *);
     void closeEvent(QCloseEvent *);
+    explicit legamimainwindow(QWidget *parent = 0);
+
 signals:
 
 private slots:
-    void registerNewUser();
-    void closeAll();
     void aboutLegami();
     void aboutQt();
-    void login();
-    void logout();
-    void logged(bool);
-    void registered(bool);
-    void showuser();
-    void modifyuser();
-    void usermodified();
-    void showgroups();
-    void resizewindow();
-    void iscrivenewGroup();
-    void groupCreated();
-    void subscribeGroup();
-    void subscrived();
-    void inbox();
-    void outbox();
-    void messagenew();
-    void showcontactsself();
     void addnewcontactself();
-    void removecontactself();
-    void requestnewpayment();
-    void shopaymentsself();
-    void adminusersad();
     void admingroupsad();
     void adminpaymentsleft();
-    void search();
-    void changeitalian();
+    void adminusersad();
     void changeenglish();
+    void changeitalian();
+    void closeAll();
+    void groupCreated();
+    void inbox();
+    void iscrivenewGroup();
+    void logged(bool);
+    void login();
+    void logout();
+    void messagenew();
+    void modifyuser();
+    void outbox();
+    void registered(bool);
+    void registerNewUser();
+    void removecontactself();
+    void requestnewpayment();
+    void resizewindow();
+    void search();
+    void shopaymentsself();
+    void showcontactsself();
+    void showgroups();
+    void showuser();
+    void subscribeGroup();
+    void subscrived();
+    void usermodified();
+
 };
 
 #endif // LEGAMIMAINWINDOW_H

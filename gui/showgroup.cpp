@@ -39,8 +39,8 @@ showgroup::showgroup(account* acc, group* grp, legami* boss, QWidget *parent) :
 
     QVector<account*>::iterator it= userVector.begin();
     for(;it!=userVector.end();++it){
-	QStandardItem* userItemTemp= new QStandardItem((*it)->user()->user());
-	userParentItem->appendRow(userItemTemp);
+        QStandardItem* userItemTemp= new QStandardItem((*it)->user()->user());
+        userParentItem->appendRow(userItemTemp);
     }
     usersList->setModel(userModel);
 
@@ -50,15 +50,15 @@ showgroup::showgroup(account* acc, group* grp, legami* boss, QWidget *parent) :
     bool admin=false;
 
     if(!adminVector.isEmpty()){
-	it= adminVector.begin();
-	for(int n=0;it!=adminVector.end();++it, n++){
-	    account* admTemp= *it;
-	    if(admTemp->user()){
-		QStandardItem* adminItemTemp= new QStandardItem(admTemp->user()->user());
-		adminParentItem->appendRow(adminItemTemp);
-	    }
-	    if(*it==accShown) admin=true;
-	}
+        it= adminVector.begin();
+        for(int n=0;it!=adminVector.end();++it, n++){
+            account* admTemp= *it;
+            if(admTemp->user()){
+                QStandardItem* adminItemTemp= new QStandardItem(admTemp->user()->user());
+                adminParentItem->appendRow(adminItemTemp);
+            }
+            if(*it==accShown) admin=true;
+        }
     }
     adminList->setModel(adminModel);
     QLabel* adminsLabel= new QLabel(tr("Admins:"), this);
@@ -70,9 +70,9 @@ showgroup::showgroup(account* acc, group* grp, legami* boss, QWidget *parent) :
     layout->addWidget(adminList, 2, 1);
 
     if(admin){
-	adminButton= new QPushButton(tr("Admin Group"), this);
-	connect(adminButton, SIGNAL(clicked()), this, SLOT(adminGroup()));
-	layout->addWidget(adminButton, 3, 0);
+        adminButton= new QPushButton(tr("Admin Group"), this);
+        connect(adminButton, SIGNAL(clicked()), this, SLOT(adminGroup()));
+        layout->addWidget(adminButton, 3, 0);
     }
 
 }

@@ -1,13 +1,20 @@
+/*
+  File: addrequestpayment.h
+  di Maggiolo Giorgio (610338)
+  Email: gimaggio@studenti.math.unipd.it
+  Progetto: Legami, un progetto per Prog. Ogg.
+*/
+
 #ifndef ADDREQUESTPAYMENT_H
 #define ADDREQUESTPAYMENT_H
 
 #include "../lib/account.h"
 #include "../lib/legami.h"
 
+#include <QDialog>
+#include <QGridLayout>
 #include <QLabel>
 #include <QPushButton>
-#include <QGridLayout>
-#include <QDialog>
 
 class addrequestpayment : public QDialog
 {
@@ -15,8 +22,6 @@ class addrequestpayment : public QDialog
 
     account* accToModify;
     legami* Boss;
-
-    QGridLayout* layout;
 
     QLabel* supLabel;
 
@@ -29,6 +34,9 @@ class addrequestpayment : public QDialog
     QPushButton* businessButton;
     QPushButton* executiveButton;
     QPushButton* cancelButton;
+
+    QGridLayout* layout;
+
 public:
     explicit addrequestpayment(account*, legami*, QWidget *parent = 0);
 

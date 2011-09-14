@@ -1,3 +1,10 @@
+/*
+  File: newmessage.h
+  di Maggiolo Giorgio (610338)
+  Email: gimaggio@studenti.math.unipd.it
+  Progetto: Legami, un progetto per Prog. Ogg.
+*/
+
 #ifndef NEWMESSAGE_H
 #define NEWMESSAGE_H
 
@@ -25,9 +32,6 @@ class newmessage : public QDialog
 
     bool listShown;
 
-    QString addresseeTemp;
-
-    QGridLayout* layout;
 
     QLabel* addresseeLabel;
     QLabel* objLabel;
@@ -43,6 +47,11 @@ class newmessage : public QDialog
     QPushButton* selectAddressee;
     QPushButton* okButton;
     QPushButton* cancelButton;
+
+    /*Memorizza l'utente selezionato in friendList*/
+    QString addresseeTemp;
+
+    QGridLayout* layout;
 
 public:
     explicit newmessage(account*, legami*, QWidget *parent = 0) throw(error);

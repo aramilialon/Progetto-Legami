@@ -1,3 +1,10 @@
+/*
+  File: adminuser.h
+  di Maggiolo Giorgio (610338)
+  Email: gimaggio@studenti.math.unipd.it
+  Progetto: Legami, un progetto per Prog. Ogg.
+*/
+
 #ifndef ADMINUSER_H
 #define ADMINUSER_H
 
@@ -14,11 +21,11 @@ class adminuser : public QDialog
 {
     Q_OBJECT
 
-    QWidget* modifyWidget;
-    QScrollArea* mainWidget;
-
     account* accToModify;
     legami* Boss;
+
+    QWidget* modifyWidget;
+    QScrollArea* mainWidget;
 
     QPushButton* finishButton;
 

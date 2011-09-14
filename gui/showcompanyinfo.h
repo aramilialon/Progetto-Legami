@@ -1,3 +1,10 @@
+/*
+  File: showcompanyinfo.h
+  di Maggiolo Giorgio (610338)
+  Email: gimaggio@studenti.math.unipd.it
+  Progetto: Legami, un progetto per Prog. Ogg.
+*/
+
 #ifndef SHOWCOMPANYINFO_H
 #define SHOWCOMPANYINFO_H
 
@@ -13,15 +20,16 @@ class showcompanyinfo : public QGroupBox
 {
     Q_OBJECT
 
-	companyaccount* accToShow;
+    companyaccount* accToShow;
 
-	QLineEdit* nameLineEdit;
-	QLineEdit* addressLineEdit;
-	QLineEdit* cotypeLineEdit;
+    QLineEdit* nameLineEdit;
+    QLineEdit* addressLineEdit;
+    QLineEdit* cotypeLineEdit;
 
-	QFormLayout* layout;
+    QFormLayout* layout;
+
 public:
-	explicit showcompanyinfo(const account&, QWidget *parent = 0);
+    explicit showcompanyinfo(const account&, QWidget *parent = 0);
 
 signals:
 

@@ -12,7 +12,7 @@
 #include <QHBoxLayout>
 
 legamilogin::legamilogin(legami* manager, QWidget* parent) :
-	QDialog(parent), boss(manager)
+    QDialog(parent), boss(manager)
 {
     layout= new QGridLayout(this);
 
@@ -48,6 +48,6 @@ legamilogin::legamilogin(legami* manager, QWidget* parent) :
 
 void legamilogin::tryLogin(){
     bool ok=boss->logAccount(usernLineEdit->text(), passwLineEdit->text());
-	close();
+    close();
     emit(logged(ok));
 }

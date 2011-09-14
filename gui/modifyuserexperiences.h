@@ -1,9 +1,17 @@
+/*
+  File: modifyuserexperiences.h
+  di Maggiolo Giorgio (610338)
+  Email: gimaggio@studenti.math.unipd.it
+  Progetto: Legami, un progetto per Prog. Ogg.
+*/
+
 #ifndef MODIFYUSEREXPERIENCES_H
 #define MODIFYUSEREXPERIENCES_H
 
 #include "../lib/experience.h"
 #include "../lib/legami.h"
 #include "../lib/useraccount.h"
+
 #include "modifyuserexperience.h"
 
 #include <QGroupBox>
@@ -17,12 +25,15 @@ class modifyuserexperiences : public QGroupBox
 
     useraccount* accToModify;
     legami* Boss;
+
     QVector<modifyuserexperience*> expWidget;
 
-    QGridLayout* layout;
     QPushButton* addFormativeExp;
     QPushButton* addWorkingExp;
 
+    QGridLayout* layout;
+
+    /*memorizza il numero di oggetti di tipo modifyuserexperience*/a
     int rows;
 
     void loadExpWidget();

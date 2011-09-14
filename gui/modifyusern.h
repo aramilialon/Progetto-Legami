@@ -1,3 +1,10 @@
+/*
+  File: modifyusern.h
+  di Maggiolo Giorgio (610338)
+  Email: gimaggio@studenti.math.unipd.it
+  Progetto: Legami, un progetto per Prog. Ogg.
+*/
+
 #ifndef MODIFYUSERN_H
 #define MODIFYUSERN_H
 
@@ -18,8 +25,6 @@ class modifyusern : public QGroupBox
     account* accToModify;
     legami* Boss;
 
-    QFormLayout* layout;
-
     QLineEdit* usernLineEdit;
     QLineEdit* passwLineEdit;
     QRadioButton* yesadminRadio;
@@ -27,6 +32,8 @@ class modifyusern : public QGroupBox
 
     QPushButton* okButton;
     QPushButton* cancelButton;
+
+    QFormLayout* layout;
 
 public:
     explicit modifyusern(const account &, legami*, QWidget *parent = 0);

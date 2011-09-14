@@ -20,16 +20,16 @@ modifyuserexperiences::modifyuserexperiences(const useraccount& acc, legami* bos
 void modifyuserexperiences::loadExpWidget(){
     rows=0;
     if(!expWidget.isEmpty()){
-	for(QVector<modifyuserexperience*>::iterator it=expWidget.begin();it!=expWidget.end();++it) delete *it;
-	expWidget.erase(expWidget.begin(), expWidget.end());
+        for(QVector<modifyuserexperience*>::iterator it=expWidget.begin();it!=expWidget.end();++it) delete *it;
+        expWidget.erase(expWidget.begin(), expWidget.end());
     }
     QVector<experience*> expsToModify= accToModify->getexperiences();
     QVector<experience*>::const_iterator itExps=expsToModify.begin();
     for(;itExps!=expsToModify.end();++itExps, ++rows){
-	modifyuserexperience* temp= new modifyuserexperience(*itExps, accToModify, this);
-	connect(temp, SIGNAL(modifiedExp()), this, SLOT(modifiedExp()));
-	expWidget.push_back(temp);
-	layout->addWidget(temp, rows, 0);
+        modifyuserexperience* temp= new modifyuserexperience(*itExps, accToModify, this);
+        connect(temp, SIGNAL(modifiedExp()), this, SLOT(modifiedExp()));
+        expWidget.push_back(temp);
+        layout->addWidget(temp, rows, 0);
     }
     adjustSize();
 }

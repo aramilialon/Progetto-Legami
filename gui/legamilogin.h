@@ -10,11 +10,11 @@
 
 #include "../lib/legami.h"
 
+#include <QDialog>
 #include <QGridLayout>
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
-#include <QDialog>
 #include <QString>
 
 class legamilogin : public QDialog

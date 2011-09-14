@@ -16,8 +16,8 @@ showuserlist::showuserlist(legami* boss, QWidget *parent) :
     QVector<account*> temp= Boss->userDb();
     QVector<account*>::iterator it=temp.begin();
     for(;it<temp.end();++it){
-	QStandardItem* userTemp= new QStandardItem((*it)->user()->user());
-	usersRootItem->appendRow(userTemp);
+        QStandardItem* userTemp= new QStandardItem((*it)->user()->user());
+        usersRootItem->appendRow(userTemp);
     }
     usersListView->setModel(usersModel);
     connect(usersListView, SIGNAL(clicked(QModelIndex)), this, SLOT(modifySelected(QModelIndex)));

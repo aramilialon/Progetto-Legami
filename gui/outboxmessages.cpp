@@ -27,13 +27,13 @@ outboxMessages::outboxMessages(account* acc, legami* boss, QWidget *parent) :
 
     QVector<message*>::iterator it=messVector.begin();
     for(;it<messVector.end();++it){
-	QStandardItem* receverItem= new QStandardItem((*it)->recever()->user()->user());
-	QStandardItem* objItem= new QStandardItem((*it)->object());
+        QStandardItem* receverItem= new QStandardItem((*it)->recever()->user()->user());
+        QStandardItem* objItem= new QStandardItem((*it)->object());
 
-	receverItem->setEnabled(false);
+        receverItem->setEnabled(false);
 
-	receverList.push_back(receverItem);
-	objList.push_back(objItem);
+        receverList.push_back(receverItem);
+        objList.push_back(objItem);
     }
 
     outboxRoot->appendColumn(receverList);

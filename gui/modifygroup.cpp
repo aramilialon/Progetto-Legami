@@ -39,8 +39,8 @@ modifygroup::modifygroup(group* grp, legami* boss, QWidget *parent) :
 
     QVector<account*>::iterator it= userVector.begin();
     for(;it!=userVector.end();++it){
-	QStandardItem* temp= new QStandardItem((*it)->user()->user());
-	userremoveParentItem->appendRow(temp);
+        QStandardItem* temp= new QStandardItem((*it)->user()->user());
+        userremoveParentItem->appendRow(temp);
 
     }
     userremoveList->setModel(userremoveModel);
@@ -48,10 +48,10 @@ modifygroup::modifygroup(group* grp, legami* boss, QWidget *parent) :
 
     it=userVector.begin();
     for(;it!=userVector.end();++it){
-	if(!groupToModify->getadmin(**(it))){
-	    QStandardItem* temp= new QStandardItem((*it)->user()->user());
-	    newadminParentItem->appendRow(temp);
-	}
+        if(!groupToModify->getadmin(**(it))){
+            QStandardItem* temp= new QStandardItem((*it)->user()->user());
+            newadminParentItem->appendRow(temp);
+        }
     }
     newadminList->setModel(newadminModel);
     connect(newadminList, SIGNAL(clicked(QModelIndex)), this, SLOT(setNewAdmin(QModelIndex)));
@@ -61,8 +61,8 @@ modifygroup::modifygroup(group* grp, legami* boss, QWidget *parent) :
 
     it= adminVector.begin();
     for(;it!=adminVector.end();++it){
-	QStandardItem* temp= new QStandardItem((*it)->user()->user());
-	adminremoveParentItem->appendRow(temp);
+        QStandardItem* temp= new QStandardItem((*it)->user()->user());
+        adminremoveParentItem->appendRow(temp);
     }
     connect(adminremoveList, SIGNAL(clicked(QModelIndex)), this, SLOT(setRemoveAdmin(QModelIndex)));
     adminremoveList->setModel(adminremoveModel);
@@ -91,18 +91,18 @@ void modifygroup::modify() throw(error){
     groupToModify->setname(nameLineEdit->text());
     groupToModify->setdescr(descrLineEdit->text());
     if(!newuserLineEdit->text().isEmpty()){
-	account* temp= Boss->basicSearch(newuserLineEdit->text());
-	if(temp) groupToModify->addmember(*temp);
-	else QMessageBox::warning(this, tr("Error"), tr("User not found"), QMessageBox::Ok, QMessageBox::Ok);
+        account* temp= Boss->basicSearch(newuserLineEdit->text());
+        if(temp) groupToModify->addmember(*temp);
+        else QMessageBox::warning(this, tr("Error"), tr("User not found"), QMessageBox::Ok, QMessageBox::Ok);
     }
     if(!removeuserRow.isEmpty()){
-	groupToModify->removemember(removeuserRow);
+        groupToModify->removemember(removeuserRow);
     }
     if(!removeadminRow.isEmpty()){
-	groupToModify->removeadmin(removeadminRow);
+        groupToModify->removeadmin(removeadminRow);
     }
     if(!newadminRow.isEmpty()){
-	groupToModify->addadmin(newadminRow);
+        groupToModify->addadmin(newadminRow);
     }
     close();
     emit modified(groupToModify);
@@ -125,6 +125,6 @@ void modifygroup::setNewAdmin(const QModelIndex ind){
 
 void modifygroup::deletegroup(){
     Boss->removeGroup(*groupToModify);
-   emit deletethisgroup();
-   close();
+    emit deletethisgroup();
+    close();
 }

@@ -1,8 +1,16 @@
+/*
+  File: showcontactsmessage.h
+  di Maggiolo Giorgio (610338)
+  Email: gimaggio@studenti.math.unipd.it
+  Progetto: Legami, un progetto per Prog. Ogg.
+*/
+
 #ifndef SHOWCONTACTSMESSAGE_H
 #define SHOWCONTACTSMESSAGE_H
 
 #include "../lib/account.h"
 #include "../lib/legami.h"
+
 #include "showcontacts.h"
 
 #include <QDialog>
@@ -16,18 +24,19 @@ class showcontactsmessage : public QDialog
     account* accToShow;
     legami* Boss;
 
-    QGridLayout* layout;
-
     showcontacts* contactsShown;
 
     QPushButton* okButton;
     QPushButton* cancelButton;
+
+    QGridLayout* layout;
 
 public:
     explicit showcontactsmessage(account*, legami*, QWidget *parent = 0);
 
 signals:
     void selected(QString);
+
 public slots:
     void okPressed();
 };

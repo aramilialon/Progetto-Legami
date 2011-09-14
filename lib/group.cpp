@@ -38,7 +38,7 @@ QVector<account*> group::admins() const{
 account* group::getmember(QString username) const{
     QVector<account*>::const_iterator it=_members.begin();
     for(;it!=_members.end();++it){
-	if((*it)->user()->user()==username) return (*it);
+        if((*it)->user()->user()==username) return (*it);
     }
     return 0;
 }
@@ -47,7 +47,7 @@ account* group::getmember(const account & self) const{
     account* temp=const_cast<account*>(&self);
     QVector<account*>::const_iterator it=_members.begin();
     for(;it!=_members.end();++it){
-	if((*it)==temp) return (*it);
+        if((*it)==temp) return (*it);
     }
     return 0;
 }
@@ -55,7 +55,7 @@ account* group::getmember(const account & self) const{
 account* group::getadmin(QString username) const{
     QVector<account*>::const_iterator it=_admins.begin();
     for(;it!=_admins.end();++it){
-	if((*it)->user()->user()==username) return (*it);
+        if((*it)->user()->user()==username) return (*it);
     }
     return 0;
 }
@@ -64,7 +64,7 @@ account* group::getadmin(const account & self) const{
     account* temp=const_cast<account*>(&self);
     QVector<account*>::const_iterator it=_admins.begin();
     for(;it!=_admins.end();++it){
-	if((*it)==temp) return (*it);
+        if((*it)==temp) return (*it);
     }
     return 0;
 }
@@ -92,13 +92,13 @@ void group::removemember(QString user){
 
     QVector<account*>::iterator it=_admins.begin();
     for(;it<_admins.end();++it){
-	if(*it==temp) _admins.erase(it);
+        if(*it==temp) _admins.erase(it);
     }
 
     it= _members.begin();
     for(;it<_members.end();++it){
-	account* temp1= (*it);
-	if(temp1==temp) _members.erase(it);
+        account* temp1= (*it);
+        if(temp1==temp) _members.erase(it);
     }
 }
 
@@ -106,6 +106,6 @@ void group::removeadmin(QString toberemoved){
     account* temp= _members[0]->boss()->basicSearch(toberemoved);
     QVector<account*>::iterator it=_admins.begin();
     for(;it<_admins.end();++it){
-	if((*it)==temp) _admins.erase(it);
+        if((*it)==temp) _admins.erase(it);
     }
 }

@@ -1,8 +1,15 @@
+/*
+  File: modifyuserinfos.h
+  di Maggiolo Giorgio (610338)
+  Email: gimaggio@studenti.math.unipd.it
+  Progetto: Legami, un progetto per Prog. Ogg.
+*/
+
 #ifndef MODIFYUSERINFOS_H
 #define MODIFYUSERINFOS_H
 
-#include "../lib/useraccount.h"
 #include "../lib/legami.h"
+#include "../lib/useraccount.h"
 
 #include <QDateEdit>
 #include <QFormLayout>
@@ -13,8 +20,6 @@
 class modifyuserinfos : public QGroupBox
 {
     Q_OBJECT
-
-    QFormLayout* layout;
 
     useraccount* accToModify;
     legami* Boss;
@@ -28,6 +33,8 @@ class modifyuserinfos : public QGroupBox
 
     QPushButton* okButton;
     QPushButton* cancelButton;
+
+    QFormLayout* layout;
 
 public:
     explicit modifyuserinfos(const useraccount &, legami*, QWidget *parent = 0);

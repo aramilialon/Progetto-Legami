@@ -1,3 +1,10 @@
+/*
+  File: showgroup.h
+  di Maggiolo Giorgio (610338)
+  Email: gimaggio@studenti.math.unipd.it
+  Progetto: Legami, un progetto per Prog. Ogg.
+*/
+
 #ifndef SHOWGROUP_H
 #define SHOWGROUP_H
 
@@ -27,20 +34,22 @@ class showgroup : public QWidget
     QVector<account*> userVector;
     QVector<account*> adminVector;
 
-    QGridLayout* layout;
-
     QPushButton* adminButton;
 
     QListView* usersList;
     QListView* adminList;
+
+    QGridLayout* layout;
 
 public:
     explicit showgroup(account*, group*, legami*,  QWidget *parent = 0);
 
 signals:
     void adminGr(group*);
+
 public slots:
     void adminGroup();
+
 };
 
 #endif // SHOWGROUP_H

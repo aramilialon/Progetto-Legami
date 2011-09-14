@@ -1,3 +1,10 @@
+/*
+  File: showmessage.h
+  di Maggiolo Giorgio (610338)
+  Email: gimaggio@studenti.math.unipd.it
+  Progetto: Legami, un progetto per Prog. Ogg.
+*/
+
 #ifndef SHOWMESSAGE_H
 #define SHOWMESSAGE_H
 
@@ -6,8 +13,8 @@
 #include <QFormLayout>
 #include <QGroupBox>
 #include <QLineEdit>
-#include <QTextEdit>
 #include <QPushButton>
+#include <QTextEdit>
 
 class showMessage : public QGroupBox
 {
@@ -15,14 +22,13 @@ class showMessage : public QGroupBox
 
     message* messToShow;
 
-    QFormLayout* layout;
-
     QLineEdit* senderLineEdit;
     QLineEdit* receverLineEdit;
     QLineEdit* objLineEdit;
 
     QTextEdit* messageTextEdit;
 
+    QFormLayout* layout;
 
 public:
     explicit showMessage(message*, QWidget *parent = 0);

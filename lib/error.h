@@ -13,8 +13,8 @@
 enum typeError{
     IO=0,
     Permission,
-	Username,
-	Payment,
+    Username,
+    Payment,
     Group,
     Connection
 };

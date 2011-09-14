@@ -24,7 +24,7 @@ reguser::reguser(legami* boss, QWidget *parent) :
     QDialogButtonBox* buttonLayout= new QDialogButtonBox(this);
     okButton= new QPushButton(tr("Register"), this);
     cancelButton= new QPushButton(tr("Cancel"), this);
-	connect(okButton, SIGNAL(clicked()), this, SLOT(reginto()));
+    connect(okButton, SIGNAL(clicked()), this, SLOT(reginto()));
     connect(cancelButton, SIGNAL(clicked()), this, SLOT(close()));
     buttonLayout->addButton(okButton, QDialogButtonBox::YesRole);
     buttonLayout->addButton(cancelButton, QDialogButtonBox::RejectRole);
@@ -46,7 +46,7 @@ reguser::reguser(legami* boss, QWidget *parent) :
 }
 
 void reguser::reginto(){
-	if(!usernLineEdit->text().isNull() && !passwLineEdit->text().isNull()){
+    if(!usernLineEdit->text().isNull() && !passwLineEdit->text().isNull()){
         account* temp=0;
         if(userRadio->isChecked()){
             temp= new useraccount(usernLineEdit->text(), passwLineEdit->text(), 0, *Boss);
@@ -68,8 +68,8 @@ void reguser::reginto(){
         if(wrong) emit registered(false);
         else emit registered(true);
     }
-	else{
-		emit registered(true);
-	}
-	close();
+    else{
+        emit registered(true);
+    }
+    close();
 }

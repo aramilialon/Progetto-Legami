@@ -1,3 +1,10 @@
+/*
+  File: showcontacts.h
+  di Maggiolo Giorgio (610338)
+  Email: gimaggio@studenti.math.unipd.it
+  Progetto: Legami, un progetto per Prog. Ogg.
+*/
+
 #ifndef SHOWCONTACTS_H
 #define SHOWCONTACTS_H
 
@@ -19,8 +26,6 @@ class showcontacts : public QWidget
     account* accToShow;
     legami* Boss;
 
-    QGridLayout* layout;
-
     QLabel* contactsLabel;
 
     QListView* contactsView;
@@ -29,14 +34,19 @@ class showcontacts : public QWidget
     QString selection;
 
     QPushButton* showButton;
+
+    QGridLayout* layout;
+
 public:
     explicit showcontacts(account*, legami*, QWidget *parent = 0);
     QString sel();
+
 signals:
 
 public slots:
     void select(QModelIndex);
     void showuser();
+
 };
 
 #endif // SHOWCONTACTS_H

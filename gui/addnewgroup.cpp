@@ -38,11 +38,11 @@ void addnewgroup::create(){
     bool asd=true;
 
     try{
-	Boss->addGroup(*temp);
+        Boss->addGroup(*temp);
     }
     catch(error er1){
-	QMessageBox::warning(this, tr("Error"), tr("A group with the same name already exists."), QMessageBox::Ok, QMessageBox::Ok);
-	asd=false;
+        QMessageBox::warning(this, tr("Error"), tr("A group with the same name already exists."), QMessageBox::Ok, QMessageBox::Ok);
+        asd=false;
     }
     if(asd) emit created();
 

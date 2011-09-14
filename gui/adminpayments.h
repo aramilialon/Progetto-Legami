@@ -1,3 +1,10 @@
+/*
+  File: adminpayments.h
+  di Maggiolo Giorgio (610338)
+  Email: gimaggio@studenti.math.unipd.it
+  Progetto: Legami, un progetto per Prog. Ogg.
+*/
+
 #ifndef ADMINPAYMENTS_H
 #define ADMINPAYMENTS_H
 
@@ -20,7 +27,6 @@ class adminpayments : public QWidget
     QVector<payment*> payVector;
 
     QTableView* payTable;
-
     QStandardItemModel* payModel;
 
     QPushButton* acceptButton;
@@ -28,6 +34,7 @@ class adminpayments : public QWidget
 
     QGridLayout* layout;
 
+    /*Intero che indica quale riga è stata elezionata all'interno di payTable*/
     int paySelected;
 
 public:

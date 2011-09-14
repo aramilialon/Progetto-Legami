@@ -1,3 +1,10 @@
+/*
+  File: showpayments.h
+  di Maggiolo Giorgio (610338)
+  Email: gimaggio@studenti.math.unipd.it
+  Progetto: Legami, un progetto per Prog. Ogg.
+*/
+
 #ifndef SHOWPAYMENTS_H
 #define SHOWPAYMENTS_H
 

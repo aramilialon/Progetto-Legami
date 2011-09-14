@@ -16,8 +16,8 @@ admingroups::admingroups(legami* boss, QWidget *parent) :
     QStandardItem* groupParentItem= groupModel->invisibleRootItem();
 
     for(;it1<groupVectorTemp.end();++it1){
-	QStandardItem* temp= new QStandardItem((*it1)->name());
-	groupParentItem->appendRow(temp);
+        QStandardItem* temp= new QStandardItem((*it1)->name());
+        groupParentItem->appendRow(temp);
     }
     groupsListView->setModel(groupModel);
     connect(groupsListView, SIGNAL(clicked(QModelIndex)), this, SLOT(setGroup(QModelIndex)));
@@ -43,16 +43,16 @@ void admingroups::modifyGroup(){
     bool found=false;
 
     for(QVector<group*>::iterator it=temp.begin();!found && it!=temp.end();++it){
-	if((*it)->name()==groupSelected){
-	    temp1=(*it);
-	    found=true;
-	}
+        if((*it)->name()==groupSelected){
+            temp1=(*it);
+            found=true;
+        }
     }
     if(temp1){
-	modifygroup* x= new modifygroup(temp1, Boss, this);
-	connect(x, SIGNAL(deletethisgroup()), this, SLOT(groupdeleted()));
-	connect(x, SIGNAL(modified(group*)), this, SLOT(modified()));
-	x->show();
+        modifygroup* x= new modifygroup(temp1, Boss, this);
+        connect(x, SIGNAL(deletethisgroup()), this, SLOT(groupdeleted()));
+        connect(x, SIGNAL(modified(group*)), this, SLOT(modified()));
+        x->show();
     }
 }
 

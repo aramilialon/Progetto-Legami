@@ -1,3 +1,10 @@
+/*
+  File: modifycompanyinfos.h
+  di Maggiolo Giorgio (610338)
+  Email: gimaggio@studenti.math.unipd.it
+  Progetto: Legami, un progetto per Prog. Ogg.
+*/
+
 #ifndef MODIFYCOMPANYINFOS_H
 #define MODIFYCOMPANYINFOS_H
 
@@ -5,8 +12,8 @@
 
 #include <QFormLayout>
 #include <QGroupBox>
-#include <QPushButton>
 #include <QLineEdit>
+#include <QPushButton>
 
 class modifycompanyinfos : public QGroupBox
 {
@@ -18,10 +25,10 @@ class modifycompanyinfos : public QGroupBox
     QLineEdit* addressLineEdit;
     QLineEdit* cotypeLineEdit;
 
-    QFormLayout* layout;
-
     QPushButton* okButton;
     QPushButton* cancelButton;
+
+    QFormLayout* layout;
 
 public:
     explicit modifycompanyinfos(companyaccount *, QWidget *parent = 0);

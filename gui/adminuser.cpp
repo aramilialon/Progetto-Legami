@@ -11,7 +11,7 @@ adminuser::adminuser(account* acc, legami* boss, QWidget *parent) :
     layout= new QGridLayout(this);
 
     if(dynamic_cast<useraccount*>(accToModify)){ modifyWidget= new modifyuserprofile(*(dynamic_cast<useraccount*>(accToModify)), Boss, this);
-	connect(modifyWidget, SIGNAL(modifiedlist()), this, SLOT(modifiedlist()));
+        connect(modifyWidget, SIGNAL(modifiedlist()), this, SLOT(modifiedlist()));
     }
     else modifyWidget= new modifycompanyprofile(dynamic_cast<companyaccount*>(accToModify), Boss, this);
 

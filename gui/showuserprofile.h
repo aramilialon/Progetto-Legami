@@ -1,8 +1,16 @@
+/*
+  File: showuserprofile.h
+  di Maggiolo Giorgio (610338)
+  Email: gimaggio@studenti.math.unipd.it
+  Progetto: Legami, un progetto per Prog. Ogg.
+*/
+
 #ifndef SHOWUSERPROFILE_H
 #define SHOWUSERPROFILE_H
 
 #include "../lib/account.h"
 #include "../lib/legami.h"
+
 #include "showusern.h"
 #include "showuserinfo.h"
 #include "showuserexperieces.h"
@@ -14,17 +22,17 @@ class showuserprofile : public QWidget
 {
     Q_OBJECT
 
-	legami* boss;
+    legami* boss;
+    account* accToShow;
 
-	account* accToShow;
-        QVBoxLayout* layout;
+    showusern* userns;
+    showuserinfo* infos;
+    showuserexperieces* exps;
 
-        showusern* userns;
-        showuserinfo* infos;
-        showuserexperieces* exps;
+    QVBoxLayout* layout;
 
 public:
-        explicit showuserprofile(const account &, legami*, QWidget *parent = 0);
+    explicit showuserprofile(const account &, legami*, QWidget *parent = 0);
 
 signals:
 

@@ -1,3 +1,10 @@
+/*
+  File: modifycompanyprofile.h
+  di Maggiolo Giorgio (610338)
+  Email: gimaggio@studenti.math.unipd.it
+  Progetto: Legami, un progetto per Prog. Ogg.
+*/
+
 #ifndef MODIFYCOMPANYPROFILE_H
 #define MODIFYCOMPANYPROFILE_H
 
@@ -22,7 +29,6 @@ class modifycompanyprofile : public QWidget
 
     QVBoxLayout* layout;
 
-
 public:
     explicit modifycompanyprofile(companyaccount*, legami*, QWidget *parent = 0);
 
@@ -34,4 +40,4 @@ public slots:
 
 };
 
-#endif // MODIFYCOMPANYPROFILE_H
+#endif //MODIFYCOMPANYPROFILE_H

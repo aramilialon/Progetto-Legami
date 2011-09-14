@@ -25,8 +25,8 @@ viewGroupIscrived::viewGroupIscrived(account* acc, legami* boss, QWidget *parent
 
     QVector<group*>::iterator it=groupList.begin();
     for(;it<groupList.end();++it){
-	QStandardItem* item= new QStandardItem((*it)->name());
-	parentItem->appendRow(item);
+        QStandardItem* item= new QStandardItem((*it)->name());
+        parentItem->appendRow(item);
     }
 
     groupsListView->setModel(model);
@@ -88,8 +88,8 @@ void viewGroupIscrived::groupDeleted(){
 
     QVector<group*>::iterator it=groupList.begin();
     for(;it<groupList.end();++it){
-	QStandardItem* item= new QStandardItem((*it)->name());
-	parentItem->appendRow(item);
+        QStandardItem* item= new QStandardItem((*it)->name());
+        parentItem->appendRow(item);
     }
 
     groupsListView->setModel(model);

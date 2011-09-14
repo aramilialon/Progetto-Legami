@@ -1,8 +1,16 @@
+/*
+  File: showcompanyprofile.h
+  di Maggiolo Giorgio (610338)
+  Email: gimaggio@studenti.math.unipd.it
+  Progetto: Legami, un progetto per Prog. Ogg.
+*/
+
 #ifndef SHOWCOMPANYPROFILE_H
 #define SHOWCOMPANYPROFILE_H
 
 #include "../lib/account.h"
 #include "../lib/legami.h"
+
 #include "showusern.h"
 #include "showcompanyinfo.h"
 
@@ -13,16 +21,17 @@ class showcompanyprofile : public QWidget
 {
     Q_OBJECT
 
-	legami* boss;
+    legami* boss;
 
-	account* accToShow;
-	QVBoxLayout* layout;
+    account* accToShow;
 
-	showusern* usern;
-	showcompanyinfo* infos;
+    showusern* usern;
+    showcompanyinfo* infos;
+
+    QVBoxLayout* layout;
 
 public:
-	explicit showcompanyprofile(const account &, legami*, QWidget *parent = 0);
+    explicit showcompanyprofile(const account &, legami*, QWidget *parent = 0);
 
 signals:
 

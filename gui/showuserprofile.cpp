@@ -3,23 +3,23 @@
 #include "showuserprofile.h"
 
 showuserprofile::showuserprofile(const account& acc, legami* Boss, QWidget *parent) :
-        QWidget(parent), boss(Boss), accToShow(const_cast<account*>(&acc))
+    QWidget(parent), boss(Boss), accToShow(const_cast<account*>(&acc))
 {
-        layout= new QVBoxLayout(this);
+    layout= new QVBoxLayout(this);
 
-        userns= new showusern(accToShow, boss, this);
-        layout->addWidget(userns);
+    userns= new showusern(accToShow, boss, this);
+    layout->addWidget(userns);
 
-        infos=new showuserinfo(*accToShow, this);
-        layout->addWidget(infos);
+    infos=new showuserinfo(*accToShow, this);
+    layout->addWidget(infos);
 
-        if(!(dynamic_cast<useraccount*>(accToShow)->getexperiences().isEmpty())){
+    if(!(dynamic_cast<useraccount*>(accToShow)->getexperiences().isEmpty())){
         exps= new showuserexperieces(*accToShow, this);
         layout->addWidget(exps);
-        }
-        else exps=0;
+    }
+    else exps=0;
 
-        setLayout(layout);
+    setLayout(layout);
 
-        parent->setWindowTitle(tr("Legami - Profile Page"));
+    parent->setWindowTitle(tr("Legami - Profile Page"));
 }

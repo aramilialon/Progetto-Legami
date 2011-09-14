@@ -1,3 +1,10 @@
+/*
+  File: viewgroupiscrived.h
+  di Maggiolo Giorgio (610338)
+  Email: gimaggio@studenti.math.unipd.it
+  Progetto: Legami, un progetto per Prog. Ogg.
+*/
+
 #ifndef VIEWGROUPISCRIVED_H
 #define VIEWGROUPISCRIVED_H
 
@@ -8,11 +15,11 @@
 #include "showgroup.h"
 
 #include <QAction>
+#include <QGridLayout>
 #include <QListView>
 #include <QModelIndex>
-#include <QVector>
-#include <QGridLayout>
 #include <QScrollArea>
+#include <QVector>
 #include <QWidget>
 
 class viewGroupIscrived : public QWidget
@@ -21,13 +28,14 @@ class viewGroupIscrived : public QWidget
 
     account* accToShow;
     legami* Boss;
-    QGridLayout* layout;
+
     QVector<group*> groupList;
     QListView* groupsListView;
-    QScrollArea* scrollRightArea;
 
+    QScrollArea* scrollRightArea;
     showgroup* showGr;
 
+    QGridLayout* layout;
 
 public:
     explicit viewGroupIscrived(account*, legami*,  QWidget *parent = 0);

@@ -1,3 +1,10 @@
+/*
+  File: modifyuserexperience.h
+  di Maggiolo Giorgio (610338)
+  Email: gimaggio@studenti.math.unipd.it
+  Progetto: Legami, un progetto per Prog. Ogg.
+*/
+
 #ifndef MODIFYUSEREXPERIENCE_H
 #define MODIFYUSEREXPERIENCE_H
 
@@ -26,11 +33,11 @@ class modifyuserexperience : public QGroupBox
     QDateEdit* dateDateEdit;
     QLineEdit* descrLineEdit;
 
-    QGridLayout* layout;
-
-    QPushButton* modifyButton;
     QPushButton* cancelButton;
     QPushButton* deleteButton;
+    QPushButton* modifyButton;
+
+    QGridLayout* layout;
 
 public:
     explicit modifyuserexperience(experience* , useraccount*,  QWidget *parent = 0);

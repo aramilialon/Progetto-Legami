@@ -1,3 +1,10 @@
+/*
+  File: admingroups.h
+  di Maggiolo Giorgio (610338)
+  Email: gimaggio@studenti.math.unipd.it
+  Progetto: Legami, un progetto per Prog. Ogg.
+*/
+
 #ifndef ADMINGROUPS_H
 #define ADMINGROUPS_H
 
@@ -23,6 +30,7 @@ class admingroups : public QWidget
 
     QGridLayout* layout;
 
+    /*Stringa che serve per sapere sempre quale elemento è stato selezionato all'interno di groupsListView*/
     QString groupSelected;
 
 public:

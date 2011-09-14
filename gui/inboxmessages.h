@@ -1,3 +1,10 @@
+/*
+  File: inboxmessages.h
+  di Maggiolo Giorgio (610338)
+  Email: gimaggio@studenti.math.unipd.it
+  Progetto: Legami, un progetto per Prog. Ogg.
+*/
+
 #ifndef INBOXMESSAGES_H
 #define INBOXMESSAGES_H
 
@@ -6,9 +13,9 @@
 
 #include "showmessage.h"
 
-#include <QTableView>
 #include <QStandardItemModel>
 #include <QString>
+#include <QTableView>
 #include <QVBoxLayout>
 #include <QVector>
 #include <QWidget>
@@ -25,11 +32,9 @@ class inboxMessages : public QWidget
     showMessage* showMess;
 
     QTableView* inboxList;
-
     QStandardItemModel* inboxModel;
 
     QVBoxLayout* layout;
-
 
 public:
     explicit inboxMessages(account*, legami*, QWidget *parent = 0);

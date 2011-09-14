@@ -14,13 +14,13 @@ adminpayments::adminpayments(legami* boss, QWidget *parent) :
     QVector<account*> tempAcc=Boss->userDb();
 
     for(QVector<account*>::iterator it=tempAcc.begin();it<tempAcc.end();++it){
-	QVector<payment*> payTempo= (*it)->payments();
-	for(QVector<payment*>::iterator it1=payTempo.begin();it1<payTempo.end();++it1){
-	    payment* temp=(*it1);
-	    if(temp->approved()==0){
-		payVector.push_back(temp);
-	    }
-	}
+        QVector<payment*> payTempo= (*it)->payments();
+        for(QVector<payment*>::iterator it1=payTempo.begin();it1<payTempo.end();++it1){
+            payment* temp=(*it1);
+            if(temp->approved()==0){
+                payVector.push_back(temp);
+            }
+        }
     }
 
     layout= new QGridLayout(this);
@@ -37,27 +37,27 @@ adminpayments::adminpayments(legami* boss, QWidget *parent) :
 
     QVector<payment*>::iterator it=payVector.begin();
     for(;it<payVector.end();++it){
-	payment* payTemp=*it;
-	QString day, month, year;
-	QStandardItem* dateTemp= new QStandardItem(day.setNum(payTemp->date().day())+QString("/")+month.setNum(payTemp->date().month())+QString("/")+year.setNum(payTemp->date().year()));
+        payment* payTemp=*it;
+        QString day, month, year;
+        QStandardItem* dateTemp= new QStandardItem(day.setNum(payTemp->date().day())+QString("/")+month.setNum(payTemp->date().month())+QString("/")+year.setNum(payTemp->date().year()));
 
-	account* accTemp=payTemp->requester();
+        account* accTemp=payTemp->requester();
 
-	QStandardItem* requesterTemp= new QStandardItem(accTemp->user()->user());
+        QStandardItem* requesterTemp= new QStandardItem(accTemp->user()->user());
 
-	QStandardItem* requestTemp=0;
-	if(payTemp->request()==1) requestTemp= new QStandardItem(tr("Business"));
-	else requestTemp= new QStandardItem(tr("Executive"));
+        QStandardItem* requestTemp=0;
+        if(payTemp->request()==1) requestTemp= new QStandardItem(tr("Business"));
+        else requestTemp= new QStandardItem(tr("Executive"));
 
-	QStandardItem* apprTemp=0;
+        QStandardItem* apprTemp=0;
         if(payTemp->approved()==1) apprTemp= new QStandardItem(tr("Approved"));
         else if(payTemp->approved()==0) apprTemp= new QStandardItem(tr("Not Approved"));
         else apprTemp= new QStandardItem(tr("Rejected"));
 
-	dateList.push_back(dateTemp);
-	userList.push_back(requesterTemp);
-	requestList.push_back(requestTemp);
-	apprList.push_back(apprTemp);
+        dateList.push_back(dateTemp);
+        userList.push_back(requesterTemp);
+        requestList.push_back(requestTemp);
+        apprList.push_back(apprTemp);
     }
     payRootItem->appendColumn(dateList);
     payRootItem->appendColumn(userList);
@@ -86,16 +86,16 @@ void adminpayments::modSelected(QModelIndex ind){
 
 void adminpayments::acceptPay(){
     if(paySelected>-1){
-	payment* temp=payVector[paySelected];
-	temp->setApproved(Boss->accountlogged());
+        payment* temp=payVector[paySelected];
+        temp->setApproved(Boss->accountlogged());
     }
     else QMessageBox::warning(this, tr("Error"), tr("Payment not selected.\n Please select a upgrade request"), QMessageBox::Ok, QMessageBox::Ok);
 }
 
 void adminpayments::rejectPay(){
     if(paySelected>-1){
-	payment* temp=payVector[paySelected];
-	temp->setRejected(Boss->accountlogged());
+        payment* temp=payVector[paySelected];
+        temp->setRejected(Boss->accountlogged());
     }
     else QMessageBox::warning(this, tr("Error"), tr("Payment not selected.\n Please select a upgrade request"), QMessageBox::Ok, QMessageBox::Ok);
 }

@@ -22,8 +22,6 @@ class reguser : public QDialog
 
     legami* Boss;
 
-    QFormLayout* layout;
-
     QLineEdit* usernLineEdit;
     QLineEdit* passwLineEdit;
 
@@ -33,14 +31,18 @@ class reguser : public QDialog
     QPushButton* okButton;
     QPushButton* cancelButton;
 
+    QFormLayout* layout;
+
 public:
     explicit reguser(legami*, QWidget *parent = 0);
 
 signals:
     void login();
     void registered(bool);
+
 public slots:
-	void reginto();
+    void reginto();
+
 };
 
 #endif // REGUSER_H

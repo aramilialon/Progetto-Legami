@@ -15,13 +15,13 @@ subscribegroup::subscribegroup(account* acc, legami* boss, QWidget *parent) :
     QStandardItem* groupParentItem= groupModel->invisibleRootItem();
 
     for(;it1<groupVectorTemp.end();++it1){
-	bool found=false;
-	for(;!found && it2<groupUser.end();++it2) if(*it1==*it2) found=true;
-	if(!found){
-	    QStandardItem* temp= new QStandardItem((*it1)->name());
-	    groupParentItem->appendRow(temp);
-	}
-	else found=false;
+        bool found=false;
+        for(;!found && it2<groupUser.end();++it2) if(*it1==*it2) found=true;
+        if(!found){
+            QStandardItem* temp= new QStandardItem((*it1)->name());
+            groupParentItem->appendRow(temp);
+        }
+        else found=false;
     }
     groupsListView->setModel(groupModel);
     connect(groupsListView, SIGNAL(clicked(QModelIndex)), this, SLOT(setGroup(QModelIndex)));
@@ -49,10 +49,10 @@ void subscribegroup::subscribe(){
     bool insered=false;
 
     for(QVector<group*>::iterator it=temp.begin();!insered && it!=temp.end();++it){
-	if((*it)->name()==groupSelected){
-	    (*it)->addmember(*accToAdd);
-	    insered=true;
-	}
+        if((*it)->name()==groupSelected){
+            (*it)->addmember(*accToAdd);
+            insered=true;
+        }
     }
     if(insered) emit subscrived();
 }
