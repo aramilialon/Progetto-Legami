@@ -33,7 +33,7 @@ class modifyuserexperiences : public QGroupBox
 
     QGridLayout* layout;
 
-    /*memorizza il numero di oggetti di tipo modifyuserexperience*/a
+    /*memorizza il numero di oggetti di tipo modifyuserexperience*/
     int rows;
 
     void loadExpWidget();

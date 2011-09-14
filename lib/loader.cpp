@@ -113,12 +113,14 @@ void loader::loaduserinfo(QDomNode infos, account* newaccount){
             daybirth=infos.firstChildElement(QString("daybirth")).text(),
             monthbirth=infos.firstChildElement(QString("monthbirth")).text(),
             yearbirth=infos.firstChildElement(QString("yearbirth")).text(),
+            birthplace=infos.firstChildElement(QString("birthplace")).text(),
             telnum=infos.firstChildElement(QString("telnum")).text(),
             email=infos.firstChildElement(QString("email")).text();
     userinfo* infotemp=new userinfo();
     if(!name.isEmpty()) infotemp->setName(name);
     if(!surname.isEmpty()) infotemp->setSurname(surname);
     if(!daybirth.isEmpty()&&!monthbirth.isEmpty()&&!yearbirth.isEmpty()) infotemp->setDate(QDate(yearbirth.toInt(), monthbirth.toInt(), daybirth.toInt()));
+    if(!birthplace.isEmpty()) infotemp->setPlace(birthplace);
     if(!telnum.isEmpty()) infotemp->setNumber(telnum);
     if(!email.isEmpty()) infotemp->setEmail(email);
     temp->setinfo(*infotemp);
@@ -363,6 +365,7 @@ void loader::writeuserinfo(const account & acc, QDomNode & user, QDomDocument ro
                 daybirth=root.createElement(QString("daybirth")),
                 monthbirth=root.createElement(QString("monthbirth")),
                 yearbirth=root.createElement(QString("yearbirth")),
+                birthplace=root.createElement(QString("birthplace")),
                 telnum=root.createElement(QString("telnum")),
                 email=root.createElement(QString("email"));
         infos.appendChild(name);
@@ -370,6 +373,7 @@ void loader::writeuserinfo(const account & acc, QDomNode & user, QDomDocument ro
         infos.appendChild(daybirth);
         infos.appendChild(monthbirth);
         infos.appendChild(yearbirth);
+        infos.appendChild(birthplace);
         infos.appendChild(telnum);
         infos.appendChild(email);
         name.appendChild(nametext);
@@ -377,6 +381,7 @@ void loader::writeuserinfo(const account & acc, QDomNode & user, QDomDocument ro
         daybirth.appendChild(daybirthtext);
         monthbirth.appendChild(monthbirthtext);
         yearbirth.appendChild(yearbirthtext);
+        birthplace.appendChild(birthplacetext);
         telnum.appendChild(telinfotext);
         email.appendChild(emailtext);
     }

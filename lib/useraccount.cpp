@@ -39,8 +39,7 @@ void useraccount::setinfo(QString a, QString b, int c, int d, int e, QString f, 
     _info=new userinfo();
     _info->setName(a);
     _info->setSurname(b);
-    QDate* temp= new QDate(c,d,e);
-    _info->setDate(*temp);
+    _info->setDate(QDate(c,d,e));
     _info->setPlace(f);
     _info->setNumber(g);
     _info->setEmail(h);

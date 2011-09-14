@@ -40,7 +40,10 @@ modifyuserinfos::modifyuserinfos(const useraccount & acc, legami* boss, QWidget 
 }
 
 void modifyuserinfos::modify(){
-    accToModify->setinfo(nameLineEdit->text(), surnameLineEdit->text(), dateDateEdit->date().year(), dateDateEdit->date().month(), dateDateEdit->date().day(), placeLineEdit->text(), telnumLineEdit->text(), emailLineEdit->text());
+    int *year= new int(dateDateEdit->date().year()),
+            *month= new int(dateDateEdit->date().month()),
+            *day= new int(dateDateEdit->date().day());
+    accToModify->setinfo(nameLineEdit->text(), surnameLineEdit->text(), *year, *month, *day, placeLineEdit->text(), telnumLineEdit->text(), emailLineEdit->text());
     emit modified(true);
 }
 

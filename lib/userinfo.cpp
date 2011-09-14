@@ -12,8 +12,8 @@
 
 userinfo::userinfo(){}
 
-void userinfo::setDate(const QDate& x=QDate()){
-    _birthdate=x;
+void userinfo::setDate(QDate x=QDate()){
+    _birthdate.setDate(x.year(), x.month(), x.day());
 }
 
 void userinfo::setEmail(QString x=""){
@@ -47,7 +47,7 @@ QString userinfo::surname() const{
 }
 
 QDate userinfo::birthdate() const{
-    if(!_birthdate.isValid()) return _birthdate;
+    if(_birthdate.isValid()) return _birthdate;
     return QDate();
 }
 

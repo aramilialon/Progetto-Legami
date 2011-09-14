@@ -8,8 +8,8 @@
 #ifndef USERINFO_H
 #define USERINFO_H
 
-#include <QString>
 #include <QDate>
+#include <QString>
 
 class userinfo
 {
@@ -29,7 +29,7 @@ public:
     QString email() const;
     void setName(QString);
     void setSurname(QString);
-    void setDate(const QDate&);
+    void setDate(QDate);
     void setPlace(QString);
     void setNumber(QString);
     void setEmail(QString);
