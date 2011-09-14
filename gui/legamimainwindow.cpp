@@ -31,15 +31,24 @@
 #include "showuserprofile.h"
 #include "subscribegroup.h"
 
+#include <QApplication>
 #include <QCloseEvent>
 #include <QDialog>
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QScrollArea>
 
+
 legamimainwindow::legamimainwindow(QWidget *parent) :
     QMainWindow(parent)
 {
+
+    itaTransl= new QTranslator();
+    itaTransl->load("./translation/legami_ita");
+
+    engTransl= new QTranslator();
+    engTransl->load("./translation/legami_eng");
+
     setMinimumSize(640,480);
     setMaximumSize(1366, 768);
     FileBar=0;
@@ -137,27 +146,38 @@ void legamimainwindow::setMenuBarUnregistered(){
     }
 
     setCentralWidget(scroll);
-    File= new QMenu(tr("File"), this);
-    Register= new QAction(tr("New User?"), this);
+    File= new QMenu(this);
+    Register= new QAction(this);
     connect(Register, SIGNAL(triggered()), this, SLOT(registerNewUser()));
-    Login= new QAction(tr("Login"), this);
+    Login= new QAction(this);
     connect(Login, SIGNAL(triggered()), this, SLOT(login()));
-    Exit= new QAction(tr("Exit"), this);
+    Exit= new QAction(this);
     connect(Exit, SIGNAL(triggered()), this, SLOT(closeAll()));
     File->addAction(Register);
     File->addAction(Login);
     File->addAction(Exit);
 
-    About= new QMenu(tr("About"), this);
-    AboutLegami= new QAction(tr("About Legami"), this);
+    Language= new QMenu(tr("Language"), this);
+    Italian= new QAction(tr("Italian"), this);
+    connect(Italian, SIGNAL(triggered()), this, SLOT(changeitalian()));
+    English= new QAction(tr("English"), this);
+    connect(English, SIGNAL(triggered()), this, SLOT(changeenglish()));
+    Language->addAction(Italian);
+    Language->addAction(English);
+
+    About= new QMenu(this);
+    AboutLegami= new QAction(this);
     connect(AboutLegami, SIGNAL(triggered()), this, SLOT(aboutLegami()));
-    AboutQt= new QAction(tr("About Qt"), this);
+    AboutQt= new QAction(this);
     connect(AboutQt, SIGNAL(triggered()), this, SLOT(aboutQt()));
     About->addAction(AboutLegami);
     About->addAction(AboutQt);
 
     FileBar->addMenu(File);
+    FileBar->addMenu(Language);
     FileBar->addMenu(About);
+
+    writeNameActionsUnregistered();
     setMenuBar(FileBar);
 }
 
@@ -204,69 +224,73 @@ void legamimainwindow::logged(bool log){
 
 void legamimainwindow::setMenuBarRegistered(){
     File->clear();
+    Language->clear();
+    delete Language;
 
-    Logout= new QAction(tr("Logout"), this);
+    Logout= new QAction(this);
     connect(Logout, SIGNAL(triggered()), this, SLOT(logout()));
-    Exit= new QAction(tr("Exit"), this);
+    Exit= new QAction(this);
     connect(Exit, SIGNAL(triggered()), this, SLOT(closeAll()));
     File->addAction(Logout);
     File->addAction(Exit);
 
     Language= new QMenu(tr("Language"), this);
     Italian= new QAction(tr("Italian"), this);
+    connect(Italian, SIGNAL(triggered()), this, SLOT(changeitalian()));
     English= new QAction(tr("English"), this);
+    connect(English, SIGNAL(triggered()), this, SLOT(changeenglish()));
     Language->addAction(Italian);
     Language->addAction(English);
 
-    Account= new QMenu(tr("Account"), this);
-    ViewProfileSelf= new QAction(tr("View Profile"), this);
-    ModifyProfileSelf= new QAction(tr("Modify Profile"), this);
+    Account= new QMenu(this);
+    ViewProfileSelf= new QAction(this);
+    ModifyProfileSelf= new QAction(this);
     Account->addAction(ViewProfileSelf);
     Account->addAction(ModifyProfileSelf);
     connect(ViewProfileSelf, SIGNAL(triggered()), this, SLOT(showuser()));
     connect(ModifyProfileSelf, SIGNAL(triggered()), this, SLOT(modifyuser()));
 
-    Contacts= new QMenu(tr("Contacts"), this);
-    ShowContacts= new QAction(tr("Show Contacts"), this);
+    Contacts= new QMenu(this);
+    ShowContacts= new QAction(this);
     connect(ShowContacts, SIGNAL(triggered()), this, SLOT(showcontactsself()));
-    AddContact= new QAction(tr("Add new contact"), this);
+    AddContact= new QAction(this);
     connect(AddContact, SIGNAL(triggered()), this, SLOT(addnewcontactself()));
-    RemoveContact= new QAction(tr("Delete Contact"), this);
+    RemoveContact= new QAction(this);
     connect(RemoveContact, SIGNAL(triggered()), this, SLOT(removecontactself()));
     Contacts->addAction(ShowContacts);
     Contacts->addAction(AddContact);
     Contacts->addAction(RemoveContact);
 
 
-    Groups= new QMenu(tr("Groups"), this);
-    ViewGroupsIscrived= new QAction(tr("View Groups"), this);
+    Groups= new QMenu(this);
+    ViewGroupsIscrived= new QAction(this);
     connect(ViewGroupsIscrived, SIGNAL(triggered()), this, SLOT(showgroups()));
-    ModifyGroupsIscrived= new QAction(tr("Register new group"), this);
+    ModifyGroupsIscrived= new QAction(this);
     connect(ModifyGroupsIscrived, SIGNAL(triggered()), this, SLOT(iscrivenewGroup()));
-    SubscribeGroup= new QAction(tr("Subscribe Group"), this);
+    SubscribeGroup= new QAction(this);
     connect(SubscribeGroup, SIGNAL(triggered()), this, SLOT(subscribeGroup()));
     Groups->addAction(ModifyGroupsIscrived);
     Groups->addAction(ViewGroupsIscrived);
     Groups->addAction(SubscribeGroup);
 
-    Messages= new QMenu(tr("Messages"), this);
-    Inbox= new QAction(tr("Inbox"), this);
+    Messages= new QMenu(this);
+    Inbox= new QAction(this);
     connect(Inbox, SIGNAL(triggered()), this, SLOT(inbox()));
-    Outbox= new QAction(tr("Outbox"), this);
+    Outbox= new QAction(this);
     connect(Outbox, SIGNAL(triggered()), this, SLOT(outbox()));
-    NewMessage= new QAction(tr("New Message"), this);
+    NewMessage= new QAction(this);
     connect(NewMessage, SIGNAL(triggered()), this, SLOT(messagenew()));
     Messages->addAction(Inbox);
     Messages->addAction(NewMessage);
     Messages->addAction(Outbox);
 
-    Search= new QAction(tr("Search"), this);
+    Search= new QAction(this);
     connect(Search, SIGNAL(triggered()), this, SLOT(search()));
 
-    Payments= new QMenu(tr("Upgrades"), this);
-    RequestPayment= new QAction(tr("Request Payments"), this);
+    Payments= new QMenu(this);
+    RequestPayment= new QAction(this);
     connect(RequestPayment, SIGNAL(triggered()), this, SLOT(requestnewpayment()));
-    CheckPayment= new QAction(tr("Check Requests"), this);
+    CheckPayment= new QAction(this);
     connect(CheckPayment, SIGNAL(triggered()), this, SLOT(shopaymentsself()));
     Payments->addAction(RequestPayment);
     Payments->addAction(CheckPayment);
@@ -282,12 +306,12 @@ void legamimainwindow::setMenuBarRegistered(){
 
     useraccount* temp= dynamic_cast<useraccount*>(Boss->accountlogged());
     if(temp && temp->getadmin()==1){
-        Admin= new QMenu(tr("Administration"), this);
-        AdminUsers= new QAction(tr("Admin Users"), this);
+        Admin= new QMenu(this);
+        AdminUsers= new QAction(this);
         connect(AdminUsers, SIGNAL(triggered()), this, SLOT(adminusersad()));
-        AdminGroups= new QAction(tr("Admin Groups"), this);
+        AdminGroups= new QAction(this);
         connect(AdminGroups, SIGNAL(triggered()), this, SLOT(admingroupsad()));
-        AdminPayments= new QAction(tr("Admin Payments Requested"), this);
+        AdminPayments= new QAction(this);
         connect(AdminPayments, SIGNAL(triggered()), this, SLOT(adminpaymentsleft()));
 
         Admin->addAction(AdminUsers);
@@ -305,6 +329,8 @@ void legamimainwindow::setMenuBarRegistered(){
 
     FileBar->addMenu(Language);
     FileBar->addMenu(About);
+
+    writeNameActionsRegistered();
 }
 
 void legamimainwindow::closeAll(){
@@ -567,4 +593,83 @@ void legamimainwindow::search(){
     scroll->setAlignment(Qt::AlignHCenter);
     MainWidget->setMinimumWidth(620);
     setCentralWidget(scroll);
+}
+
+void legamimainwindow::writeNameActionsUnregistered(){
+    File->setTitle(tr("File"));
+    Register->setText(tr("New User?"));
+    Login->setText(tr("Login"));
+    Exit->setText(tr("Exit"));
+
+    Language->setTitle(tr("Language"));
+    Italian->setText(tr("Italian"));
+    English->setText(tr("English"));
+
+    About->setTitle(tr("About"));
+    AboutLegami->setText(tr("About Legami"));
+    AboutQt->setText(tr("About Qt"));
+}
+
+void legamimainwindow::writeNameActionsRegistered(){
+    Logout->setText(tr("Logout"));
+    Exit->setText(tr("Exit"));
+
+    Language->setTitle(tr("Language"));
+    Italian->setText(tr("Italian"));
+    English->setText(tr("English"));
+
+    Account->setTitle(tr("Account"));
+    ViewProfileSelf->setText(tr("View Profile"));
+    ModifyProfileSelf->setText(tr("Modify Profile"));
+
+    Contacts->setTitle(tr("Contacts"));
+    ShowContacts->setText(tr("Show Contacts"));
+    AddContact->setText(tr("Add new contact"));
+    RemoveContact->setText(tr("Delete Contact"));
+
+    Groups->setTitle(tr("Groups"));
+    ViewGroupsIscrived->setText(tr("View Groups"));
+    ModifyGroupsIscrived->setText(tr("Register new group"));
+    SubscribeGroup->setText(tr("Subscribe Group"));
+
+    Messages->setTitle(tr("Messages"));
+    Inbox->setText(tr("Inbox"));
+    Outbox->setText(tr("Outbox"));
+    NewMessage->setText(tr("New Message"));
+
+    Search->setText(tr("Search"));
+
+    Payments->setTitle(tr("Upgrades"));
+    RequestPayment->setText(tr("Request Payments"));
+    CheckPayment->setText(tr("Check Requests"));
+
+    useraccount* temp= dynamic_cast<useraccount*>(Boss->accountlogged());
+    if(temp && temp->getadmin()==1){
+        Admin->setTitle(tr("Administration"));
+        AdminUsers->setText(tr("Admin Users"));
+        AdminGroups->setText(tr("Admin Groups"));
+        AdminPayments->setText(tr("Admin Payments Requested"));
+    }
+}
+
+void legamimainwindow::changeenglish(){
+    QApplication::removeTranslator(itaTransl);
+    QApplication::installTranslator(engTransl);
+    QEvent* temp= new QEvent(QEvent::LanguageChange);
+    qApp->sendEvent(this, temp);
+}
+
+void legamimainwindow::changeitalian(){
+    QApplication::removeTranslator(engTransl);
+    QApplication::installTranslator(itaTransl);
+    QEvent* temp= new QEvent(QEvent::LanguageChange);
+    qApp->sendEvent(this, temp);
+}
+
+void legamimainwindow::changeEvent(QEvent * event){
+    if(event->type() == QEvent::LanguageChange){
+        if(Boss->accountlogged()!=0) writeNameActionsRegistered();
+        else writeNameActionsUnregistered();
+    }
+    else QWidget::changeEvent(event);
 }

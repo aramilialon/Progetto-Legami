@@ -275,111 +275,111 @@
 <context>
     <name>legamimainwindow</name>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="65"/>
+        <location filename="../gui/legamimainwindow.cpp" line="74"/>
         <source>Database not loaded</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="66"/>
+        <location filename="../gui/legamimainwindow.cpp" line="75"/>
         <source>Would you like to try &lt;i&gt;another path&lt;/i&gt; rather than the normal one or to load the &lt;i&gt;example data?&lt;/i&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="69"/>
+        <location filename="../gui/legamimainwindow.cpp" line="78"/>
         <source>Another path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="70"/>
+        <location filename="../gui/legamimainwindow.cpp" line="79"/>
         <source>Example data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="88"/>
-        <location filename="../gui/legamimainwindow.cpp" line="361"/>
-        <location filename="../gui/legamimainwindow.cpp" line="393"/>
+        <location filename="../gui/legamimainwindow.cpp" line="97"/>
+        <location filename="../gui/legamimainwindow.cpp" line="383"/>
+        <location filename="../gui/legamimainwindow.cpp" line="415"/>
         <source>Error!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="88"/>
+        <location filename="../gui/legamimainwindow.cpp" line="97"/>
         <source>Is not been possible to create the example account</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="92"/>
+        <location filename="../gui/legamimainwindow.cpp" line="101"/>
         <source>Data example created!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="92"/>
+        <location filename="../gui/legamimainwindow.cpp" line="101"/>
         <source>A user account has been created.These are the login informations:
 Username: root
 Password: &apos;there is no password&apos;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="140"/>
+        <location filename="../gui/legamimainwindow.cpp" line="595"/>
         <source>File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="141"/>
+        <location filename="../gui/legamimainwindow.cpp" line="596"/>
         <source>New User?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="143"/>
+        <location filename="../gui/legamimainwindow.cpp" line="597"/>
         <source>Login</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="145"/>
-        <location filename="../gui/legamimainwindow.cpp" line="210"/>
+        <location filename="../gui/legamimainwindow.cpp" line="598"/>
+        <location filename="../gui/legamimainwindow.cpp" line="611"/>
         <source>Exit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="151"/>
+        <location filename="../gui/legamimainwindow.cpp" line="604"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="152"/>
-        <location filename="../gui/legamimainwindow.cpp" line="184"/>
+        <location filename="../gui/legamimainwindow.cpp" line="202"/>
+        <location filename="../gui/legamimainwindow.cpp" line="605"/>
         <source>About Legami</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="154"/>
-        <location filename="../gui/legamimainwindow.cpp" line="191"/>
+        <location filename="../gui/legamimainwindow.cpp" line="209"/>
+        <location filename="../gui/legamimainwindow.cpp" line="606"/>
         <source>About Qt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="171"/>
+        <location filename="../gui/legamimainwindow.cpp" line="189"/>
         <source>New Account Created</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="171"/>
+        <location filename="../gui/legamimainwindow.cpp" line="189"/>
         <source>The new account requested has been created.
 Please login with the new username and password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="173"/>
-        <location filename="../gui/legamimainwindow.cpp" line="474"/>
+        <location filename="../gui/legamimainwindow.cpp" line="191"/>
+        <location filename="../gui/legamimainwindow.cpp" line="496"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="173"/>
+        <location filename="../gui/legamimainwindow.cpp" line="191"/>
         <source>It has not been possible to create a new account. Please try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="184"/>
+        <location filename="../gui/legamimainwindow.cpp" line="202"/>
         <source>Legami is a program made for the class &quot;Object Programming&quot;
 Programmer name: Giorgio Maggiolo
 Student Code: 610338
@@ -387,198 +387,207 @@ Email: maggiolo.giorgio@gmail.com</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="196"/>
+        <location filename="../gui/legamimainwindow.cpp" line="214"/>
         <source>Logged succefully!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="196"/>
+        <location filename="../gui/legamimainwindow.cpp" line="214"/>
         <source> logged in!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="200"/>
+        <location filename="../gui/legamimainwindow.cpp" line="218"/>
         <source>Login problem</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="200"/>
+        <location filename="../gui/legamimainwindow.cpp" line="218"/>
         <source>You have provided wrong accessing data.
 Please check username and password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="208"/>
+        <location filename="../gui/legamimainwindow.cpp" line="610"/>
         <source>Logout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="215"/>
+        <location filename="../gui/legamimainwindow.cpp" line="160"/>
+        <location filename="../gui/legamimainwindow.cpp" line="235"/>
+        <location filename="../gui/legamimainwindow.cpp" line="600"/>
+        <location filename="../gui/legamimainwindow.cpp" line="613"/>
         <source>Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="216"/>
+        <location filename="../gui/legamimainwindow.cpp" line="161"/>
+        <location filename="../gui/legamimainwindow.cpp" line="236"/>
+        <location filename="../gui/legamimainwindow.cpp" line="601"/>
+        <location filename="../gui/legamimainwindow.cpp" line="614"/>
         <source>Italian</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="217"/>
+        <location filename="../gui/legamimainwindow.cpp" line="162"/>
+        <location filename="../gui/legamimainwindow.cpp" line="237"/>
+        <location filename="../gui/legamimainwindow.cpp" line="602"/>
+        <location filename="../gui/legamimainwindow.cpp" line="615"/>
         <source>English</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="221"/>
+        <location filename="../gui/legamimainwindow.cpp" line="617"/>
         <source>Account</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="222"/>
+        <location filename="../gui/legamimainwindow.cpp" line="618"/>
         <source>View Profile</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="223"/>
+        <location filename="../gui/legamimainwindow.cpp" line="619"/>
         <source>Modify Profile</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="229"/>
+        <location filename="../gui/legamimainwindow.cpp" line="621"/>
         <source>Contacts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="230"/>
+        <location filename="../gui/legamimainwindow.cpp" line="622"/>
         <source>Show Contacts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="232"/>
+        <location filename="../gui/legamimainwindow.cpp" line="623"/>
         <source>Add new contact</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="234"/>
+        <location filename="../gui/legamimainwindow.cpp" line="624"/>
         <source>Delete Contact</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="241"/>
+        <location filename="../gui/legamimainwindow.cpp" line="626"/>
         <source>Groups</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="242"/>
+        <location filename="../gui/legamimainwindow.cpp" line="627"/>
         <source>View Groups</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="244"/>
+        <location filename="../gui/legamimainwindow.cpp" line="628"/>
         <source>Register new group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="246"/>
+        <location filename="../gui/legamimainwindow.cpp" line="629"/>
         <source>Subscribe Group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="252"/>
+        <location filename="../gui/legamimainwindow.cpp" line="631"/>
         <source>Messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="253"/>
+        <location filename="../gui/legamimainwindow.cpp" line="632"/>
         <source>Inbox</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="255"/>
+        <location filename="../gui/legamimainwindow.cpp" line="633"/>
         <source>Outbox</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="257"/>
+        <location filename="../gui/legamimainwindow.cpp" line="634"/>
         <source>New Message</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="263"/>
+        <location filename="../gui/legamimainwindow.cpp" line="636"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="266"/>
+        <location filename="../gui/legamimainwindow.cpp" line="638"/>
         <source>Upgrades</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="267"/>
+        <location filename="../gui/legamimainwindow.cpp" line="639"/>
         <source>Request Payments</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="269"/>
+        <location filename="../gui/legamimainwindow.cpp" line="640"/>
         <source>Check Requests</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="285"/>
+        <location filename="../gui/legamimainwindow.cpp" line="644"/>
         <source>Administration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="286"/>
+        <location filename="../gui/legamimainwindow.cpp" line="645"/>
         <source>Admin Users</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="288"/>
+        <location filename="../gui/legamimainwindow.cpp" line="646"/>
         <source>Admin Groups</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="290"/>
+        <location filename="../gui/legamimainwindow.cpp" line="647"/>
         <source>Admin Payments Requested</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="319"/>
+        <location filename="../gui/legamimainwindow.cpp" line="341"/>
         <source>Successfully logged out!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="319"/>
+        <location filename="../gui/legamimainwindow.cpp" line="341"/>
         <source> successfully logged out.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="361"/>
+        <location filename="../gui/legamimainwindow.cpp" line="383"/>
         <source> asdasdasd successfully logged out.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="393"/>
+        <location filename="../gui/legamimainwindow.cpp" line="415"/>
         <source> There has been a error and the program could not recognize the type of the account.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="422"/>
+        <location filename="../gui/legamimainwindow.cpp" line="444"/>
         <source>Group Created</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="422"/>
+        <location filename="../gui/legamimainwindow.cpp" line="444"/>
         <source>The group requested has been created. /n You are the admin.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="432"/>
+        <location filename="../gui/legamimainwindow.cpp" line="454"/>
         <source>Group Subscrived</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="432"/>
+        <location filename="../gui/legamimainwindow.cpp" line="454"/>
         <source>You have been added to the group requested.</source>
         <translation type="unfinished"></translation>
     </message>

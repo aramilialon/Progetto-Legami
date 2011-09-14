@@ -18,6 +18,7 @@
 #include <QMainWindow>
 #include <QScrollArea>
 #include <QString>
+#include <QTranslator>
 #include <QWidget>
 
 class legamimainwindow : public QMainWindow
@@ -27,6 +28,9 @@ class legamimainwindow : public QMainWindow
     legami* Boss;
 
     QMenuBar* FileBar;
+
+    QTranslator* itaTransl;
+    QTranslator* engTransl;
 
     QMenu* File;
     QAction* Register;
@@ -80,9 +84,12 @@ class legamimainwindow : public QMainWindow
     void setMenuBarRegistered();
     bool loginUser(QString, QString);
 
+    void writeNameActionsUnregistered();
+    void writeNameActionsRegistered();
+
 public:
     explicit legamimainwindow(QWidget *parent = 0);
-
+    void changeEvent(QEvent *);
     void closeEvent(QCloseEvent *);
 signals:
 
@@ -116,6 +123,8 @@ private slots:
     void admingroupsad();
     void adminpaymentsleft();
     void search();
+    void changeitalian();
+    void changeenglish();
 };
 
 #endif // LEGAMIMAINWINDOW_H
