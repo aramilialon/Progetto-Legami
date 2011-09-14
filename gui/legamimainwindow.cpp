@@ -23,6 +23,7 @@
 #include "outboxmessages.h"
 #include "reguser.h"
 #include "removecontact.h"
+#include "searchwidget.h"
 #include "showcompanyprofile.h"
 #include "showcontacts.h"
 #include "showpayments.h"
@@ -53,85 +54,86 @@ legamimainwindow::legamimainwindow(QWidget *parent) :
     bool loaded=false;
     bool errorReported=false;
     while(!loaded){
-	try{
-	    Boss->getloader()->loaddb();
-	}
-	catch(error er){
-	    int returned=0;
-	    errorReported=true;
-	    QMessageBox msg;
-	    msg.setIcon(QMessageBox::Warning);
-	    msg.setText(tr("Database not loaded"));
-	    msg.setInformativeText(tr("Would you like to try <i>another path</i> "
-				      "rather than the normal one or to load the <i>example data?</i>"));
-	    msg.setDetailedText(er.comment());
-	    msg.addButton(tr("Another path"), QMessageBox::YesRole);
-	    msg.addButton(tr("Example data"), QMessageBox::NoRole);
-	    msg.exec();
-	    returned= msg.result();
-	    if(returned==0){
-		QString newpath= QFileDialog::getOpenFileName(this, "Select database", "./", "Database File (*.xml)");
-		if(!newpath.isEmpty()) Boss->getloader()->setdb(newpath);
-	    }
-	    else{
-		useraccount* newadmin= new useraccount("root", "there is no password", 2, *Boss);
-		newadmin->setadmin(1);
-		newadmin->setype(2);
-		bool created=true;
-		try{
-		    Boss->addAccount(*newadmin);
-		    Boss->getloader()->writedb();
-		}
-		catch(error er2){
-		    created=false;
-		    QMessageBox::critical(this, tr("Error!"), tr("Is not been possible to create the example account"));
-		}
-		Boss->getloader()->writedb();
-		if(created){
-		    QMessageBox::warning(this, tr("Data example created!"), tr("A user account has been created."
-									       "These are the login informations:\n"
-									       "Username: root\n"
-									       "Password: 'there is no password'"),
-					 QMessageBox::Yes, QMessageBox::Yes);
-		    errorReported=false;
-		}
-	    }
-	}
-	if(!errorReported){
-	    loaded=true;
-	}
-	else{
-	    errorReported=false;
-	}
+        try{
+            Boss->getloader()->loaddb();
+        }
+        catch(error er){
+            int returned=0;
+            errorReported=true;
+            QMessageBox msg;
+            msg.setIcon(QMessageBox::Warning);
+            msg.setText(tr("Database not loaded"));
+            msg.setInformativeText(tr("Would you like to try <i>another path</i> "
+                                      "rather than the normal one or to load the <i>example data?</i>"));
+            msg.setDetailedText(er.comment());
+            msg.addButton(tr("Another path"), QMessageBox::YesRole);
+            msg.addButton(tr("Example data"), QMessageBox::NoRole);
+            msg.exec();
+            returned= msg.result();
+            if(returned==0){
+                QString newpath= QFileDialog::getOpenFileName(this, "Select database", "./", "Database File (*.xml)");
+                if(!newpath.isEmpty()) Boss->getloader()->setdb(newpath);
+            }
+            else{
+                useraccount* newadmin= new useraccount("root", "there is no password", 2, *Boss);
+                newadmin->setadmin(1);
+                newadmin->setype(2);
+                bool created=true;
+                try{
+                    Boss->addAccount(*newadmin);
+                    Boss->getloader()->writedb();
+                }
+                catch(error er2){
+                    created=false;
+                    QMessageBox::critical(this, tr("Error!"), tr("Is not been possible to create the example account"));
+                }
+                Boss->getloader()->writedb();
+                if(created){
+                    QMessageBox::warning(this, tr("Data example created!"), tr("A user account has been created."
+                                                                               "These are the login informations:\n"
+                                                                               "Username: root\n"
+                                                                               "Password: 'there is no password'"),
+                                         QMessageBox::Yes, QMessageBox::Yes);
+                    errorReported=false;
+                }
+            }
+        }
+        if(!errorReported){
+            loaded=true;
+        }
+        else{
+            errorReported=false;
+        }
     }
 }
 
 void legamimainwindow::setMenuBarUnregistered(){
     if(!FileBar) FileBar= new QMenuBar(this);
     else{
-	File->clear();
+        File->clear();
         Language->clear();
-	Account->clear();
-	Contacts->clear();
-	Groups->clear();
-	Messages->clear();
-	Payments->clear();
-	if(Admin) Admin->clear();
-	About->clear();
-	delete File;
+        Account->clear();
+        Contacts->clear();
+        Groups->clear();
+        Messages->clear();
+        Payments->clear();
+        FileBar->removeAction(Search);
+        if(Admin) Admin->clear();
+        About->clear();
+        delete File;
         delete Language;
-	delete Account;
-	delete Contacts;
-	delete Groups;
-	delete Payments;
-	delete Messages;
-	delete Admin;
-	delete About;
+        delete Account;
+        delete Contacts;
+        delete Groups;
+        delete Payments;
+        delete Messages;
+        delete Admin;
+        delete About;
 
-	delete MainWidget;
-	delete scroll;
-	scroll=new QScrollArea(this);
-	MainWidget=0;
+        delete MainWidget;
+        delete scroll;
+        scroll=new QScrollArea(this);
+        MainWidget=0;
     }
 
     setCentralWidget(scroll);
@@ -167,9 +169,9 @@ void legamimainwindow::registerNewUser(){
 
 void legamimainwindow::registered(bool reg){
     if(reg) QMessageBox::information(this, tr("New Account Created"), tr("The new account requested has been created.\n"
-									 "Please login with the new username and password"), QMessageBox::Ok, QMessageBox::Ok);
+                                                                         "Please login with the new username and password"), QMessageBox::Ok, QMessageBox::Ok);
     else QMessageBox::warning(this, tr("Error"), tr("It has not been possible to create a new account. "
-						    "Please try again."), QMessageBox::Ok, QMessageBox::Ok);
+                                                    "Please try again."), QMessageBox::Ok, QMessageBox::Ok);
 }
 
 void legamimainwindow::login(){
@@ -180,9 +182,9 @@ void legamimainwindow::login(){
 
 void legamimainwindow::aboutLegami(){
     QMessageBox::information(this, tr("About Legami"), tr("Legami is a program made for the class \"Object Programming\""
-							  "\nProgrammer name: Giorgio Maggiolo"
-							  "\nStudent Code: 610338"
-							  "\nEmail: maggiolo.giorgio@gmail.com"), QMessageBox::Ok, QMessageBox::Ok);
+                                                          "\nProgrammer name: Giorgio Maggiolo"
+                                                          "\nStudent Code: 610338"
+                                                          "\nEmail: maggiolo.giorgio@gmail.com"), QMessageBox::Ok, QMessageBox::Ok);
 }
 
 void legamimainwindow::aboutQt(){
@@ -191,12 +193,12 @@ void legamimainwindow::aboutQt(){
 
 void legamimainwindow::logged(bool log){
     if(log){
-	QMessageBox::information(this, tr("Logged succefully!"), Boss->accountlogged()->user()->user()+tr(" logged in!"), QMessageBox::Ok, QMessageBox::Ok);
-	setMenuBarRegistered();
+        QMessageBox::information(this, tr("Logged succefully!"), Boss->accountlogged()->user()->user()+tr(" logged in!"), QMessageBox::Ok, QMessageBox::Ok);
+        setMenuBarRegistered();
     }
     else{
-	QMessageBox::warning(this, tr("Login problem"), tr("You have provided wrong accessing data.\n"
-							   "Please check username and password"), QMessageBox::Ok, QMessageBox::Ok);
+        QMessageBox::warning(this, tr("Login problem"), tr("You have provided wrong accessing data.\n"
+                                                           "Please check username and password"), QMessageBox::Ok, QMessageBox::Ok);
     }
 }
 
@@ -280,25 +282,25 @@ void legamimainwindow::setMenuBarRegistered(){
 
     useraccount* temp= dynamic_cast<useraccount*>(Boss->accountlogged());
     if(temp && temp->getadmin()==1){
-	Admin= new QMenu(tr("Administration"), this);
-	AdminUsers= new QAction(tr("Admin Users"), this);
-	connect(AdminUsers, SIGNAL(triggered()), this, SLOT(adminusersad()));
-	AdminGroups= new QAction(tr("Admin Groups"), this);
-	connect(AdminGroups, SIGNAL(triggered()), this, SLOT(admingroupsad()));
-	AdminPayments= new QAction(tr("Admin Payments Requested"), this);
-	connect(AdminPayments, SIGNAL(triggered()), this, SLOT(adminpaymentsleft()));
+        Admin= new QMenu(tr("Administration"), this);
+        AdminUsers= new QAction(tr("Admin Users"), this);
+        connect(AdminUsers, SIGNAL(triggered()), this, SLOT(adminusersad()));
+        AdminGroups= new QAction(tr("Admin Groups"), this);
+        connect(AdminGroups, SIGNAL(triggered()), this, SLOT(admingroupsad()));
+        AdminPayments= new QAction(tr("Admin Payments Requested"), this);
+        connect(AdminPayments, SIGNAL(triggered()), this, SLOT(adminpaymentsleft()));
 
-	Admin->addAction(AdminUsers);
-	Admin->addAction(AdminGroups);
-	Admin->addAction(AdminPayments);
-	FileBar->addMenu(Admin);
+        Admin->addAction(AdminUsers);
+        Admin->addAction(AdminGroups);
+        Admin->addAction(AdminPayments);
+        FileBar->addMenu(Admin);
     }
     else{
-	Admin=0;
-	AdminUsers=0;
-	AdminGroups=0;
-	AdminPayments=0;
-	FileBar->addMenu(Payments);
+        Admin=0;
+        AdminUsers=0;
+        AdminGroups=0;
+        AdminPayments=0;
+        FileBar->addMenu(Payments);
     }
 
     FileBar->addMenu(Language);
@@ -321,8 +323,8 @@ void legamimainwindow::logout(){
 void legamimainwindow::showuser(){
     delete MainWidget;
     if(!scroll){
-	scroll=new QScrollArea(this);
-	scroll->resize(this->size());
+        scroll=new QScrollArea(this);
+        scroll->resize(this->size());
     }
     if(dynamic_cast<useraccount*>(Boss->accountlogged())) MainWidget= new showuserprofile(*(Boss->accountlogged()), Boss, this);
     else MainWidget= new showcompanyprofile(*(Boss->accountlogged()), Boss, this);
@@ -336,25 +338,25 @@ void legamimainwindow::showuser(){
 void legamimainwindow::modifyuser(){
     delete MainWidget;
     if(!scroll){
-	scroll=new QScrollArea(this);
-	scroll->resize(this->size());
+        scroll=new QScrollArea(this);
+        scroll->resize(this->size());
     }
     if(dynamic_cast<useraccount*>(Boss->accountlogged())){
-	MainWidget= new modifyuserprofile(*(dynamic_cast<useraccount*>((Boss->accountlogged()))), Boss, this);
-	connect(MainWidget, SIGNAL(modifiedlist()), this, SLOT(usermodified()));
-	scroll->setWidget(MainWidget);
-	MainWidget->adjustSize();
-	scroll->setAlignment(Qt::AlignHCenter);
-	MainWidget->setMinimumWidth(620);
-	setCentralWidget(scroll);
+        MainWidget= new modifyuserprofile(*(dynamic_cast<useraccount*>((Boss->accountlogged()))), Boss, this);
+        connect(MainWidget, SIGNAL(modifiedlist()), this, SLOT(usermodified()));
+        scroll->setWidget(MainWidget);
+        MainWidget->adjustSize();
+        scroll->setAlignment(Qt::AlignHCenter);
+        MainWidget->setMinimumWidth(620);
+        setCentralWidget(scroll);
     }
     else if(dynamic_cast<companyaccount*>(Boss->accountlogged())){
-	MainWidget= new modifycompanyprofile(dynamic_cast<companyaccount*>(Boss->accountlogged()), Boss, this);
-	scroll->setWidget(MainWidget);
-	MainWidget->adjustSize();
-	scroll->setAlignment(Qt::AlignHCenter);
-	MainWidget->setMinimumWidth(620);
-	setCentralWidget(scroll);
+        MainWidget= new modifycompanyprofile(dynamic_cast<companyaccount*>(Boss->accountlogged()), Boss, this);
+        scroll->setWidget(MainWidget);
+        MainWidget->adjustSize();
+        scroll->setAlignment(Qt::AlignHCenter);
+        MainWidget->setMinimumWidth(620);
+        setCentralWidget(scroll);
     }
     else QMessageBox::information(this, tr("Error!"), tr(" asdasdasd successfully logged out."), QMessageBox::Ok, QMessageBox::Ok);
 }
@@ -368,25 +370,25 @@ void legamimainwindow::closeEvent(QCloseEvent* event){
 void legamimainwindow::usermodified(){
     delete MainWidget;
     if(!scroll){
-	scroll=new QScrollArea(this);
-	scroll->resize(this->size());
+        scroll=new QScrollArea(this);
+        scroll->resize(this->size());
     }
     if(dynamic_cast<useraccount*>(Boss->accountlogged())){
-	MainWidget= new modifyuserprofile(*(dynamic_cast<useraccount*>((Boss->accountlogged()))), Boss, this);
-	connect(MainWidget, SIGNAL(modifiedlist()), this, SLOT(modifyuser()));
-	scroll->setWidget(MainWidget);
-	MainWidget->adjustSize();
-	scroll->setAlignment(Qt::AlignHCenter);
-	MainWidget->setMinimumWidth(620);
-	setCentralWidget(scroll);
+        MainWidget= new modifyuserprofile(*(dynamic_cast<useraccount*>((Boss->accountlogged()))), Boss, this);
+        connect(MainWidget, SIGNAL(modifiedlist()), this, SLOT(modifyuser()));
+        scroll->setWidget(MainWidget);
+        MainWidget->adjustSize();
+        scroll->setAlignment(Qt::AlignHCenter);
+        MainWidget->setMinimumWidth(620);
+        setCentralWidget(scroll);
     }
     else if(dynamic_cast<companyaccount*>(Boss->accountlogged())){
-	MainWidget= new modifycompanyprofile(dynamic_cast<companyaccount*>(Boss->accountlogged()), Boss, this);
-	scroll->setWidget(MainWidget);
-	MainWidget->adjustSize();
-	scroll->setAlignment(Qt::AlignHCenter);
-	MainWidget->setMinimumWidth(620);
-	setCentralWidget(scroll);
+        MainWidget= new modifycompanyprofile(dynamic_cast<companyaccount*>(Boss->accountlogged()), Boss, this);
+        scroll->setWidget(MainWidget);
+        MainWidget->adjustSize();
+        scroll->setAlignment(Qt::AlignHCenter);
+        MainWidget->setMinimumWidth(620);
+        setCentralWidget(scroll);
     }
     else QMessageBox::information(this, tr("Error!"), tr(" There has been a error and the program could not recognize the type of the account."), QMessageBox::Ok, QMessageBox::Ok);
 }
@@ -434,8 +436,8 @@ void legamimainwindow::subscrived(){
 void legamimainwindow::inbox(){
     delete MainWidget;
     if(!scroll){
-	scroll=new QScrollArea(this);
-	scroll->resize(this->size());
+        scroll=new QScrollArea(this);
+        scroll->resize(this->size());
     }
     MainWidget= new inboxMessages(Boss->accountlogged(), Boss, this);
     scroll->setWidget(MainWidget);
@@ -450,8 +452,8 @@ void legamimainwindow::inbox(){
 void legamimainwindow::outbox(){
     delete MainWidget;
     if(!scroll){
-	scroll=new QScrollArea(this);
-	scroll->resize(this->size());
+        scroll=new QScrollArea(this);
+        scroll->resize(this->size());
     }
     MainWidget= new outboxMessages(Boss->accountlogged(), Boss, this);
     scroll->setWidget(MainWidget);
@@ -465,19 +467,19 @@ void legamimainwindow::outbox(){
 
 void legamimainwindow::messagenew(){
     try{
-	newmessage* newmess= new newmessage(Boss->accountlogged(), Boss, this);
-	newmess->show();
+        newmessage* newmess= new newmessage(Boss->accountlogged(), Boss, this);
+        newmess->show();
     }
     catch(error er1){
-	QMessageBox::warning(this, tr("Error"), er1.comment(), QMessageBox::Ok, QMessageBox::Ok);
+        QMessageBox::warning(this, tr("Error"), er1.comment(), QMessageBox::Ok, QMessageBox::Ok);
     }
 }
 
 void legamimainwindow::showcontactsself(){
     delete MainWidget;
     if(!scroll){
-	scroll=new QScrollArea(this);
-	scroll->resize(this->size());
+        scroll=new QScrollArea(this);
+        scroll->resize(this->size());
     }
     MainWidget= new showcontacts(Boss->accountlogged(), Boss, this);
     scroll->setWidget(MainWidget);
@@ -502,8 +504,8 @@ void legamimainwindow::removecontactself(){
 void legamimainwindow::shopaymentsself(){
     delete MainWidget;
     if(!scroll){
-	scroll=new QScrollArea(this);
-	scroll->resize(this->size());
+        scroll=new QScrollArea(this);
+        scroll->resize(this->size());
     }
     MainWidget= new showpayments(Boss->accountlogged(), this);
     scroll->setWidget(MainWidget);
@@ -555,4 +557,14 @@ void legamimainwindow::adminpaymentsleft(){
     setCentralWidget(scroll);
 }
 
-void legamimainwindow::search(){}
+void legamimainwindow::search(){
+    delete MainWidget;
+    delete scroll;
+    scroll=new QScrollArea(this);
+    MainWidget= new searchwidget(Boss->accountlogged(), Boss, this);
+    scroll->setWidget(MainWidget);
+    MainWidget->adjustSize();
+    scroll->setAlignment(Qt::AlignHCenter);
+    MainWidget->setMinimumWidth(620);
+    setCentralWidget(scroll);
+}

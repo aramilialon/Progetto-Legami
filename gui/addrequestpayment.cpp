@@ -18,29 +18,29 @@ addrequestpayment::addrequestpayment(account* acc, legami* boss, QWidget *parent
     executiveLabel= new QLabel(tr("Executive Account:"), this);
 
     if(dynamic_cast<useraccount*>(accToModify)){
-	businessdescrLabel= new QLabel(tr("The business account allows the user to send message only to people who are in his connection list.\n Only one person per time can be insered in the addressee list."), this);
-	businessdescrLabel->setWordWrap(true);
-	executivedescrLabel= new QLabel(tr("Executive account can send a message to anyone who's registered to Legami."));
+        businessdescrLabel= new QLabel(tr("The business account allows the user to send message only to people who are in his connection list.\n Only one person per time can be insered in the addressee list."), this);
+        businessdescrLabel->setWordWrap(true);
+        executivedescrLabel= new QLabel(tr("Executive account can send a message to anyone who's registered to Legami."));
     }
     else{
-	businessdescrLabel= new QLabel(tr("The business account can search users only by their username. \n The number of results is restricted to 30."), this);
-	businessdescrLabel->setWordWrap(true);
-	executivedescrLabel= new QLabel(tr("Executive account can search users by username and a filter of the experience."));
+        businessdescrLabel= new QLabel(tr("The business account can search users only by their username. \n The number of results is restricted to 1 due to new creation user politics."), this);
+        businessdescrLabel->setWordWrap(true);
+        executivedescrLabel= new QLabel(tr("Executive account can search users by username and a filter of the experience."));
     }
     if(accToModify->type()==0){
-	businessButton= new QPushButton(tr("Request Business Upgrade"), this);
-	connect(businessButton, SIGNAL(clicked()), this, SLOT(createBusiness()));
-	executiveButton= new QPushButton(tr("Request Executive Upgrade"), this);
-	connect(executiveButton, SIGNAL(clicked()), this, SLOT(createExecutive()));
+        businessButton= new QPushButton(tr("Request Business Upgrade"), this);
+        connect(businessButton, SIGNAL(clicked()), this, SLOT(createBusiness()));
+        executiveButton= new QPushButton(tr("Request Executive Upgrade"), this);
+        connect(executiveButton, SIGNAL(clicked()), this, SLOT(createExecutive()));
     }
     else if(accToModify->type()==1){
-	businessButton= 0;
-	executiveButton= new QPushButton(tr("Request Executive Upgrade"), this);
-	connect(executiveButton, SIGNAL(clicked()), this, SLOT(createExecutive()));
+        businessButton= 0;
+        executiveButton= new QPushButton(tr("Request Executive Upgrade"), this);
+        connect(executiveButton, SIGNAL(clicked()), this, SLOT(createExecutive()));
     }
     else{
-	businessButton=0;
-	executiveButton=0;
+        businessButton=0;
+        executiveButton=0;
     }
 
     layout->addWidget(businessLabel, 1, 0);
@@ -55,22 +55,22 @@ addrequestpayment::addrequestpayment(account* acc, legami* boss, QWidget *parent
 
 void addrequestpayment::createBusiness(){
     try{
-	payment* temp= new payment(Boss->accountlogged(), 1, QDate::currentDate(), 0);
-	Boss->accountlogged()->addpayment(*temp);
+        payment* temp= new payment(Boss->accountlogged(), 1, QDate::currentDate(), 0);
+        Boss->accountlogged()->addpayment(*temp);
     }
     catch(error er1){
-	QMessageBox::warning(this, tr("Error"), er1.comment(), QMessageBox::Ok, QMessageBox::Ok);
+        QMessageBox::warning(this, tr("Error"), er1.comment(), QMessageBox::Ok, QMessageBox::Ok);
     }
     close();
 }
 
 void addrequestpayment::createExecutive(){
     try{
-	payment* temp= new payment(Boss->accountlogged(), 2, QDate::currentDate(), 0);
-	Boss->accountlogged()->addpayment(*temp);
+        payment* temp= new payment(Boss->accountlogged(), 2, QDate::currentDate(), 0);
+        Boss->accountlogged()->addpayment(*temp);
     }
     catch(error er1){
-	QMessageBox::warning(this, tr("Error"), er1.comment(), QMessageBox::Ok, QMessageBox::Ok);
+        QMessageBox::warning(this, tr("Error"), er1.comment(), QMessageBox::Ok, QMessageBox::Ok);
     }
     close();
 }

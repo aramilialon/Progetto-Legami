@@ -26,19 +26,8 @@ username* companyaccount::user() const{
     return _user;
 }
 
-QVector<account*> companyaccount::search(QString a) const{
-    QVector<account*> temp;
-    if(account::type()==0){
-        temp.push_back(account::boss()->basicSearchCompany(a));
-        return temp;
-    }
-    if(account::type()==1){
-        temp=account::boss()->Search(a);
-        temp.resize(30);
-        return temp;
-    }
-    temp=account::boss()->Search(a);
-    return temp;
+account* companyaccount::businessSearch(QString usern) const{
+    return account::boss()->basicSearch(usern);
 }
 
 companyinfo* companyaccount::information() const{

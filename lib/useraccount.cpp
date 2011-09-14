@@ -15,22 +15,22 @@
 
 useraccount::useraccount(QString a, QString b, int c, const legami& d) : account(a,b,c,d)
 {
-	_info=new userinfo();
+    _info=new userinfo();
 }
 
 useraccount::~useraccount(){
-	for(QVector<experience*>::iterator it=_experiences.begin();it!=_experiences.end();++it){
-		delete *it;
-	}
+    for(QVector<experience*>::iterator it=_experiences.begin();it!=_experiences.end();++it){
+        delete *it;
+    }
     _experiences.erase(_experiences.begin(), _experiences.end());
 }
 
 void useraccount::addconnection(const account& a) throw(error) {
     try{
-	account::addconnection(a);
+        account::addconnection(a);
     }
     catch(error er1){
-	throw error(er1.type(), er1.comment());
+        throw error(er1.type(), er1.comment());
     }
 }
 
@@ -73,59 +73,35 @@ QVector<account*> useraccount::getconnections() const{
 
 QVector<account*> useraccount::search(QString x, userinfo* infosearch = 0, experience* expsearch = 0) const{
     QVector<account*> temp;
-    if(account::type()==0){
-        temp.push_back(account::boss()->basicSearch(x));
-    }
-    else if(account::type()==1){
-        QVector<account*> temp1=account::boss()->Search(x);
-        if(infosearch){
-            QVector<account*> temp2=account::boss()->userInfoSearch(infosearch->name(), infosearch->surname(), infosearch->birthdate(), infosearch->birthplace(), infosearch->telnum(), infosearch->email());
-            QVector<account*>::const_iterator it1=temp1.begin();
-            QVector<account*>::iterator it2=temp2.begin();
-            for(;it1!=temp1.end();++it1){
-                for(;it2!=temp2.end();++it2){
-                    if((*it1)==(*it2)){
-                        temp2.erase(it2);
-                    }
+    QVector<account*> temp1=account::boss()->Search(x);
+    if(infosearch){
+        QVector<account*> temp2=account::boss()->userInfoSearch(infosearch->name(), infosearch->surname(), infosearch->birthdate(), infosearch->birthplace(), infosearch->telnum(), infosearch->email());
+        QVector<account*>::iterator it1=temp1.begin();
+        QVector<account*>::iterator it2=temp2.begin();
+        for(;it1!=temp1.end();++it1){
+            for(;it2!=temp2.end();++it2){
+                if((*it1)==(*it2)){
+                    temp2.erase(it2);
                 }
             }
-            temp=temp1+temp2;
         }
-        else{
-            temp=temp1;
-        }
+        temp=temp1+temp2;
     }
     else{
-        QVector<account*> temp1=account::boss()->Search(x);
-        if(infosearch){
-            QVector<account*> temp2=account::boss()->userInfoSearch(infosearch->name(), infosearch->surname(), infosearch->birthdate(), infosearch->birthplace(), infosearch->telnum(), infosearch->email());
-            QVector<account*>::iterator it1=temp1.begin();
-            QVector<account*>::iterator it2=temp2.begin();
-            for(;it1!=temp1.end();++it1){
-                for(;it2!=temp2.end();++it2){
-                    if((*it1)==(*it2)){
-                        temp2.erase(it2);
-                    }
+        temp=temp1;
+    }
+    if(expsearch){
+        QVector<account*> temp3=account::boss()->experienceSearch(expsearch->type(), expsearch->espname(), expsearch->espdate(), expsearch->descr());
+        QVector<account*>::iterator it1=temp.begin();
+        QVector<account*>::iterator it2=temp3.begin();
+        for(;it1!=temp.end();++it1){
+            for(;it2!=temp3.end();++it2){
+                if((*it1)==(*it2)){
+                    temp3.erase(it2);
                 }
             }
-            temp=temp1+temp2;
         }
-        else{
-            temp=temp1;
-        }
-        if(expsearch){
-            QVector<account*> temp3=account::boss()->experienceSearch(expsearch->type(), expsearch->espname(), expsearch->espdate(), expsearch->descr());
-            QVector<account*>::iterator it1=temp.begin();
-            QVector<account*>::iterator it2=temp3.begin();
-            for(;it1!=temp.end();++it1){
-                for(;it2!=temp3.end();++it2){
-                    if((*it1)==(*it2)){
-                        temp3.erase(it2);
-                    }
-                }
-            }
-            temp=temp+temp3;
-        }
+        temp=temp+temp3;
     }
     return temp;
 }

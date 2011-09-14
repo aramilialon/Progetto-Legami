@@ -21,7 +21,7 @@ class companyaccount : public account
 public:
     companyaccount(QString, QString, int, const legami&);
     ~companyaccount();
-    QVector<account*> search(QString) const;
+    account* businessSearch(QString) const;
     username* user() const;
     companyinfo* information() const;
     QVector<account*> getconnections() const;
