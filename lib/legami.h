@@ -39,7 +39,7 @@ public:
     QVector<group*> groupSearchbyUsern(QString);
     QVector<account*> userInfoSearch(QString, QString, QDate, QString, QString, QString) const;
     QVector<account*> companyInfoSearch(QString, QString, QString) const;
-    QVector<account*> experienceSearch(int, QString, QDate, QString) const;
+    QVector<account*> experienceSearch(int, QString, QString) const;
 
     QVector<group*> groupDb() const;
 

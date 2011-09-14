@@ -32,7 +32,6 @@ class searchwidget : public QWidget
     QLineEdit* descrLineEdit;
 
     QPushButton* searchButton;
-    QPushButton* resetButton;
     QPushButton* showButton;
 
     QListView* usersListView;
@@ -47,7 +46,6 @@ signals:
 
 public slots:
     void search();
-    void reset();
     void modifySelected(QModelIndex);
     void showSelected();
 };

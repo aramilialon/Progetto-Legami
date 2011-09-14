@@ -104,7 +104,7 @@
     <message>
         <location filename="../gui/addrequestpayment.cpp" line="26"/>
         <source>The business account can search users only by their username. 
- The number of results is restricted to 30.</source>
+ The number of results is restricted to 1 due to new creation user politics.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1002,47 +1002,57 @@ Please check username and password</source>
 <context>
     <name>searchwidget</name>
     <message>
-        <location filename="../gui/searchwidget.cpp" line="17"/>
+        <location filename="../gui/searchwidget.cpp" line="19"/>
         <source>Username Search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/searchwidget.cpp" line="20"/>
+        <location filename="../gui/searchwidget.cpp" line="22"/>
         <source>Username:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/searchwidget.cpp" line="27"/>
+        <location filename="../gui/searchwidget.cpp" line="29"/>
         <source>Experience Search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/searchwidget.cpp" line="30"/>
-        <source>Name:</source>
+        <location filename="../gui/searchwidget.cpp" line="32"/>
+        <source>Formative Experience</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../gui/searchwidget.cpp" line="33"/>
+        <source>Working Experience</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gui/searchwidget.cpp" line="34"/>
+        <source>Name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gui/searchwidget.cpp" line="37"/>
         <source>Description:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/searchwidget.cpp" line="42"/>
+        <location filename="../gui/searchwidget.cpp" line="48"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/searchwidget.cpp" line="43"/>
-        <source>Reset</source>
+        <location filename="../gui/searchwidget.cpp" line="108"/>
+        <source>Show profile selected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/searchwidget.cpp" line="53"/>
+        <location filename="../gui/searchwidget.cpp" line="61"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/searchwidget.cpp" line="53"/>
+        <location filename="../gui/searchwidget.cpp" line="61"/>
         <source>Company basic account are not allowed to perform any search.</source>
         <translation type="unfinished"></translation>
     </message>

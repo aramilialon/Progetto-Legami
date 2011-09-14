@@ -105,8 +105,14 @@ Può essere inserito solo un mittente per messaggio.</translation>
     <message>
         <location filename="../gui/addrequestpayment.cpp" line="26"/>
         <source>The business account can search users only by their username. 
- The number of results is restricted to 30.</source>
+ The number of results is restricted to 1 due to new creation user politics.</source>
         <translation>Un account di tipo &quot;Business&quot; può cercare utenti solo tramite il loro username.
+Il numero di risultati è ristretto a 1 per via delle politiche di creazione di nuovi utenti.</translation>
+    </message>
+    <message>
+        <source>The business account can search users only by their username. 
+ The number of results is restricted to 30.</source>
+        <translation type="obsolete">Un account di tipo &quot;Business&quot; può cercare utenti solo tramite il loro username.
 Il numero di risultati è ristretto a 30.</translation>
     </message>
     <message>
@@ -1025,47 +1031,61 @@ Nel sei l&apos;amministratore.</translation>
 <context>
     <name>searchwidget</name>
     <message>
-        <location filename="../gui/searchwidget.cpp" line="17"/>
+        <location filename="../gui/searchwidget.cpp" line="19"/>
         <source>Username Search</source>
         <translation>Ricerca per username</translation>
     </message>
     <message>
-        <location filename="../gui/searchwidget.cpp" line="20"/>
+        <location filename="../gui/searchwidget.cpp" line="22"/>
         <source>Username:</source>
         <translation>Username:</translation>
     </message>
     <message>
-        <location filename="../gui/searchwidget.cpp" line="27"/>
+        <location filename="../gui/searchwidget.cpp" line="29"/>
         <source>Experience Search</source>
         <translation>Ricerca per Esperienza</translation>
     </message>
     <message>
-        <location filename="../gui/searchwidget.cpp" line="30"/>
+        <location filename="../gui/searchwidget.cpp" line="32"/>
+        <source>Formative Experience</source>
+        <translation>Esperienza formativa</translation>
+    </message>
+    <message>
+        <location filename="../gui/searchwidget.cpp" line="33"/>
+        <source>Working Experience</source>
+        <translation>Esperienza lavorativa</translation>
+    </message>
+    <message>
+        <location filename="../gui/searchwidget.cpp" line="34"/>
         <source>Name:</source>
         <translation>Nome:</translation>
     </message>
     <message>
-        <location filename="../gui/searchwidget.cpp" line="33"/>
+        <location filename="../gui/searchwidget.cpp" line="37"/>
         <source>Description:</source>
         <translation>Descrizione:</translation>
     </message>
     <message>
-        <location filename="../gui/searchwidget.cpp" line="42"/>
+        <location filename="../gui/searchwidget.cpp" line="48"/>
         <source>Search</source>
         <translation>Cerca</translation>
     </message>
     <message>
-        <location filename="../gui/searchwidget.cpp" line="43"/>
-        <source>Reset</source>
-        <translation>Reset</translation>
+        <location filename="../gui/searchwidget.cpp" line="108"/>
+        <source>Show profile selected</source>
+        <translation>Visualizza il profilo selezionato</translation>
     </message>
     <message>
-        <location filename="../gui/searchwidget.cpp" line="53"/>
+        <source>Reset</source>
+        <translation type="obsolete">Reset</translation>
+    </message>
+    <message>
+        <location filename="../gui/searchwidget.cpp" line="61"/>
         <source>Error</source>
         <translation>Errore</translation>
     </message>
     <message>
-        <location filename="../gui/searchwidget.cpp" line="53"/>
+        <location filename="../gui/searchwidget.cpp" line="61"/>
         <source>Company basic account are not allowed to perform any search.</source>
         <translation>Gli account aziendali basic non sono autorizzati a fare alcuna ricerca.</translation>
     </message>

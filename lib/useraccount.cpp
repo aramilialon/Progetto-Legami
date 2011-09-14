@@ -91,7 +91,7 @@ QVector<account*> useraccount::search(QString x, userinfo* infosearch = 0, exper
         temp=temp1;
     }
     if(expsearch){
-        QVector<account*> temp3=account::boss()->experienceSearch(expsearch->type(), expsearch->espname(), expsearch->espdate(), expsearch->descr());
+        QVector<account*> temp3=account::boss()->experienceSearch(expsearch->type(), expsearch->espname(), expsearch->descr());
         QVector<account*>::iterator it1=temp.begin();
         QVector<account*>::iterator it2=temp3.begin();
         for(;it1!=temp.end();++it1){
