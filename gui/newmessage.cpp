@@ -48,33 +48,7 @@ newmessage::newmessage(account* acc, legami* boss, QWidget *parent) throw(error)
     cancelButton= new QPushButton(tr("Cancel"), this);
     connect(cancelButton, SIGNAL(clicked()), this, SLOT(close()));
     layout->addWidget(cancelButton, 6, 1);
-    /* else{
- addresseeLineEdit= new QLineEdit(this);
 
- addresseeLabel= new QLabel(tr("Addressee:"));
- layout->addWidget(addresseeLabel, 0, 0);
- layout->addWidget(addresseeLineEdit, 0, 1);
- layout->addWidget(selectAddressee, 0, 2);
-
- objLabel= new QLabel(tr("Object:"));
- layout->addWidget(objLabel, 3, 0);
- objLineEdit=new QLineEdit(this);
- layout->addWidget(objLineEdit, 3, 1);
-
- textLabel= new QLabel(tr("Text:"));
- layout->addWidget(textLabel, 4, 0);
- textTextEdit= new QTextEdit(this);
- layout->addWidget(textTextEdit, 5, 0);
-
- okButton= new QPushButton(tr("Send"), this);
- connect(okButton, SIGNAL(clicked()), this, SLOT(send()));
- layout->addWidget(okButton, 6, 0);
-
- cancelButton= new QPushButton(tr("Cancel"), this);
- connect(cancelButton, SIGNAL(clicked()), this, SLOT(close()));
- layout->addWidget(cancelButton, 6, 1);
-    }
-    */
     setLayout(layout);
 }
 
@@ -85,6 +59,8 @@ void newmessage::send(){
         message* temp= new message(*sender, *(receverTemp), objLineEdit->text(), textTextEdit->document()->toPlainText());
 
         Boss->addMessage(*temp);
+
+        QMessageBox::information(this, tr("Sended!"), tr("The message has been sent succefully."), QMessageBox::Ok, QMessageBox::Ok);
     }
 
     close();

@@ -445,7 +445,7 @@ void legamimainwindow::iscrivenewGroup(){
 }
 
 void legamimainwindow::groupCreated(){
-    QMessageBox::information(this, tr("Group Created"), tr("The group requested has been created. /n You are the admin."), QMessageBox::Ok, QMessageBox::Ok);
+    QMessageBox::information(this, tr("Group Created"), tr("The group requested has been created. \n You are the admin."), QMessageBox::Ok, QMessageBox::Ok);
 }
 
 void legamimainwindow::subscribeGroup(){

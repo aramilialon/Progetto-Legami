@@ -26,6 +26,7 @@ viewGroupIscrived::viewGroupIscrived(account* acc, legami* boss, QWidget *parent
     QVector<group*>::iterator it=groupList.begin();
     for(;it<groupList.end();++it){
         QStandardItem* item= new QStandardItem((*it)->name());
+        item->setEditable(false);
         parentItem->appendRow(item);
     }
 

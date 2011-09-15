@@ -465,6 +465,13 @@ Per favore verifichi username e password</translation>
         <translation>Inglese</translation>
     </message>
     <message>
+        <location filename="../gui/legamimainwindow.cpp" line="448"/>
+        <source>The group requested has been created. 
+ You are the admin.</source>
+        <translation>Il gruppo richiesto e&apos; stato creato.
+Ne sei l&apos;amministratore.</translation>
+    </message>
+    <message>
         <location filename="../gui/legamimainwindow.cpp" line="621"/>
         <source>Account</source>
         <translation>Account</translation>
@@ -605,9 +612,8 @@ Per favore verifichi username e password</translation>
         <translation>Gruppo creato</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="448"/>
         <source>The group requested has been created. /n You are the admin.</source>
-        <translation>Il gruppo richiesto è stato creato.
+        <translation type="obsolete">Il gruppo richiesto è stato creato.
 Nel sei l&apos;amministratore.</translation>
     </message>
     <message>
@@ -933,14 +939,24 @@ Nel sei l&apos;amministratore.</translation>
         <translation>Annulla</translation>
     </message>
     <message>
-        <location filename="../gui/newmessage.cpp" line="83"/>
+        <location filename="../gui/newmessage.cpp" line="57"/>
         <source>Error</source>
         <translation>Errore</translation>
     </message>
     <message>
-        <location filename="../gui/newmessage.cpp" line="83"/>
+        <location filename="../gui/newmessage.cpp" line="57"/>
         <source>Addressee not found!</source>
         <translation>Destinatario non trovato!</translation>
+    </message>
+    <message>
+        <location filename="../gui/newmessage.cpp" line="63"/>
+        <source>Sended!</source>
+        <translation>Inviato!</translation>
+    </message>
+    <message>
+        <location filename="../gui/newmessage.cpp" line="63"/>
+        <source>The message has been sent succefully.</source>
+        <translation>Il messaggio e&apos; stato inviato con successo.</translation>
     </message>
 </context>
 <context>
@@ -1158,7 +1174,7 @@ Nel sei l&apos;amministratore.</translation>
         <translation>Contatti</translation>
     </message>
     <message>
-        <location filename="../gui/showcontacts.cpp" line="31"/>
+        <location filename="../gui/showcontacts.cpp" line="32"/>
         <source>Show profile</source>
         <translation>Visualizza profilo</translation>
     </message>
@@ -1179,27 +1195,27 @@ Nel sei l&apos;amministratore.</translation>
 <context>
     <name>showgroup</name>
     <message>
-        <location filename="../gui/showgroup.cpp" line="27"/>
+        <location filename="../gui/showgroup.cpp" line="28"/>
         <source>Name:</source>
         <translation>Nome:</translation>
     </message>
     <message>
-        <location filename="../gui/showgroup.cpp" line="29"/>
+        <location filename="../gui/showgroup.cpp" line="31"/>
         <source>Description:</source>
         <translation>Descrizione:</translation>
     </message>
     <message>
-        <location filename="../gui/showgroup.cpp" line="64"/>
+        <location filename="../gui/showgroup.cpp" line="67"/>
         <source>Admins:</source>
         <translation>Amministratori:</translation>
     </message>
     <message>
-        <location filename="../gui/showgroup.cpp" line="65"/>
+        <location filename="../gui/showgroup.cpp" line="68"/>
         <source>Users:</source>
         <translation>Utenti:</translation>
     </message>
     <message>
-        <location filename="../gui/showgroup.cpp" line="73"/>
+        <location filename="../gui/showgroup.cpp" line="76"/>
         <source>Admin Group</source>
         <translation>Amministra gruppo</translation>
     </message>
@@ -1378,12 +1394,12 @@ Nel sei l&apos;amministratore.</translation>
 <context>
     <name>viewGroupIscrived</name>
     <message>
-        <location filename="../gui/viewgroupiscrived.cpp" line="75"/>
+        <location filename="../gui/viewgroupiscrived.cpp" line="76"/>
         <source>Done</source>
         <translation>Fatto</translation>
     </message>
     <message>
-        <location filename="../gui/viewgroupiscrived.cpp" line="75"/>
+        <location filename="../gui/viewgroupiscrived.cpp" line="76"/>
         <source>Group deleted.</source>
         <translation>Gruppo eliminato.</translation>
     </message>

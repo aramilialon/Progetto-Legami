@@ -24,8 +24,10 @@ showgroup::showgroup(account* acc, group* grp, legami* boss, QWidget *parent) :
     adminVector= groupToShow->admins();
 
     nameLineEdit= new QLineEdit(grp->name(), this);
+    nameLineEdit->setReadOnly(true);
     layoutData->addRow(tr("Name:"), nameLineEdit);
     descrLineEdit= new QLineEdit(grp->descr(), this);
+    descrLineEdit->setReadOnly(true);
     layoutData->addRow(tr("Description:"), descrLineEdit);
 
     layout->addLayout(layoutData, 0, 0);
@@ -40,6 +42,7 @@ showgroup::showgroup(account* acc, group* grp, legami* boss, QWidget *parent) :
     QVector<account*>::iterator it= userVector.begin();
     for(;it!=userVector.end();++it){
         QStandardItem* userItemTemp= new QStandardItem((*it)->user()->user());
+        userItemTemp->setEditable(false);
         userParentItem->appendRow(userItemTemp);
     }
     usersList->setModel(userModel);

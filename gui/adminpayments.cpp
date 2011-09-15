@@ -41,18 +41,26 @@ adminpayments::adminpayments(legami* boss, QWidget *parent) :
         QString day, month, year;
         QStandardItem* dateTemp= new QStandardItem(day.setNum(payTemp->date().day())+QString("/")+month.setNum(payTemp->date().month())+QString("/")+year.setNum(payTemp->date().year()));
 
+        dateTemp->setEditable(false);
+
         account* accTemp=payTemp->requester();
 
         QStandardItem* requesterTemp= new QStandardItem(accTemp->user()->user());
+
+        requesterTemp->setEditable(false);
 
         QStandardItem* requestTemp=0;
         if(payTemp->request()==1) requestTemp= new QStandardItem(tr("Business"));
         else requestTemp= new QStandardItem(tr("Executive"));
 
+        requestTemp->setEditable(false);
+
         QStandardItem* apprTemp=0;
         if(payTemp->approved()==1) apprTemp= new QStandardItem(tr("Approved"));
         else if(payTemp->approved()==0) apprTemp= new QStandardItem(tr("Not Approved"));
         else apprTemp= new QStandardItem(tr("Rejected"));
+
+        apprTemp->setEditable(false);
 
         dateList.push_back(dateTemp);
         userList.push_back(requesterTemp);
@@ -88,6 +96,8 @@ void adminpayments::acceptPay(){
     if(paySelected>-1){
         payment* temp=payVector[paySelected];
         temp->setApproved(Boss->accountlogged());
+
+        QMessageBox::information(this, tr("Approved"), tr("The selected payment has been approved."), QMessageBox::Ok, QMessageBox::Ok);
     }
     else QMessageBox::warning(this, tr("Error"), tr("Payment not selected.\n Please select a upgrade request"), QMessageBox::Ok, QMessageBox::Ok);
 }
@@ -96,6 +106,10 @@ void adminpayments::rejectPay(){
     if(paySelected>-1){
         payment* temp=payVector[paySelected];
         temp->setRejected(Boss->accountlogged());
+
+        QMessageBox::information(this, tr("Rejected"), tr("The selected payment has been rejected."), QMessageBox::Ok, QMessageBox::Ok);
     }
     else QMessageBox::warning(this, tr("Error"), tr("Payment not selected.\n Please select a upgrade request"), QMessageBox::Ok, QMessageBox::Ok);
+
+
 }

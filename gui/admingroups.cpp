@@ -17,6 +17,7 @@ admingroups::admingroups(legami* boss, QWidget *parent) :
 
     for(;it1<groupVectorTemp.end();++it1){
         QStandardItem* temp= new QStandardItem((*it1)->name());
+        temp->setEditable(temp);
         groupParentItem->appendRow(temp);
     }
     groupsListView->setModel(groupModel);

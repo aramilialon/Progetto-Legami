@@ -21,6 +21,7 @@ showcontacts::showcontacts(account* acc, legami* boss, QWidget *parent) :
 
     for(QVector<account*>::iterator it=listTemp.begin();it<listTemp.end();++it){
         QStandardItem* temp= new QStandardItem((*it)->user()->user());
+        temp->setEditable(false);
         contactsParentItem->appendRow(temp);
     }
     contactsView->setModel(contactsModel);

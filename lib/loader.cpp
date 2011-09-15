@@ -75,12 +75,12 @@ void loader::loaduser(QDomNode users){
         while(!temp.isNull()){
             QDomNode userdata=temp.namedItem(QString("userdata"));
             QString user=userdata.firstChildElement(QString("username")).text(),
-                    pass=userdata.firstChildElement(QString("password")).text(),
-                    type=userdata.firstChildElement(QString("type")).text(),
-                    acctype=userdata.firstChildElement(QString("acctype")).text(),
-                    admin=userdata.firstChildElement(QString("admin")).text();
+            pass=userdata.firstChildElement(QString("password")).text(),
+            type=userdata.firstChildElement(QString("type")).text(),
+            acctype=userdata.firstChildElement(QString("acctype")).text(),
+            admin=userdata.firstChildElement(QString("admin")).text();
             account* newuser=0;
-            if(type.toStdString()=="user"){
+            if(type==QString("user")){
                 newuser= new useraccount(user, pass, acctype.toInt(), *_boss);
                 useraccount* tempuser=dynamic_cast<useraccount*>(newuser);
                 tempuser->setadmin(admin.toInt());
@@ -95,10 +95,10 @@ void loader::loaduser(QDomNode users){
             }
             else{
                 newuser= new companyaccount(user, pass, acctype.toInt(), *_boss);
-                QDomNode infos=temp.namedItem(QString("infos"));
-                if(!infos.isNull()){
+                QDomNode infos=temp.namedItem(QString("companydata"));
+                //if(!infos.isNull()){
                     loadcompanyinfo(infos, newuser);
-                }
+                //}
             }
             _boss->addAccount(*newuser);
             temp=temp.nextSibling();
@@ -109,13 +109,13 @@ void loader::loaduser(QDomNode users){
 void loader::loaduserinfo(QDomNode infos, account* newaccount){
     useraccount* temp=dynamic_cast<useraccount*>(newaccount);
     QString name=infos.firstChildElement(QString("name")).text(),
-            surname=infos.firstChildElement(QString("surname")).text(),
-            daybirth=infos.firstChildElement(QString("daybirth")).text(),
-            monthbirth=infos.firstChildElement(QString("monthbirth")).text(),
-            yearbirth=infos.firstChildElement(QString("yearbirth")).text(),
-            birthplace=infos.firstChildElement(QString("birthplace")).text(),
-            telnum=infos.firstChildElement(QString("telnum")).text(),
-            email=infos.firstChildElement(QString("email")).text();
+    surname=infos.firstChildElement(QString("surname")).text(),
+    daybirth=infos.firstChildElement(QString("daybirth")).text(),
+    monthbirth=infos.firstChildElement(QString("monthbirth")).text(),
+    yearbirth=infos.firstChildElement(QString("yearbirth")).text(),
+    birthplace=infos.firstChildElement(QString("birthplace")).text(),
+    telnum=infos.firstChildElement(QString("telnum")).text(),
+    email=infos.firstChildElement(QString("email")).text();
     userinfo* infotemp=new userinfo();
     if(!name.isEmpty()) infotemp->setName(name);
     if(!surname.isEmpty()) infotemp->setSurname(surname);
@@ -132,11 +132,11 @@ void loader::loaduserexperiences(QDomNode exps, account * newaccount){
     if(!x.isNull() && x.nodeName()==QString("experience")){
         while(!x.isNull()){
             QString exptype=x.firstChildElement(QString("exptype")).text(),
-                    expname=x.firstChildElement(QString("expname")).text(),
-                    dayexp=x.firstChildElement(QString("dayexp")).text(),
-                    monthexp=x.firstChildElement(QString("monthexp")).text(),
-                    yearexp=x.firstChildElement(QString("yearexp")).text(),
-                    expdescr=x.firstChildElement(QString("expdescr")).text();
+            expname=x.firstChildElement(QString("expname")).text(),
+            dayexp=x.firstChildElement(QString("dayexp")).text(),
+            monthexp=x.firstChildElement(QString("monthexp")).text(),
+            yearexp=x.firstChildElement(QString("yearexp")).text(),
+            expdescr=x.firstChildElement(QString("expdescr")).text();
             experience* exptemp=new experience();
             exptemp->set_type(exptype.toInt());
             exptemp->set_namesp(expname);
@@ -151,13 +151,13 @@ void loader::loaduserexperiences(QDomNode exps, account * newaccount){
 void loader::loadcompanyinfo(QDomNode infos, account* newaccount){
     companyaccount* temp=dynamic_cast<companyaccount*>(newaccount);
     QString name=infos.firstChildElement(QString("name")).text(),
-            address=infos.firstChildElement(QString("address")).text(),
-            cotype=infos.firstChildElement(QString("cotype")).text();
-    QString nametemp=QString(""), addresstemp=QString(""), cotypetemp=QString("");
+    address=infos.firstChildElement(QString("address")).text(),
+    cotype=infos.firstChildElement(QString("cotype")).text();
+    /*QString nametemp, addresstemp, cotypetemp;
     if(!name.isEmpty()) nametemp=name;
     if(!address.isEmpty()) addresstemp=address;
-    if(!cotype.isEmpty()) cotypetemp=cotype;
-    temp->setInfo(nametemp, addresstemp, cotypetemp);
+    if(!cotype.isEmpty()) cotypetemp=cotype;*/
+    temp->setInfo(name, address, cotype);
 }
 
 void loader::loadconnections(QDomNode conns){
@@ -165,7 +165,7 @@ void loader::loadconnections(QDomNode conns){
     if(!temp.isNull()){
         while(!temp.isNull()){
             QString applicant=temp.firstChildElement(QString("applicant")).text(),
-                    applied=temp.firstChildElement(QString("applied")).text();
+            applied=temp.firstChildElement(QString("applied")).text();
             account* requester=_boss->basicSearch(applicant);
             if(requester){
                 account* requested=_boss->basicSearch(applied);
@@ -182,10 +182,10 @@ void loader::loadpayments(QDomNode payments){
         while(!temp.isNull()){
             QString requester1= temp.firstChildElement(QString("applicant")).text();
             int typetemp= temp.firstChildElement(QString("typerequested")).text().toInt(),
-                    daytemp= temp.firstChildElement(QString("dayrequest")).text().toInt(),
-                    monthtemp= temp.firstChildElement(QString("monthrequest")).text().toInt(),
-                    yeartemp= temp.firstChildElement(QString("yearrequest")).text().toInt(),
-                    approvedtemp= temp.firstChildElement(QString("approved")).text().toInt();
+            daytemp= temp.firstChildElement(QString("dayrequest")).text().toInt(),
+            monthtemp= temp.firstChildElement(QString("monthrequest")).text().toInt(),
+            yeartemp= temp.firstChildElement(QString("yearrequest")).text().toInt(),
+            approvedtemp= temp.firstChildElement(QString("approved")).text().toInt();
             account* retemp=_boss->basicSearch(requester1);
             if(retemp){
                 payment* paytemp= new payment(retemp, typetemp, QDate(yeartemp, monthtemp, daytemp), approvedtemp);
@@ -201,7 +201,7 @@ void loader::loadgroups(QDomNode groups){
     if(!temp.isNull() && temp.nodeName()==QString("group")){
         while(!temp.isNull()){
             QString name=temp.firstChildElement(QString("name")).text(),
-                    descr=temp.firstChildElement(QString("descr")).text();
+            descr=temp.firstChildElement(QString("descr")).text();
             QVector<QString> userlisttemp;
             QDomElement memberslistnode=temp.namedItem(QString("members")).firstChildElement(QString("member"));
             while(!memberslistnode.isNull()){
@@ -246,10 +246,10 @@ void loader::loadmessages(QDomNode mess){
     if(!temp.isNull() && temp.nodeName()==QString("message")){
         while(!temp.isNull()){
             QString sender=temp.firstChildElement(QString("sender")).text(),
-                    recever=temp.firstChildElement(QString("recever")).text(),
-                    object=temp.firstChildElement(QString("object")).text(),
-                    text=temp.firstChildElement(QString("text")).text(),
-                    read=temp.firstChildElement(QString("read")).text();
+            recever=temp.firstChildElement(QString("recever")).text(),
+            object=temp.firstChildElement(QString("object")).text(),
+            text=temp.firstChildElement(QString("text")).text(),
+            read=temp.firstChildElement(QString("read")).text();
             account* _sender=_boss->basicSearch(sender);
             account* _recever=_boss->basicSearch(recever);
             if(_sender&&_recever){
@@ -267,10 +267,10 @@ void loader::writedb() throw(error){
     QDomNode legami=root->createElement(QString("legami"));
     root->appendChild(legami);
     QDomNode users=root->createElement(QString("users")),
-            connections=root->createElement(QString("connections")),
-            groups=root->createElement(QString("groups")),
-            messages=root->createElement(QString("messages")),
-            payments= root->createElement(QString("payments"));
+    connections=root->createElement(QString("connections")),
+    groups=root->createElement(QString("groups")),
+    messages=root->createElement(QString("messages")),
+    payments= root->createElement(QString("payments"));
     writeusers(users, *root);
     writeconnections(connections, *root);
     writegroups(groups,*root);
@@ -317,9 +317,9 @@ void loader::writeaccdata(const account& acc, QString typeacc, QDomNode& user, Q
     QDomNode userdata=root.createElement(QString("userdata"));
     user.appendChild(userdata);
     QDomNode usern=root.createElement(QString("username")),
-            passw=root.createElement(QString("password")),
-            typ=root.createElement(QString("type")),
-            acctype=root.createElement(QString("acctype"));
+    passw=root.createElement(QString("password")),
+    typ=root.createElement(QString("type")),
+    acctype=root.createElement(QString("acctype"));
     userdata.appendChild(usern);
     userdata.appendChild(passw);
     userdata.appendChild(typ);
@@ -327,9 +327,9 @@ void loader::writeaccdata(const account& acc, QString typeacc, QDomNode& user, Q
     QString _user=usernameacc->user(), _pass=usernameacc->pass(), _acctype;
     _acctype.setNum(acc.type());
     QDomText usertemp=root.createTextNode(_user),
-            passtemp=root.createTextNode(_pass),
-            typetemp=root.createTextNode(typeacc),
-            acctypetemp=root.createTextNode(_acctype);
+    passtemp=root.createTextNode(_pass),
+    typetemp=root.createTextNode(typeacc),
+    acctypetemp=root.createTextNode(_acctype);
     usern.appendChild(usertemp);
     passw.appendChild(passtemp);
     typ.appendChild(typetemp);
@@ -353,21 +353,21 @@ void loader::writeuserinfo(const account & acc, QDomNode & user, QDomDocument ro
     user.appendChild(infos);
     if(userinf){
         QDomText nametext=root.createTextNode(userinf->name()),
-                surnametext=root.createTextNode(userinf->surname()),
-                daybirthtext=root.createTextNode(QString().setNum(userinf->birthdate().day())),
-                monthbirthtext=root.createTextNode(QString().setNum(userinf->birthdate().month())),
-                yearbirthtext=root.createTextNode(QString().setNum(userinf->birthdate().year())),
-                birthplacetext=root.createTextNode(userinf->birthplace()),
-                telinfotext=root.createTextNode(userinf->telnum()),
-                emailtext=root.createTextNode(userinf->email());
+        surnametext=root.createTextNode(userinf->surname()),
+        daybirthtext=root.createTextNode(QString().setNum(userinf->birthdate().day())),
+        monthbirthtext=root.createTextNode(QString().setNum(userinf->birthdate().month())),
+        yearbirthtext=root.createTextNode(QString().setNum(userinf->birthdate().year())),
+        birthplacetext=root.createTextNode(userinf->birthplace()),
+        telinfotext=root.createTextNode(userinf->telnum()),
+        emailtext=root.createTextNode(userinf->email());
         QDomNode name=root.createElement(QString("name")),
-                surname=root.createElement(QString("surname")),
-                daybirth=root.createElement(QString("daybirth")),
-                monthbirth=root.createElement(QString("monthbirth")),
-                yearbirth=root.createElement(QString("yearbirth")),
-                birthplace=root.createElement(QString("birthplace")),
-                telnum=root.createElement(QString("telnum")),
-                email=root.createElement(QString("email"));
+        surname=root.createElement(QString("surname")),
+        daybirth=root.createElement(QString("daybirth")),
+        monthbirth=root.createElement(QString("monthbirth")),
+        yearbirth=root.createElement(QString("yearbirth")),
+        birthplace=root.createElement(QString("birthplace")),
+        telnum=root.createElement(QString("telnum")),
+        email=root.createElement(QString("email"));
         infos.appendChild(name);
         infos.appendChild(surname);
         infos.appendChild(daybirth);
@@ -395,12 +395,12 @@ void loader::writeuserexp(const account & acc, QDomNode & exps, QDomDocument roo
     QVector<experience*>::const_iterator it=expslist.begin();
     for(;it!=expslist.end();++it){
         QDomNode experience=root.createElement(QString("experience")),
-                esptype=root.createElement(QString("exptype")),
-                espname=root.createElement(QString("expname")),
-                dayesp=root.createElement(QString("dayexp")),
-                monthesp=root.createElement(QString("monthexp")),
-                yearesp=root.createElement(QString("yearexp")),
-                espdescr=root.createElement(QString("expdescr"));
+        esptype=root.createElement(QString("exptype")),
+        espname=root.createElement(QString("expname")),
+        dayesp=root.createElement(QString("dayexp")),
+        monthesp=root.createElement(QString("monthexp")),
+        yearesp=root.createElement(QString("yearexp")),
+        espdescr=root.createElement(QString("expdescr"));
         experiences.appendChild(experience);
         experience.appendChild(esptype);
         experience.appendChild(espname);
@@ -410,11 +410,11 @@ void loader::writeuserexp(const account & acc, QDomNode & exps, QDomDocument roo
         experience.appendChild(espdescr);
         QString type, day, month, year;
         QDomText esptypetemp=root.createTextNode(type.setNum((*it)->type())),
-                espnametemp=root.createTextNode((*it)->espname()),
-                dayesptemp=root.createTextNode(day.setNum((*it)->espdate().day())),
-                monthesptemp=root.createTextNode(month.setNum((*it)->espdate().month())),
-                yearesptemp=root.createTextNode(year.setNum((*it)->espdate().year())),
-                espdescrtemp=root.createTextNode((*it)->descr());
+        espnametemp=root.createTextNode((*it)->espname()),
+        dayesptemp=root.createTextNode(day.setNum((*it)->espdate().day())),
+        monthesptemp=root.createTextNode(month.setNum((*it)->espdate().month())),
+        yearesptemp=root.createTextNode(year.setNum((*it)->espdate().year())),
+        espdescrtemp=root.createTextNode((*it)->descr());
         esptype.appendChild(esptypetemp);
         espname.appendChild(espnametemp);
         dayesp.appendChild(dayesptemp);
@@ -427,20 +427,23 @@ void loader::writeuserexp(const account & acc, QDomNode & exps, QDomDocument roo
 void loader::writecompanyinfo(const account & acc, QDomNode & user, QDomDocument root){
     companyaccount* coacc=dynamic_cast<companyaccount*>(const_cast<account*>(&acc));
     companyinfo* companyinf=coacc->information();
-    QDomNode userdata=root.createElement(QString("userdata"));
-    user.appendChild(userdata);
+    QDomNode companydata=root.createElement(QString("companydata"));
+    user.appendChild(companydata);
     QDomNode name=root.createElement(QString("name")),
-            address=root.createElement(QString("address")),
-            cotype=root.createElement(QString("cotype"));
-    userdata.appendChild(name);
-    userdata.appendChild(address);
-    userdata.appendChild(cotype);
-    QDomText nametemp=root.createTextNode(companyinf->name()),
-            addresstemp=root.createTextNode(companyinf->address()),
-            cotypetemp=root.createTextNode(companyinf->cotype());
+    address=root.createElement(QString("address")),
+    cotype=root.createElement(QString("cotype"));
+    QString nameString= companyinf->name(),
+    addressString= companyinf->address(),
+    cotypeString= companyinf->cotype();
+    QDomText nametemp=root.createTextNode(nameString),
+    addresstemp=root.createTextNode(addressString),
+    cotypetemp=root.createTextNode(cotypeString);
     name.appendChild(nametemp);
     address.appendChild(addresstemp);
     cotype.appendChild(cotypetemp);
+    companydata.appendChild(name);
+    companydata.appendChild(address);
+    companydata.appendChild(cotype);
 }
 
 void loader::writeconnections(QDomNode& connections, QDomDocument root){
@@ -474,11 +477,11 @@ void loader::writegroups(QDomNode & groups, QDomDocument root){
         QDomNode group=root.createElement(QString("group"));
         groups.appendChild(group);
         QDomNode name=root.createElement(QString("name")),
-                descr=root.createElement(QString("descr")),
-                members=root.createElement(QString("members")),
-                admins=root.createElement(QString("admins"));
+        descr=root.createElement(QString("descr")),
+        members=root.createElement(QString("members")),
+        admins=root.createElement(QString("admins"));
         QDomText nametemp=root.createTextNode((*it)->name()),
-                descrtemp=root.createTextNode((*it)->descr());
+        descrtemp=root.createTextNode((*it)->descr());
         name.appendChild(nametemp);
         descr.appendChild(descrtemp);
         QVector<account*> memberslist=(*it)->members();
@@ -512,10 +515,10 @@ void loader::writemessages(QDomNode& mess, QDomDocument root){
         QDomNode message=root.createElement(QString("message"));
         mess.appendChild(message);
         QDomNode sender=root.createElement(QString("sender")),
-                recever=root.createElement(QString("recever")),
-                object=root.createElement(QString("object")),
-                text=root.createElement(QString("text")),
-                read=root.createElement(QString("read"));
+        recever=root.createElement(QString("recever")),
+        object=root.createElement(QString("object")),
+        text=root.createElement(QString("text")),
+        read=root.createElement(QString("read"));
         message.appendChild(sender);
         message.appendChild(recever);
         message.appendChild(object);
@@ -523,10 +526,10 @@ void loader::writemessages(QDomNode& mess, QDomDocument root){
         message.appendChild(read);
         QString readed;
         QDomText usersender=root.createTextNode((*it)->sender()->user()->user()),
-                userrecever=root.createTextNode((*it)->recever()->user()->user()),
-                objecttemp=root.createTextNode((*it)->object()),
-                texttemp=root.createTextNode((*it)->text()),
-                readtemp=root.createTextNode(readed.setNum((*it)->read()));
+        userrecever=root.createTextNode((*it)->recever()->user()->user()),
+        objecttemp=root.createTextNode((*it)->object()),
+        texttemp=root.createTextNode((*it)->text()),
+        readtemp=root.createTextNode(readed.setNum((*it)->read()));
         sender.appendChild(usersender);
         recever.appendChild(userrecever);
         object.appendChild(objecttemp);
@@ -549,18 +552,18 @@ void loader::writepayments(const account & acc, QDomNode & payments, QDomDocumen
         _requestedtemp=_requestedtemp.setNum((*it)->request());
 
         QDomText requestertemp=root.createTextNode(acc.user()->user()),
-                requestedtemp=root.createTextNode(_requestedtemp),
-                daytemp=root.createTextNode(_daytemp),
-                monthtemp=root.createTextNode(_monthtemp),
-                yeartemp=root.createTextNode(_yeartemp),
-                approvedtemp=root.createTextNode(_approvedtemp);
+        requestedtemp=root.createTextNode(_requestedtemp),
+        daytemp=root.createTextNode(_daytemp),
+        monthtemp=root.createTextNode(_monthtemp),
+        yeartemp=root.createTextNode(_yeartemp),
+        approvedtemp=root.createTextNode(_approvedtemp);
 
         QDomNode requester= root.createElement(QString("applicant")),
-                requested=root.createElement(QString("typerequested")),
-                day=root.createElement(QString("dayrequest")),
-                month=root.createElement(QString("monthrequest")),
-                year=root.createElement(QString("yearrequest")),
-                approved=root.createElement(QString("approved"));
+        requested=root.createElement(QString("typerequested")),
+        day=root.createElement(QString("dayrequest")),
+        month=root.createElement(QString("monthrequest")),
+        year=root.createElement(QString("yearrequest")),
+        approved=root.createElement(QString("approved"));
         requester.appendChild(requestertemp);
         requested.appendChild(requestedtemp);
         day.appendChild(daytemp);

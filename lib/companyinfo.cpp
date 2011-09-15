@@ -11,6 +11,12 @@
 
 companyinfo::companyinfo(){}
 
+companyinfo::companyinfo(QString a, QString b, QString c){
+    _name=a;
+    _address=b;
+    _cotype=c;
+}
+
 void companyinfo::setName(QString x=""){
     _name=x;
 }
@@ -24,16 +30,13 @@ void companyinfo::setType(QString x=""){
 }
 
 QString companyinfo::name() const{
-    if(!_name.isEmpty()) return _name;
-    else return QString("");
+    return _name;
 }
 
 QString companyinfo::address() const{
-    if(!_address.isEmpty()) return _address;
-    else return QString("");
+    return _address;
 }
 
 QString companyinfo::cotype() const{
-    if(!_cotype.isEmpty()) return _cotype;
-    else return QString("");
+    return _cotype;
 }

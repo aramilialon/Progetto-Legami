@@ -39,7 +39,7 @@ QVector<account*> companyaccount::getconnections() const{
 }
 
 void companyaccount::setInfo(QString name, QString address, QString cotype){
-    if(_info) delete _info;
+    delete _info;
     _info=new companyinfo();
     _info->setName(name);
     _info->setAddress(address);

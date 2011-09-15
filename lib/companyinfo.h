@@ -17,6 +17,7 @@ class companyinfo
     QString _cotype;
 public:
     companyinfo();
+    companyinfo(QString, QString, QString);
     QString name() const;
     QString address() const;
     QString cotype() const;

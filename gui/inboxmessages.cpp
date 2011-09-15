@@ -35,6 +35,8 @@ inboxMessages::inboxMessages(account* acc, legami* boss, QWidget *parent) :
         else readItem= new QStandardItem(tr("Not Read"));
 
         senderItem->setEnabled(false);
+        objItem->setEditable(false);
+        readItem->setEditable(false);
 
         senderList.push_back(senderItem);
         objList.push_back(objItem);
