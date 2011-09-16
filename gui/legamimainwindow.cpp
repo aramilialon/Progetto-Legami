@@ -44,7 +44,7 @@ legamimainwindow::legamimainwindow(QWidget *parent) :
 {
 
     itaTransl= new QTranslator();
-    itaTransl->load("./translation/legami_ita");
+    if(!itaTransl->load("./translation/legami_ita")) QMessageBox::warning(this, tr("Warning"), tr("Warning: italian file translation not found. \n The only language available is English"), QMessageBox::Ok, QMessageBox::Ok);
 
     engTransl= new QTranslator();
     engTransl->load("./translation/legami_eng");
@@ -157,10 +157,10 @@ void legamimainwindow::setMenuBarUnregistered(){
     File->addAction(Login);
     File->addAction(Exit);
 
-    Language= new QMenu(tr("Language"), this);
-    Italian= new QAction(tr("Italian"), this);
+    Language= new QMenu(this);
+    Italian= new QAction(this);
     connect(Italian, SIGNAL(triggered()), this, SLOT(changeitalian()));
-    English= new QAction(tr("English"), this);
+    English= new QAction(this);
     connect(English, SIGNAL(triggered()), this, SLOT(changeenglish()));
     Language->addAction(Italian);
     Language->addAction(English);

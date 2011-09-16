@@ -141,23 +141,23 @@ Il numero di risultati è ristretto a 30.</translation>
 <context>
     <name>admingroups</name>
     <message>
-        <location filename="../gui/admingroups.cpp" line="27"/>
+        <location filename="../gui/admingroups.cpp" line="28"/>
         <source>Modify</source>
         <translation>Modifica</translation>
     </message>
     <message>
-        <location filename="../gui/admingroups.cpp" line="60"/>
-        <location filename="../gui/admingroups.cpp" line="64"/>
+        <location filename="../gui/admingroups.cpp" line="61"/>
+        <location filename="../gui/admingroups.cpp" line="65"/>
         <source>Done</source>
         <translation>Fatto</translation>
     </message>
     <message>
-        <location filename="../gui/admingroups.cpp" line="60"/>
+        <location filename="../gui/admingroups.cpp" line="61"/>
         <source>Group deleted</source>
         <translation>Gruppo eliminato</translation>
     </message>
     <message>
-        <location filename="../gui/admingroups.cpp" line="64"/>
+        <location filename="../gui/admingroups.cpp" line="65"/>
         <source>Group modified</source>
         <translation>Gruppo modificato</translation>
     </message>
@@ -165,12 +165,12 @@ Il numero di risultati è ristretto a 30.</translation>
 <context>
     <name>adminpayments</name>
     <message>
-        <location filename="../gui/adminpayments.cpp" line="49"/>
+        <location filename="../gui/adminpayments.cpp" line="53"/>
         <source>Business</source>
         <translation>Business</translation>
     </message>
     <message>
-        <location filename="../gui/adminpayments.cpp" line="50"/>
+        <location filename="../gui/adminpayments.cpp" line="54"/>
         <source>Executive</source>
         <translation>Executive</translation>
     </message>
@@ -179,43 +179,55 @@ Il numero di risultati è ristretto a 30.</translation>
         <translation type="obsolete">Approvato</translation>
     </message>
     <message>
-        <location filename="../gui/adminpayments.cpp" line="53"/>
+        <location filename="../gui/adminpayments.cpp" line="59"/>
+        <location filename="../gui/adminpayments.cpp" line="100"/>
         <source>Approved</source>
         <translation>Approvato</translation>
     </message>
     <message>
-        <location filename="../gui/adminpayments.cpp" line="54"/>
+        <location filename="../gui/adminpayments.cpp" line="60"/>
         <source>Not Approved</source>
         <translation>Non approvato</translation>
     </message>
     <message>
-        <location filename="../gui/adminpayments.cpp" line="55"/>
+        <location filename="../gui/adminpayments.cpp" line="61"/>
+        <location filename="../gui/adminpayments.cpp" line="110"/>
         <source>Rejected</source>
         <translation>Respinta</translation>
     </message>
     <message>
-        <location filename="../gui/adminpayments.cpp" line="70"/>
+        <location filename="../gui/adminpayments.cpp" line="78"/>
         <source>Accept</source>
         <translation>Accetta</translation>
     </message>
     <message>
-        <location filename="../gui/adminpayments.cpp" line="71"/>
+        <location filename="../gui/adminpayments.cpp" line="79"/>
         <source>Reject</source>
         <translation>Respingi</translation>
     </message>
     <message>
-        <location filename="../gui/adminpayments.cpp" line="92"/>
         <location filename="../gui/adminpayments.cpp" line="100"/>
+        <source>The selected payment has been approved.</source>
+        <translation>Il pagamento selezionato è stato approvato.</translation>
+    </message>
+    <message>
+        <location filename="../gui/adminpayments.cpp" line="102"/>
+        <location filename="../gui/adminpayments.cpp" line="112"/>
         <source>Error</source>
         <translation>Errore</translation>
     </message>
     <message>
-        <location filename="../gui/adminpayments.cpp" line="92"/>
-        <location filename="../gui/adminpayments.cpp" line="100"/>
+        <location filename="../gui/adminpayments.cpp" line="102"/>
+        <location filename="../gui/adminpayments.cpp" line="112"/>
         <source>Payment not selected.
  Please select a upgrade request</source>
         <translation>Upgrade non selezionato.
 Si prega di selezionare una richiesta di upgrade</translation>
+    </message>
+    <message>
+        <location filename="../gui/adminpayments.cpp" line="110"/>
+        <source>The selected payment has been rejected.</source>
+        <translation>Il pagamento selezionato è stato respinto.</translation>
     </message>
 </context>
 <context>
@@ -374,7 +386,19 @@ Password: &apos;there is no password</translation>
     <message>
         <location filename="../gui/legamimainwindow.cpp" line="191"/>
         <source>New Account Created</source>
-        <translation>Nuovo accoun creato</translation>
+        <translation>Nuovo account creato</translation>
+    </message>
+    <message>
+        <location filename="../gui/legamimainwindow.cpp" line="47"/>
+        <source>Warning</source>
+        <translation>Attenzione</translation>
+    </message>
+    <message>
+        <location filename="../gui/legamimainwindow.cpp" line="47"/>
+        <source>Warning: italian file translation not found. 
+ The only language available is English</source>
+        <translation>Attenzione: il file delle traduzioni in italiano non è stato trovato.
+L&apos;unica lingua disponibile è l&apos;inglese</translation>
     </message>
     <message>
         <location filename="../gui/legamimainwindow.cpp" line="191"/>
@@ -441,7 +465,6 @@ Per favore verifichi username e password</translation>
         <translation type="obsolete">Preferenze</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="160"/>
         <location filename="../gui/legamimainwindow.cpp" line="237"/>
         <location filename="../gui/legamimainwindow.cpp" line="604"/>
         <location filename="../gui/legamimainwindow.cpp" line="617"/>
@@ -449,7 +472,6 @@ Per favore verifichi username e password</translation>
         <translation>Lingua</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="161"/>
         <location filename="../gui/legamimainwindow.cpp" line="238"/>
         <location filename="../gui/legamimainwindow.cpp" line="605"/>
         <location filename="../gui/legamimainwindow.cpp" line="618"/>
@@ -457,7 +479,6 @@ Per favore verifichi username e password</translation>
         <translation>Italiano</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="163"/>
         <location filename="../gui/legamimainwindow.cpp" line="240"/>
         <location filename="../gui/legamimainwindow.cpp" line="606"/>
         <location filename="../gui/legamimainwindow.cpp" line="619"/>
@@ -1240,7 +1261,7 @@ Nel sei l&apos;amministratore.</translation>
     <message>
         <location filename="../gui/showlistpayments.cpp" line="33"/>
         <source>Rejected</source>
-        <translation>Respinta</translation>
+        <translation>Respinto</translation>
     </message>
     <message>
         <location filename="../gui/showlistpayments.cpp" line="34"/>

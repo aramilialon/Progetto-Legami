@@ -133,23 +133,23 @@
 <context>
     <name>admingroups</name>
     <message>
-        <location filename="../gui/admingroups.cpp" line="27"/>
+        <location filename="../gui/admingroups.cpp" line="28"/>
         <source>Modify</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/admingroups.cpp" line="60"/>
-        <location filename="../gui/admingroups.cpp" line="64"/>
+        <location filename="../gui/admingroups.cpp" line="61"/>
+        <location filename="../gui/admingroups.cpp" line="65"/>
         <source>Done</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/admingroups.cpp" line="60"/>
+        <location filename="../gui/admingroups.cpp" line="61"/>
         <source>Group deleted</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/admingroups.cpp" line="64"/>
+        <location filename="../gui/admingroups.cpp" line="65"/>
         <source>Group modified</source>
         <translation type="unfinished"></translation>
     </message>
@@ -157,51 +157,63 @@
 <context>
     <name>adminpayments</name>
     <message>
-        <location filename="../gui/adminpayments.cpp" line="49"/>
+        <location filename="../gui/adminpayments.cpp" line="53"/>
         <source>Business</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/adminpayments.cpp" line="50"/>
+        <location filename="../gui/adminpayments.cpp" line="54"/>
         <source>Executive</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/adminpayments.cpp" line="53"/>
+        <location filename="../gui/adminpayments.cpp" line="59"/>
+        <location filename="../gui/adminpayments.cpp" line="100"/>
         <source>Approved</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/adminpayments.cpp" line="54"/>
+        <location filename="../gui/adminpayments.cpp" line="60"/>
         <source>Not Approved</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/adminpayments.cpp" line="55"/>
+        <location filename="../gui/adminpayments.cpp" line="61"/>
+        <location filename="../gui/adminpayments.cpp" line="110"/>
         <source>Rejected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/adminpayments.cpp" line="70"/>
+        <location filename="../gui/adminpayments.cpp" line="78"/>
         <source>Accept</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/adminpayments.cpp" line="71"/>
+        <location filename="../gui/adminpayments.cpp" line="79"/>
         <source>Reject</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/adminpayments.cpp" line="92"/>
         <location filename="../gui/adminpayments.cpp" line="100"/>
+        <source>The selected payment has been approved.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gui/adminpayments.cpp" line="102"/>
+        <location filename="../gui/adminpayments.cpp" line="112"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/adminpayments.cpp" line="92"/>
-        <location filename="../gui/adminpayments.cpp" line="100"/>
+        <location filename="../gui/adminpayments.cpp" line="102"/>
+        <location filename="../gui/adminpayments.cpp" line="112"/>
         <source>Payment not selected.
  Please select a upgrade request</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gui/adminpayments.cpp" line="110"/>
+        <source>The selected payment has been rejected.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -413,7 +425,6 @@ Please check username and password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="160"/>
         <location filename="../gui/legamimainwindow.cpp" line="237"/>
         <location filename="../gui/legamimainwindow.cpp" line="604"/>
         <location filename="../gui/legamimainwindow.cpp" line="617"/>
@@ -421,7 +432,17 @@ Please check username and password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="161"/>
+        <location filename="../gui/legamimainwindow.cpp" line="47"/>
+        <source>Warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gui/legamimainwindow.cpp" line="47"/>
+        <source>Warning: italian file translation not found. 
+ The only language available is English</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../gui/legamimainwindow.cpp" line="238"/>
         <location filename="../gui/legamimainwindow.cpp" line="605"/>
         <location filename="../gui/legamimainwindow.cpp" line="618"/>
@@ -429,7 +450,6 @@ Please check username and password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="163"/>
         <location filename="../gui/legamimainwindow.cpp" line="240"/>
         <location filename="../gui/legamimainwindow.cpp" line="606"/>
         <location filename="../gui/legamimainwindow.cpp" line="619"/>
