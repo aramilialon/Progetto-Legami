@@ -96,9 +96,9 @@ void loader::loaduser(QDomNode users){
             else{
                 newuser= new companyaccount(user, pass, acctype.toInt(), *_boss);
                 QDomNode infos=temp.namedItem(QString("companydata"));
-                //if(!infos.isNull()){
+                if(!infos.isNull()){
                     loadcompanyinfo(infos, newuser);
-                //}
+                }
             }
             _boss->addAccount(*newuser);
             temp=temp.nextSibling();

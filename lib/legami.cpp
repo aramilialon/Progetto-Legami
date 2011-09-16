@@ -23,9 +23,13 @@ legami::legami(QString path)
 }
 
 legami::~legami(){
-
+    _loader->writedb();
+    for(QVector<account*>::iterator it=_userdb.begin();it<_userdb.end();++it) delete *it;
     _userdb.erase(_userdb.begin(),_userdb.end());
+    for(QVector<message*>::iterator it=_messagedb.begin();it<_messagedb.end();++it) delete *it;
     _messagedb.erase(_messagedb.begin(), _messagedb.end());
+    for(QVector<group*>::iterator it=_groupdb.begin();it<_groupdb.end();++it) delete *it;
+    _groupdb.erase(_groupdb.begin(), _groupdb.end());
 }
 
 account* legami::basicSearch(QString usern) const{

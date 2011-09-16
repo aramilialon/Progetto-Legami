@@ -388,7 +388,6 @@ void legamimainwindow::modifyuser(){
 }
 
 void legamimainwindow::closeEvent(QCloseEvent* event){
-    Boss->getloader()->writedb();
     delete Boss;
     event->accept();
 }
