@@ -322,7 +322,7 @@ Si prega di selezionare una richiesta di upgrade</translation>
     <message>
         <location filename="../gui/legamimainwindow.cpp" line="97"/>
         <location filename="../gui/legamimainwindow.cpp" line="387"/>
-        <location filename="../gui/legamimainwindow.cpp" line="419"/>
+        <location filename="../gui/legamimainwindow.cpp" line="418"/>
         <source>Error!</source>
         <translation>Errore!</translation>
     </message>
@@ -346,40 +346,40 @@ Username: root
 Password: &apos;there is no password</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="599"/>
+        <location filename="../gui/legamimainwindow.cpp" line="598"/>
         <source>File</source>
         <translation>File</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="600"/>
+        <location filename="../gui/legamimainwindow.cpp" line="599"/>
         <source>New User?</source>
         <translation>Nuovo utente?</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="601"/>
+        <location filename="../gui/legamimainwindow.cpp" line="600"/>
         <source>Login</source>
         <translation>Login</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="602"/>
-        <location filename="../gui/legamimainwindow.cpp" line="615"/>
+        <location filename="../gui/legamimainwindow.cpp" line="601"/>
+        <location filename="../gui/legamimainwindow.cpp" line="614"/>
         <source>Exit</source>
         <translation>Uscita</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="608"/>
+        <location filename="../gui/legamimainwindow.cpp" line="607"/>
         <source>About</source>
         <translation>About</translation>
     </message>
     <message>
         <location filename="../gui/legamimainwindow.cpp" line="204"/>
-        <location filename="../gui/legamimainwindow.cpp" line="609"/>
+        <location filename="../gui/legamimainwindow.cpp" line="608"/>
         <source>About Legami</source>
         <translation>About Legami</translation>
     </message>
     <message>
         <location filename="../gui/legamimainwindow.cpp" line="211"/>
-        <location filename="../gui/legamimainwindow.cpp" line="610"/>
+        <location filename="../gui/legamimainwindow.cpp" line="609"/>
         <source>About Qt</source>
         <translation>About Qt</translation>
     </message>
@@ -409,7 +409,7 @@ Per favore inserisca username e password nel form di login</translation>
     </message>
     <message>
         <location filename="../gui/legamimainwindow.cpp" line="193"/>
-        <location filename="../gui/legamimainwindow.cpp" line="500"/>
+        <location filename="../gui/legamimainwindow.cpp" line="499"/>
         <source>Error</source>
         <translation>Errore</translation>
     </message>
@@ -452,7 +452,7 @@ Please check username and password</source>
 Per favore verifichi username e password</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="614"/>
+        <location filename="../gui/legamimainwindow.cpp" line="613"/>
         <source>Logout</source>
         <translation>Logout</translation>
     </message>
@@ -466,144 +466,144 @@ Per favore verifichi username e password</translation>
     </message>
     <message>
         <location filename="../gui/legamimainwindow.cpp" line="237"/>
-        <location filename="../gui/legamimainwindow.cpp" line="604"/>
-        <location filename="../gui/legamimainwindow.cpp" line="617"/>
+        <location filename="../gui/legamimainwindow.cpp" line="603"/>
+        <location filename="../gui/legamimainwindow.cpp" line="616"/>
         <source>Language</source>
         <translation>Lingua</translation>
     </message>
     <message>
         <location filename="../gui/legamimainwindow.cpp" line="238"/>
-        <location filename="../gui/legamimainwindow.cpp" line="605"/>
-        <location filename="../gui/legamimainwindow.cpp" line="618"/>
+        <location filename="../gui/legamimainwindow.cpp" line="604"/>
+        <location filename="../gui/legamimainwindow.cpp" line="617"/>
         <source>Italian</source>
         <translation>Italiano</translation>
     </message>
     <message>
         <location filename="../gui/legamimainwindow.cpp" line="240"/>
-        <location filename="../gui/legamimainwindow.cpp" line="606"/>
-        <location filename="../gui/legamimainwindow.cpp" line="619"/>
+        <location filename="../gui/legamimainwindow.cpp" line="605"/>
+        <location filename="../gui/legamimainwindow.cpp" line="618"/>
         <source>English</source>
         <translation>Inglese</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="448"/>
+        <location filename="../gui/legamimainwindow.cpp" line="447"/>
         <source>The group requested has been created. 
  You are the admin.</source>
         <translation>Il gruppo richiesto e&apos; stato creato.
 Ne sei l&apos;amministratore.</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="621"/>
+        <location filename="../gui/legamimainwindow.cpp" line="620"/>
         <source>Account</source>
         <translation>Account</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="622"/>
+        <location filename="../gui/legamimainwindow.cpp" line="621"/>
         <source>View Profile</source>
         <translation>Visualizza profilo</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="623"/>
+        <location filename="../gui/legamimainwindow.cpp" line="622"/>
         <source>Modify Profile</source>
         <translation>Modifica profilo</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="625"/>
+        <location filename="../gui/legamimainwindow.cpp" line="624"/>
         <source>Contacts</source>
         <translation>Contatti</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="626"/>
+        <location filename="../gui/legamimainwindow.cpp" line="625"/>
         <source>Show Contacts</source>
         <translation>Mostra contatti</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="627"/>
+        <location filename="../gui/legamimainwindow.cpp" line="626"/>
         <source>Add new contact</source>
         <translation>Aggiungi nuovo contatto</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="628"/>
+        <location filename="../gui/legamimainwindow.cpp" line="627"/>
         <source>Delete Contact</source>
         <translation>Elimina contatto</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="630"/>
+        <location filename="../gui/legamimainwindow.cpp" line="629"/>
         <source>Groups</source>
         <translation>Gruppi</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="631"/>
+        <location filename="../gui/legamimainwindow.cpp" line="630"/>
         <source>View Groups</source>
         <translation>Visualizza gruppi</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="632"/>
+        <location filename="../gui/legamimainwindow.cpp" line="631"/>
         <source>Register new group</source>
         <translation>Crea nuovo gruppo</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="633"/>
+        <location filename="../gui/legamimainwindow.cpp" line="632"/>
         <source>Subscribe Group</source>
         <translation>Sottoscrivi gruppo</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="635"/>
+        <location filename="../gui/legamimainwindow.cpp" line="634"/>
         <source>Messages</source>
         <translation>Messaggi</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="636"/>
+        <location filename="../gui/legamimainwindow.cpp" line="635"/>
         <source>Inbox</source>
         <translation>Inbox</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="637"/>
+        <location filename="../gui/legamimainwindow.cpp" line="636"/>
         <source>Outbox</source>
         <translation>Outbox</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="638"/>
+        <location filename="../gui/legamimainwindow.cpp" line="637"/>
         <source>New Message</source>
         <translation>Nuovo messaggio</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="640"/>
+        <location filename="../gui/legamimainwindow.cpp" line="639"/>
         <source>Search</source>
         <translation>Ricerca</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="642"/>
+        <location filename="../gui/legamimainwindow.cpp" line="641"/>
         <source>Upgrades</source>
         <translation>Upgrade</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="643"/>
+        <location filename="../gui/legamimainwindow.cpp" line="642"/>
         <source>Request Payments</source>
         <translation>Richiedi upgrade</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="644"/>
+        <location filename="../gui/legamimainwindow.cpp" line="643"/>
         <source>Check Requests</source>
         <translation>Verifica richieste</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="648"/>
+        <location filename="../gui/legamimainwindow.cpp" line="647"/>
         <source>Administration</source>
         <translation>Amministrazione</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="649"/>
+        <location filename="../gui/legamimainwindow.cpp" line="648"/>
         <source>Admin Users</source>
         <translation>Amministra utenti</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="650"/>
+        <location filename="../gui/legamimainwindow.cpp" line="649"/>
         <source>Admin Groups</source>
         <translation>Amministra gruppi</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="651"/>
+        <location filename="../gui/legamimainwindow.cpp" line="650"/>
         <source>Admin Payments Requested</source>
         <translation>Amministra richieste di upgrade</translation>
     </message>
@@ -623,12 +623,12 @@ Ne sei l&apos;amministratore.</translation>
         <translation></translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="419"/>
+        <location filename="../gui/legamimainwindow.cpp" line="418"/>
         <source> There has been a error and the program could not recognize the type of the account.</source>
         <translation>C&apos;è stato un errore e il programma non è riuscito a riconoscere il tipo dell&apos;account.</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="448"/>
+        <location filename="../gui/legamimainwindow.cpp" line="447"/>
         <source>Group Created</source>
         <translation>Gruppo creato</translation>
     </message>
@@ -638,12 +638,12 @@ Ne sei l&apos;amministratore.</translation>
 Nel sei l&apos;amministratore.</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="458"/>
+        <location filename="../gui/legamimainwindow.cpp" line="457"/>
         <source>Group Subscrived</source>
         <translation>Iscrizione a gruppo</translation>
     </message>
     <message>
-        <location filename="../gui/legamimainwindow.cpp" line="458"/>
+        <location filename="../gui/legamimainwindow.cpp" line="457"/>
         <source>You have been added to the group requested.</source>
         <translation>Sei stato aggiunto al gruppo richiesto.</translation>
     </message>
@@ -1077,47 +1077,104 @@ Nel sei l&apos;amministratore.</translation>
 <context>
     <name>searchwidget</name>
     <message>
-        <location filename="../gui/searchwidget.cpp" line="19"/>
+        <location filename="../gui/searchwidget.cpp" line="25"/>
         <source>Username Search</source>
         <translation>Ricerca per username</translation>
     </message>
     <message>
-        <location filename="../gui/searchwidget.cpp" line="22"/>
+        <location filename="../gui/searchwidget.cpp" line="28"/>
         <source>Username:</source>
         <translation>Username:</translation>
     </message>
     <message>
-        <location filename="../gui/searchwidget.cpp" line="29"/>
+        <location filename="../gui/searchwidget.cpp" line="36"/>
+        <source>Company Search</source>
+        <translation>Ricerca aziendale</translation>
+    </message>
+    <message>
+        <location filename="../gui/searchwidget.cpp" line="38"/>
+        <source>User Search</source>
+        <translation>Ricerca utente</translation>
+    </message>
+    <message>
+        <location filename="../gui/searchwidget.cpp" line="166"/>
+        <source>User info Search</source>
+        <translation>Ricerca info Utente</translation>
+    </message>
+    <message>
+        <location filename="../gui/searchwidget.cpp" line="172"/>
+        <source>Surname:</source>
+        <translation>Cognome:</translation>
+    </message>
+    <message>
+        <location filename="../gui/searchwidget.cpp" line="175"/>
+        <source>Birth Date:</source>
+        <translation>Data di nascita:</translation>
+    </message>
+    <message>
+        <location filename="../gui/searchwidget.cpp" line="178"/>
+        <source>Birth Place:</source>
+        <translation>Luogo di nascita:</translation>
+    </message>
+    <message>
+        <location filename="../gui/searchwidget.cpp" line="181"/>
+        <source>Tel number:</source>
+        <translation>Num. Tel.:</translation>
+    </message>
+    <message>
+        <location filename="../gui/searchwidget.cpp" line="184"/>
+        <source>Email:</source>
+        <translation>Email:</translation>
+    </message>
+    <message>
+        <location filename="../gui/searchwidget.cpp" line="201"/>
         <source>Experience Search</source>
         <translation>Ricerca per Esperienza</translation>
     </message>
     <message>
-        <location filename="../gui/searchwidget.cpp" line="32"/>
+        <location filename="../gui/searchwidget.cpp" line="204"/>
         <source>Formative Experience</source>
         <translation>Esperienza formativa</translation>
     </message>
     <message>
-        <location filename="../gui/searchwidget.cpp" line="33"/>
+        <location filename="../gui/searchwidget.cpp" line="205"/>
         <source>Working Experience</source>
         <translation>Esperienza lavorativa</translation>
     </message>
     <message>
-        <location filename="../gui/searchwidget.cpp" line="34"/>
+        <location filename="../gui/searchwidget.cpp" line="260"/>
+        <source>Company info Search</source>
+        <translation>Ricerca info Azienda</translation>
+    </message>
+    <message>
+        <location filename="../gui/searchwidget.cpp" line="266"/>
+        <source>Address:</source>
+        <translation>Indirizzo:</translation>
+    </message>
+    <message>
+        <location filename="../gui/searchwidget.cpp" line="269"/>
+        <source>Company types:</source>
+        <translation>Tipo azienda:</translation>
+    </message>
+    <message>
+        <location filename="../gui/searchwidget.cpp" line="169"/>
+        <location filename="../gui/searchwidget.cpp" line="206"/>
+        <location filename="../gui/searchwidget.cpp" line="263"/>
         <source>Name:</source>
         <translation>Nome:</translation>
     </message>
     <message>
-        <location filename="../gui/searchwidget.cpp" line="37"/>
+        <location filename="../gui/searchwidget.cpp" line="209"/>
         <source>Description:</source>
         <translation>Descrizione:</translation>
     </message>
     <message>
-        <location filename="../gui/searchwidget.cpp" line="48"/>
+        <location filename="../gui/searchwidget.cpp" line="45"/>
         <source>Search</source>
         <translation>Cerca</translation>
     </message>
     <message>
-        <location filename="../gui/searchwidget.cpp" line="108"/>
+        <location filename="../gui/searchwidget.cpp" line="117"/>
         <source>Show profile selected</source>
         <translation>Visualizza il profilo selezionato</translation>
     </message>
@@ -1126,12 +1183,12 @@ Nel sei l&apos;amministratore.</translation>
         <translation type="obsolete">Reset</translation>
     </message>
     <message>
-        <location filename="../gui/searchwidget.cpp" line="61"/>
+        <location filename="../gui/searchwidget.cpp" line="53"/>
         <source>Error</source>
         <translation>Errore</translation>
     </message>
     <message>
-        <location filename="../gui/searchwidget.cpp" line="61"/>
+        <location filename="../gui/searchwidget.cpp" line="53"/>
         <source>Company basic account are not allowed to perform any search.</source>
         <translation>Gli account aziendali basic non sono autorizzati a fare alcuna ricerca.</translation>
     </message>
